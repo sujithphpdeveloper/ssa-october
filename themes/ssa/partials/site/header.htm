@@ -1,0 +1,79 @@
+{% placeholder headerBefore %}
+
+<header class="header">
+    <div class="uk-container uk-container--expand">
+        <nav class="uk-navbar-container uk-navbar-transparent">
+            <div class="uk-navbar uk-grid uk-grid-32 uk-flex-between uk-flex-middle" uk-navbar uk-grid>
+                <div class="uk-width-auto">
+                    <a href="{{ 'index'|page }}">
+                        <img class="logo" data-src="{{ 'assets/images/header-logo.svg'|theme }}" width="126" height="126" alt="logo" uk-img>
+                    </a>
+                </div>
+                <div class="uk-width-auto uk-width-2-3@m">
+                    <div class="uk-grid uk-grid-32@m uk-flex-right" uk-grid>
+                        <div class="uk-width-expand@m uk-visible@l">
+                            <ul class="uk-navbar-nav">
+                                {% partial 'site/nav-links' %}
+                            </ul>
+                        </div>
+                        <div class="uk-width-auto">
+                            <div class="uk-grid uk-grid-24 uk-flex-middle" uk-grid>
+                                <div><a class="uk-navbar-toggle uk-padding-remove">
+                                    <div class="search-icon">
+                                        <svg width="58" height="58" viewbox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0.5" y="0.5" width="57" height="57" rx="28.5" fill="white"></rect>
+                                            <rect x="0.5" y="0.5" width="57" height="57" rx="28.5" stroke="#9F9F9F"></rect>
+                                            <path
+                                                d="M36.3722 36.38L41 41M39.538 28.25C39.538 31.2337 38.3508 34.0952 36.2374 36.205C34.1241 38.3147 31.2577 39.5 28.269 39.5C25.2803 39.5 22.414 38.3147 20.3006 36.205C18.1873 34.0952 17 31.2337 17 28.25C17 25.2663 18.1873 22.4048 20.3006 20.295C22.414 18.1853 25.2803 17 28.269 17C31.2577 17 34.1241 18.1853 36.2374 20.295C38.3508 22.4048 39.538 25.2663 39.538 28.25Z"
+                                                stroke="#9F9F9F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                </a>
+                                    <div class="uk-drop uk-width-auto@m" uk-drop="mode: click; pos: left-center; offset: 0">
+                                        <form class="uk-search uk-search-navbar uk-width-1-1 uk-border-40 uk-overflow-hidden">
+                                            <input class="uk-search-input" type="search" placeholder="Search" aria-label="Search" autofocus="">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="uk-visible@l">
+                                    <a class="cta cta--lime" href="#">Register Now<span
+                                    class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                               fill="none"
+                                                                                               xmlns="http://www.w3.org/2000/svg"><rect
+                                    width="30" height="30" rx="15" fill="white"></rect><path
+                                    d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                    stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                </div>
+                                <div class="uk-hidden@l"><a class="menu-toggle" href="#offcanvas" uk-toggle>
+                                    <svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line y1="11.0459" x2="32" y2="11.0459" stroke="white" stroke-width="2"></line>
+                                        <line y1="19.9541" x2="32" y2="19.9541" stroke="white" stroke-width="2"></line>
+                                    </svg>
+                                </a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="uk-offcanvas" id="offcanvas" uk-offcanvas data-lenis-prevent>
+    <div class="uk-offcanvas-bar">
+        <div class="primary-links">
+            <ul class="parent-links uk-grid uk-grid-32 uk-flex-column uk-flex-middle uk-margin-top-144" uk-grid>
+                {% partial 'site/nav-mobile-links' %}
+            </ul>
+        </div>
+        <a class="cta cta--lime uk-width uk-margin-top-48" href="#">Register Now<span
+            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30" fill="none"
+                                                                       xmlns="http://www.w3.org/2000/svg"><rect width="30"
+                                                                                                                height="30"
+                                                                                                                rx="15"
+                                                                                                                fill="white"></rect><path
+            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div>
+</div>
+
+{% placeholder headerAfter %}

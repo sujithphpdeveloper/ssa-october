@@ -1,0 +1,42 @@
+accordion:
+    name: Hero Carousel
+    description: A dynamic slider component that displays images with titles, descriptions, and action buttons. Ideal for highlighting featured content, promotions, or campaigns on the pages.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[seperator]:
+            type: section
+            span: full
+        items:
+            type: repeater
+            titleFrom: title_when_collapsed
+            label: Slides
+            span: full
+            prompt: 'Add new Slide'
+            form:
+                fields:
+                    box_section:
+                        type: section
+                        span: full
+                        label: Slide Informations
+                    title :
+                        label: Title
+                        type: text
+                        span: auto
+                    content:
+                        label: Content
+                        type: richeditor
+                        size: small
+                        span: full
+

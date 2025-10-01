@@ -1,0 +1,1064 @@
+description = "Default layout"
+
+[staticPage]
+useContent = 1
+default = 0
+
+[staticBreadcrumbs]
+==
+<!DOCTYPE html>
+{repeater name="sections" groups="~/themes/ssa/meta/blocks.yaml" tab="Page Content"}
+    {variable name="_dummy" type="text"}{/variable}
+{/repeater}
+<html class="no-js" dir="ltr" lang="en">
+    <head>
+        {% partial 'site/head/head-meta' %}
+        <title>October CMS - {{ this.page.meta_title ?: placeholder('pageTitle') }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        {% partial 'site/head/head-links' %}
+        {% partial 'site/head/head-scripts' %}
+        {% partial 'site/head/analytics-code' %}
+    </head>
+    <body class="page-home {{ 'page-'~this.page.id }}">
+
+        {% partial 'site/head/after-body' %}
+
+        {% partial 'site/header' %}
+
+        {% partial 'site/flash-messages' %}
+
+        <section class="banner banner--carousel uk-position-relative">
+            <div class="uk-slider" uk-slider>
+                <div class="uk-slider-container">
+                    <ul class="uk-slider-items uk-grid" uk-grid>
+                        <li class="uk-width">
+                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
+                                 data-src="images/home-banner.jpg" uk-img></div>
+                            <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
+                                <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
+                                    class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
+                                    <span>Shaping the future of</span><br>
+                                    <span class="uk-text-tertiary">School Sports</span><br>
+                                    <span>in Saudi Arabia</span></h1>
+                                    <div
+                                        class="description uk-text-white uk-text-20 uk-text-25@m uk-text-height-120 uk-margin-top-24 uk-margin-top-40@m">
+                                        Create Opportunities for Talented Athletes
+                                    </div>
+                                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
+                                        <div class="uk-width-auto@s"><a class="cta cta--lime" href="#">Register Now<span
+                                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg"><rect
+                                            width="30" height="30" rx="15" fill="white"></rect><path
+                                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                        </div>
+                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="uk-width">
+                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
+                                 data-src="images/home-banner.jpg" uk-img></div>
+                            <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
+                                <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
+                                    class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
+                                    <span>Shaping the future of</span><br>
+                                    <span class="uk-text-tertiary">School Sports</span><br>
+                                    <span>in Saudi Arabia</span></h1>
+                                    <div
+                                        class="description uk-text-white uk-text-20 uk-text-25@m uk-text-height-120 uk-margin-top-24 uk-margin-top-40@m">
+                                        Create Opportunities for Talented Athletes
+                                    </div>
+                                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
+                                        <div class="uk-width-auto@s"><a class="cta cta--lime" href="#">Register Now<span
+                                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg"><rect
+                                            width="30" height="30" rx="15" fill="white"></rect><path
+                                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                        </div>
+                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="uk-width">
+                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
+                                 data-src="images/home-banner.jpg" uk-img></div>
+                            <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
+                                <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
+                                    class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
+                                    <span>Shaping the future of</span><br>
+                                    <span class="uk-text-tertiary">School Sports</span><br>
+                                    <span>in Saudi Arabia</span></h1>
+                                    <div
+                                        class="description uk-text-white uk-text-20 uk-text-25@m uk-text-height-120 uk-margin-top-24 uk-margin-top-40@m">
+                                        Create Opportunities for Talented Athletes
+                                    </div>
+                                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
+                                        <div class="uk-width-auto@s"><a class="cta cta--lime" href="#">Register Now<span
+                                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                                       fill="none"
+                                                                                                       xmlns="http://www.w3.org/2000/svg"><rect
+                                            width="30" height="30" rx="15" fill="white"></rect><path
+                                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                        </div>
+                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-40 uk-margin-bottom-72@m"></ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!--
+
+        <section class="logo-list uk-overflow-hidden uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-text-center uk-margin-bottom-24 uk-margin-bottom-48@m"><h2
+                    class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">Registered schools</h2>
+                    <div class="section-description uk-text-18 uk-text-24@m uk-text-height-120 uk-margin-top-12 uk-margin-top-20@m">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                </div>
+                <div class="uk-slider" uk-slider>
+                    <div class="uk-slider-container">
+                        <ul class="uk-slider-items uk-grid uk-grid-64@m uk-flex-center@m" uk-grid>
+                            <li><img data-src="images/logo.png" width="200" height="200" alt="logo" uk-img></li>
+                            <li><img data-src="images/logo.png" width="200" height="200" alt="logo" uk-img></li>
+                            <li><img data-src="images/logo.png" width="200" height="200" alt="logo" uk-img></li>
+                            <li><img data-src="images/logo.png" width="200" height="200" alt="logo" uk-img></li>
+                            <li><img data-src="images/logo.png" width="200" height="200" alt="logo" uk-img></li>
+                            <li><img data-src="images/logo.png" width="200" height="200" alt="logo" uk-img></li>
+                        </ul>
+                    </div>
+                    <ul class="uk-slider-nav uk-dotnav uk-dotnav--dark uk-flex-center uk-margin-top-20 uk-margin-tops-32@m"></ul>
+                </div>
+            </div>
+        </section>
+        <section class="rte rte--media uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <div class="uk-grid uk-grid-40@m" uk-grid>
+                    <div class="uk-width-1-3@m">
+                        <div class="section-content uk-margin-bottom-40 uk-margin-bottom-80@m"><h2
+                            class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">About SSA</h2></div>
+                        <div class="content content--default"><p>The SCHOOL SPORTS ASSOCIATION (SSA) is a new initiative open to all
+                            private and government schools across Riyadh in 2025/26, enabling student athletes to compete in competitive
+                            sport.</p></div>
+                        <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
+                            <div><a class="cta cta--black" href="#">Get in touch<span
+                                class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                           fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                                width="30" height="30" rx="15" fill="white"></rect><path
+                                d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-width-2-3@m">
+                        <div class="uk-slider uk-slider--grid uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-grid-match" uk-grid>
+                                    <li class="uk-width-1-2@m">
+                                        <div class="featured-img-container uk-position-relative">
+                                            <div class="featured-img uk-background-cover uk-border-24" data-src="images/about.jpg" uk-img></div>
+                                            <div class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div class="uk-flex uk-flex-between uk-flex-middle uk-padding-20 uk-padding-32@m">
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                    <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                                        width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                        d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                        stroke="white" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path></svg></span></div>
+                                                <div
+                                                    class="title uk-text-white uk-text-20 uk-text-25@m uk-text-height-110 uk-width-4-5 uk-width-3-4@m uk-padding-20 uk-padding-32@m">
+                                                    Versatile space for a wide range of activities
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-width-1-2@m">
+                                        <div class="featured-img-container uk-position-relative">
+                                            <div class="featured-img uk-background-cover uk-border-24" data-src="images/about.jpg" uk-img></div>
+                                            <div class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div class="uk-flex uk-flex-between uk-flex-middle uk-padding-20 uk-padding-32@m">
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                    <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                                        width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                        d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                        stroke="white" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path></svg></span></div>
+                                                <div
+                                                    class="title uk-text-white uk-text-20 uk-text-25@m uk-text-height-110 uk-width-4-5 uk-width-3-4@m uk-padding-20 uk-padding-32@m">
+                                                    Versatile space for a wide range of activities
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-width-1-2@m">
+                                        <div class="featured-img-container uk-position-relative">
+                                            <div class="featured-img uk-background-cover uk-border-24" data-src="images/about.jpg" uk-img></div>
+                                            <div class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div class="uk-flex uk-flex-between uk-flex-middle uk-padding-20 uk-padding-32@m">
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                    <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                                        width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                        d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                        stroke="white" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path></svg></span></div>
+                                                <div
+                                                    class="title uk-text-white uk-text-20 uk-text-25@m uk-text-height-110 uk-width-4-5 uk-width-3-4@m uk-padding-20 uk-padding-32@m">
+                                                    Versatile space for a wide range of activities
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="uk-slider-navigation">
+                                <div class="uk-grid uk-grid-16 uk-grid-24@m uk-flex-right" uk-grid>
+                                    <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                    <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="icon-text uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <hr class="uk-margin-bottom-72 uk-margin-bottom-120@m">
+                <div class="section-content uk-text-center uk-margin-bottom-40 uk-margin-bottom-80@m"><h2
+                    class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">Our Purpose</h2></div>
+                <div class="uk-grid uk-grid-64 uk-flex-between uk-flex-bottom" uk-grid>
+                    <div class="uk-width-1-3@m">
+                        <div class="featured-img uk-background-contain" data-src="images/purpose.png" uk-img></div>
+                    </div>
+                    <div class="uk-width-3-5@m">
+                        <div class="uk-grid uk-grid-48 uk-grid-88@m" uk-grid>
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item"><span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m"><svg
+                                    width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60"
+                                                                                                                                    height="60"
+                                                                                                                                    rx="30"
+                                                                                                                                    fill="#BEEE0F"></rect><path
+                                    d="M17.5124 37.1935L17.5752 38.301C17.6444 39.5004 18.159 40.6328 19.0211 41.4825C19.8831 42.3321 21.0323 42.8398 22.2497 42.9087C23.4645 42.9773 24.6697 43.0306 25.8654 43.0683M33.7922 16.4526C35.0688 16.4884 36.3447 16.5433 37.6196 16.6174C40.1399 16.7643 42.1425 18.7397 42.2941 21.2225C42.3447 22.0484 42.3856 22.87 42.417 23.6873M21.319 23.4864C25.1621 23.4864 27.6405 26.4612 27.6405 30.3786H15C15 26.4612 17.4784 23.4864 21.319 23.4864ZM21.319 23.4864C24.0771 23.4864 25.6275 21.9591 25.6275 19.2445C25.6275 16.5299 24.0771 15 21.319 15C18.5608 15 17.0131 16.5273 17.0131 19.2445C17.0131 21.9617 18.5634 23.4864 21.319 23.4864ZM38.6784 38.1078C42.5216 38.1078 45 41.08 45 45H32.3569C32.3569 41.08 34.8379 38.1078 38.6784 38.1078ZM38.6784 38.1078C41.434 38.1078 42.9869 36.5805 42.9869 33.8659C42.9869 31.1513 41.434 29.6214 38.6784 29.6214C35.9203 29.6214 34.3699 31.1487 34.3699 33.8659C34.3699 36.5831 35.9203 38.1078 38.6784 38.1078Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Collaborate
+                                    </div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Help
+                                        develop future elite athletes through guidance, training, support, and early skill development.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item"><span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m"><svg
+                                    width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60"
+                                                                                                                                    height="60"
+                                                                                                                                    rx="30"
+                                                                                                                                    fill="#BEEE0F"></rect><path
+                                    d="M17.5124 37.1935L17.5752 38.301C17.6444 39.5004 18.159 40.6328 19.0211 41.4825C19.8831 42.3321 21.0323 42.8398 22.2497 42.9087C23.4645 42.9773 24.6697 43.0306 25.8654 43.0683M33.7922 16.4526C35.0688 16.4884 36.3447 16.5433 37.6196 16.6174C40.1399 16.7643 42.1425 18.7397 42.2941 21.2225C42.3447 22.0484 42.3856 22.87 42.417 23.6873M21.319 23.4864C25.1621 23.4864 27.6405 26.4612 27.6405 30.3786H15C15 26.4612 17.4784 23.4864 21.319 23.4864ZM21.319 23.4864C24.0771 23.4864 25.6275 21.9591 25.6275 19.2445C25.6275 16.5299 24.0771 15 21.319 15C18.5608 15 17.0131 16.5273 17.0131 19.2445C17.0131 21.9617 18.5634 23.4864 21.319 23.4864ZM38.6784 38.1078C42.5216 38.1078 45 41.08 45 45H32.3569C32.3569 41.08 34.8379 38.1078 38.6784 38.1078ZM38.6784 38.1078C41.434 38.1078 42.9869 36.5805 42.9869 33.8659C42.9869 31.1513 41.434 29.6214 38.6784 29.6214C35.9203 29.6214 34.3699 31.1487 34.3699 33.8659C34.3699 36.5831 35.9203 38.1078 38.6784 38.1078Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Nurture</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Help
+                                        develop future elite athletes through guidance, training, support, and early skill development.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item"><span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m"><svg
+                                    width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60"
+                                                                                                                                    height="60"
+                                                                                                                                    rx="30"
+                                                                                                                                    fill="#BEEE0F"></rect><path
+                                    d="M17.5124 37.1935L17.5752 38.301C17.6444 39.5004 18.159 40.6328 19.0211 41.4825C19.8831 42.3321 21.0323 42.8398 22.2497 42.9087C23.4645 42.9773 24.6697 43.0306 25.8654 43.0683M33.7922 16.4526C35.0688 16.4884 36.3447 16.5433 37.6196 16.6174C40.1399 16.7643 42.1425 18.7397 42.2941 21.2225C42.3447 22.0484 42.3856 22.87 42.417 23.6873M21.319 23.4864C25.1621 23.4864 27.6405 26.4612 27.6405 30.3786H15C15 26.4612 17.4784 23.4864 21.319 23.4864ZM21.319 23.4864C24.0771 23.4864 25.6275 21.9591 25.6275 19.2445C25.6275 16.5299 24.0771 15 21.319 15C18.5608 15 17.0131 16.5273 17.0131 19.2445C17.0131 21.9617 18.5634 23.4864 21.319 23.4864ZM38.6784 38.1078C42.5216 38.1078 45 41.08 45 45H32.3569C32.3569 41.08 34.8379 38.1078 38.6784 38.1078ZM38.6784 38.1078C41.434 38.1078 42.9869 36.5805 42.9869 33.8659C42.9869 31.1513 41.434 29.6214 38.6784 29.6214C35.9203 29.6214 34.3699 31.1487 34.3699 33.8659C34.3699 36.5831 35.9203 38.1078 38.6784 38.1078Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Support</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Help
+                                        develop future elite athletes through guidance, training, support, and early skill development.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item"><span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m"><svg
+                                    width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60"
+                                                                                                                                    height="60"
+                                                                                                                                    rx="30"
+                                                                                                                                    fill="#BEEE0F"></rect><path
+                                    d="M17.5124 37.1935L17.5752 38.301C17.6444 39.5004 18.159 40.6328 19.0211 41.4825C19.8831 42.3321 21.0323 42.8398 22.2497 42.9087C23.4645 42.9773 24.6697 43.0306 25.8654 43.0683M33.7922 16.4526C35.0688 16.4884 36.3447 16.5433 37.6196 16.6174C40.1399 16.7643 42.1425 18.7397 42.2941 21.2225C42.3447 22.0484 42.3856 22.87 42.417 23.6873M21.319 23.4864C25.1621 23.4864 27.6405 26.4612 27.6405 30.3786H15C15 26.4612 17.4784 23.4864 21.319 23.4864ZM21.319 23.4864C24.0771 23.4864 25.6275 21.9591 25.6275 19.2445C25.6275 16.5299 24.0771 15 21.319 15C18.5608 15 17.0131 16.5273 17.0131 19.2445C17.0131 21.9617 18.5634 23.4864 21.319 23.4864ZM38.6784 38.1078C42.5216 38.1078 45 41.08 45 45H32.3569C32.3569 41.08 34.8379 38.1078 38.6784 38.1078ZM38.6784 38.1078C41.434 38.1078 42.9869 36.5805 42.9869 33.8659C42.9869 31.1513 41.434 29.6214 38.6784 29.6214C35.9203 29.6214 34.3699 31.1487 34.3699 33.8659C34.3699 36.5831 35.9203 38.1078 38.6784 38.1078Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Develop</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Help
+                                        develop future elite athletes through guidance, training, support, and early skill development.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item"><span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m"><svg
+                                    width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60"
+                                                                                                                                    height="60"
+                                                                                                                                    rx="30"
+                                                                                                                                    fill="#BEEE0F"></rect><path
+                                    d="M17.5124 37.1935L17.5752 38.301C17.6444 39.5004 18.159 40.6328 19.0211 41.4825C19.8831 42.3321 21.0323 42.8398 22.2497 42.9087C23.4645 42.9773 24.6697 43.0306 25.8654 43.0683M33.7922 16.4526C35.0688 16.4884 36.3447 16.5433 37.6196 16.6174C40.1399 16.7643 42.1425 18.7397 42.2941 21.2225C42.3447 22.0484 42.3856 22.87 42.417 23.6873M21.319 23.4864C25.1621 23.4864 27.6405 26.4612 27.6405 30.3786H15C15 26.4612 17.4784 23.4864 21.319 23.4864ZM21.319 23.4864C24.0771 23.4864 25.6275 21.9591 25.6275 19.2445C25.6275 16.5299 24.0771 15 21.319 15C18.5608 15 17.0131 16.5273 17.0131 19.2445C17.0131 21.9617 18.5634 23.4864 21.319 23.4864ZM38.6784 38.1078C42.5216 38.1078 45 41.08 45 45H32.3569C32.3569 41.08 34.8379 38.1078 38.6784 38.1078ZM38.6784 38.1078C41.434 38.1078 42.9869 36.5805 42.9869 33.8659C42.9869 31.1513 41.434 29.6214 38.6784 29.6214C35.9203 29.6214 34.3699 31.1487 34.3699 33.8659C34.3699 36.5831 35.9203 38.1078 38.6784 38.1078Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Engage</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Help
+                                        develop future elite athletes through guidance, training, support, and early skill development.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item"><span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m"><svg
+                                    width="60" height="60" viewbox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="60"
+                                                                                                                                    height="60"
+                                                                                                                                    rx="30"
+                                                                                                                                    fill="#BEEE0F"></rect><path
+                                    d="M17.5124 37.1935L17.5752 38.301C17.6444 39.5004 18.159 40.6328 19.0211 41.4825C19.8831 42.3321 21.0323 42.8398 22.2497 42.9087C23.4645 42.9773 24.6697 43.0306 25.8654 43.0683M33.7922 16.4526C35.0688 16.4884 36.3447 16.5433 37.6196 16.6174C40.1399 16.7643 42.1425 18.7397 42.2941 21.2225C42.3447 22.0484 42.3856 22.87 42.417 23.6873M21.319 23.4864C25.1621 23.4864 27.6405 26.4612 27.6405 30.3786H15C15 26.4612 17.4784 23.4864 21.319 23.4864ZM21.319 23.4864C24.0771 23.4864 25.6275 21.9591 25.6275 19.2445C25.6275 16.5299 24.0771 15 21.319 15C18.5608 15 17.0131 16.5273 17.0131 19.2445C17.0131 21.9617 18.5634 23.4864 21.319 23.4864ZM38.6784 38.1078C42.5216 38.1078 45 41.08 45 45H32.3569C32.3569 41.08 34.8379 38.1078 38.6784 38.1078ZM38.6784 38.1078C41.434 38.1078 42.9869 36.5805 42.9869 33.8659C42.9869 31.1513 41.434 29.6214 38.6784 29.6214C35.9203 29.6214 34.3699 31.1487 34.3699 33.8659C34.3699 36.5831 35.9203 38.1078 38.6784 38.1078Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Grow</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Help
+                                        develop future elite athletes through guidance, training, support, and early skill development.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="stat uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <hr class="uk-margin-bottom-40 uk-margin-bottom-88@m">
+                <div class="uk-grid uk-grid-row-64@m uk-grid-120@m uk-flex-center@m" uk-grid>
+                    <div class="uk-width-1-2 uk-width-auto@m">
+                        <div class="stat-item">
+                            <div class="uk-font-primary uk-text-black uk-text-70 uk-text-100@m"><span class="stat-value" data-target="25">25</span><span
+                                class="stat-unit">+</span></div>
+                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase">School Registered</div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2 uk-width-auto@m">
+                        <div class="stat-item">
+                            <div class="uk-font-primary uk-text-black uk-text-70 uk-text-100@m"><span class="stat-value" data-target="25">25</span><span
+                                class="stat-unit">+</span></div>
+                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase">School Registered</div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2 uk-width-auto@m">
+                        <div class="stat-item">
+                            <div class="uk-font-primary uk-text-black uk-text-70 uk-text-100@m"><span class="stat-value" data-target="25">25</span><span
+                                class="stat-unit">+</span></div>
+                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase">School Registered</div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2 uk-width-auto@m">
+                        <div class="stat-item">
+                            <div class="uk-font-primary uk-text-black uk-text-70 uk-text-100@m"><span class="stat-value" data-target="25">25</span><span
+                                class="stat-unit">+</span></div>
+                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase">School Registered</div>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-2 uk-width-auto@m">
+                        <div class="stat-item">
+                            <div class="uk-font-primary uk-text-black uk-text-70 uk-text-100@m"><span class="stat-value" data-target="25">25</span><span
+                                class="stat-unit">+</span></div>
+                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase">School Registered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="calendar uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <div class="calendar-bg uk-background-white uk-border-24">
+                    <div class="uk-container">
+                        <div class="section-content uk-text-center uk-margin-bottom-24 uk-margin-bottom-40@m"><h2
+                            class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">End of term regional champions playoff/footbal
+                            and vollyball</h2></div>
+                        <div
+                            class="uk-grid uk-grid-8 uk-grid-32@m uk-flex-bottom uk-flex-center uk-margin-bottom-48 uk-margin-bottom-120@m"
+                            uk-grid>
+                            <div class="uk-width-auto">
+                                <div
+                                    class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                    <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">18</div>
+                                    <div
+                                        class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                        Fri
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-auto">
+                                <div
+                                    class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                    <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">21</div>
+                                    <div
+                                        class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                        Mon
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-auto">
+                                <div
+                                    class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                    <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">23</div>
+                                    <div
+                                        class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                        Wed
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-auto">
+                                <div
+                                    class="date-item date-item--active uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                    <div class="month uk-text-12 uk-text-15@m uk-text-medium uk-text-uppercase uk-margin-bottom-12">July</div>
+                                    <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">25</div>
+                                    <div
+                                        class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                        Fri
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-auto">
+                                <div
+                                    class="date-item uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                    <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">27</div>
+                                    <div
+                                        class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                        Sun
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-auto">
+                                <div
+                                    class="date-item uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                    <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">30</div>
+                                    <div
+                                        class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                        Wed
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-auto"><label
+                                class="date-item uk-text-center uk-border-24 uk-display-block uk-position-relative uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m uk-invisible">Dummy</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-invisible uk-margin-top-8 uk-margin-top-12@m">
+                                    Dummy
+                                </div>
+                                <span class="calendar-icon uk-position-center"><svg width="26" height="25" viewbox="0 0 26 25" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg"><path
+                                    fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M6.94744 0C7.18778 0 7.41827 0.0939849 7.58822 0.261279C7.75816 0.428573 7.85363 0.655473 7.85363 0.892062V1.79959C8.65349 1.78412 9.53431 1.78412 10.5045 1.78412H15.4729C16.4431 1.78412 17.3239 1.78412 18.1238 1.79959V0.892062C18.1238 0.655473 18.2192 0.428573 18.3892 0.261279C18.5591 0.0939849 18.7896 0 19.03 0C19.2703 0 19.5008 0.0939849 19.6707 0.261279C19.8407 0.428573 19.9361 0.655473 19.9361 0.892062V1.87571C20.2503 1.8995 20.5479 1.92963 20.829 1.96611C22.2451 2.15403 23.3917 2.54892 24.2967 3.4386C25.2005 4.32948 25.6016 5.45823 25.7925 6.85223C25.8521 7.29786 25.8952 7.78553 25.9218 8.31521C25.9876 8.49071 25.9956 8.68211 25.9448 8.86234C25.9774 9.81507 25.9774 10.8986 25.9774 12.1249V14.5704C25.9774 14.8069 25.8819 15.0338 25.712 15.2011C25.542 15.3684 25.3115 15.4624 25.0712 15.4624C24.8309 15.4624 24.6004 15.3684 24.4304 15.2011C24.2605 15.0338 24.165 14.8069 24.165 14.5704V12.1915C24.165 11.1758 24.165 10.292 24.1493 9.51533H1.82808C1.81238 10.292 1.81238 11.1758 1.81238 12.1915V14.5704C1.81238 16.8386 1.81479 18.4502 1.98153 19.673C2.14465 20.8683 2.45154 21.5582 2.96263 22.0613C3.47372 22.5644 4.17451 22.8665 5.39001 23.0271C6.63209 23.1912 8.26806 23.1936 10.5722 23.1936H15.4052C15.6455 23.1936 15.876 23.2876 16.046 23.4549C16.2159 23.6222 16.3114 23.8491 16.3114 24.0857C16.3114 24.3223 16.2159 24.5492 16.046 24.7165C15.876 24.8838 15.6455 24.9777 15.4052 24.9777H10.5045C8.28377 24.9777 6.52456 24.9777 5.14836 24.7958C3.73229 24.6078 2.58566 24.213 1.68068 23.3233C0.776905 22.4324 0.375766 21.3036 0.184862 19.9096C0 18.5537 0 16.8231 0 14.637V12.1249C0 10.8986 -6.07647e-08 9.81507 0.0326227 8.86115C-0.0177965 8.68079 -0.00934288 8.48939 0.0567879 8.31402C0.0825639 7.78513 0.125255 7.29786 0.184862 6.85223C0.375766 5.45823 0.776905 4.32948 1.68068 3.4386C2.58566 2.54892 3.73229 2.15403 5.14836 1.96611C5.43028 1.92963 5.72792 1.8995 6.04125 1.87571V0.892062C6.04125 0.655473 6.13673 0.428573 6.30667 0.261279C6.47661 0.0939849 6.70711 0 6.94744 0ZM1.91145 7.73121H24.0659C24.0466 7.50601 24.0233 7.29192 23.9959 7.08892C23.8328 5.89356 23.5259 5.2037 23.0148 4.70057C22.5037 4.19745 21.8029 3.89534 20.5874 3.73477C19.3465 3.57063 17.7093 3.56825 15.4052 3.56825H10.5722C8.26806 3.56825 6.63209 3.57063 5.3888 3.73477C4.17451 3.89534 3.47372 4.19745 2.96263 4.70057C2.45154 5.2037 2.14465 5.89356 1.98153 7.08892C1.95414 7.29112 1.93079 7.50482 1.91145 7.73002M20.2382 16.6518C19.5172 16.6518 18.8257 16.9338 18.3159 17.4357C17.8061 17.9376 17.5196 18.6183 17.5196 19.328C17.5196 20.0378 17.8061 20.7185 18.3159 21.2204C18.8257 21.7223 19.5172 22.0042 20.2382 22.0042C20.9592 22.0042 21.6507 21.7223 22.1605 21.2204C22.6703 20.7185 22.9568 20.0378 22.9568 19.328C22.9568 18.6183 22.6703 17.9376 22.1605 17.4357C21.6507 16.9338 20.9592 16.6518 20.2382 16.6518ZM15.7073 19.328C15.7075 18.6326 15.8729 17.9468 16.1903 17.3256C16.5076 16.7043 16.9682 16.1646 17.5351 15.7497C18.1021 15.3349 18.7598 15.0562 19.4556 14.9361C20.1514 14.816 20.8661 14.8577 21.5427 15.0579C22.2192 15.2581 22.8388 15.6113 23.352 16.0892C23.8652 16.5671 24.2577 17.1566 24.4983 17.8104C24.7389 18.4643 24.8208 19.1644 24.7376 19.855C24.6543 20.5456 24.4082 21.2075 24.0188 21.7877L25.7116 23.4553C25.8006 23.537 25.872 23.6354 25.9216 23.7449C25.9711 23.8543 25.9977 23.9724 25.9999 24.0922C26.002 24.212 25.9796 24.331 25.934 24.442C25.8885 24.5531 25.8206 24.654 25.7346 24.7387C25.6485 24.8234 25.546 24.8902 25.4332 24.9351C25.3204 24.9799 25.1995 25.002 25.0778 24.9999C24.9562 24.9977 24.8362 24.9715 24.725 24.9228C24.6138 24.874 24.5138 24.8037 24.4308 24.7161L22.7369 23.0497C22.0539 23.4941 21.2614 23.7481 20.4436 23.7847C19.6257 23.8212 18.8131 23.6389 18.0921 23.2572C17.3711 22.8754 16.7686 22.3085 16.3487 21.6167C15.9288 20.9249 15.7071 20.1339 15.7073 19.328Z"
+                                    fill="#9F9F9F"></path></svg></span><input
+                                class="datepicker uk-position-cover uk-position-z-index-negative" type="text"></label></div>
+                        </div>
+                        <div class="uk-slider uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-flex-bottom" uk-grid>
+                                    <li class="uk-width-1-3@m"><a class="featured-img-container uk-flex uk-flex-bottom" href="#">
+                                        <div class="featured-img uk-background-cover uk-border-24 uk-position-relative uk-width"
+                                             data-src="images/about.jpg" uk-img>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">Under 15 football
+                                                        (GIRLS)
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                                        Organizer name
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                                                        name @ 3.45 pm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                    <li class="uk-width-1-3@m"><a class="featured-img-container uk-flex uk-flex-bottom" href="#">
+                                        <div class="featured-img uk-background-cover uk-border-24 uk-position-relative uk-width"
+                                             data-src="images/about.jpg" uk-img>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">Under 15 football
+                                                        (GIRLS)
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                                        Organizer name
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                                                        name @ 3.45 pm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                    <li class="uk-width-1-3@m"><a class="featured-img-container uk-flex uk-flex-bottom" href="#">
+                                        <div class="featured-img uk-background-cover uk-border-24 uk-position-relative uk-width"
+                                             data-src="images/about.jpg" uk-img>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">Under 15 football
+                                                        (GIRLS)
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                                        Organizer name
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                                                        name @ 3.45 pm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                    <li class="uk-width-1-3@m"><a class="featured-img-container uk-flex uk-flex-bottom" href="#">
+                                        <div class="featured-img uk-background-cover uk-border-24 uk-position-relative uk-width"
+                                             data-src="images/about.jpg" uk-img>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">Under 15 football
+                                                        (GIRLS)
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                                        Organizer name
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                                                        name @ 3.45 pm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                    <li class="uk-width-1-3@m"><a class="featured-img-container uk-flex uk-flex-bottom" href="#">
+                                        <div class="featured-img uk-background-cover uk-border-24 uk-position-relative uk-width"
+                                             data-src="images/about.jpg" uk-img>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">Under 15 football
+                                                        (GIRLS)
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                                        Organizer name
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                                                        name @ 3.45 pm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                    <li class="uk-width-1-3@m"><a class="featured-img-container uk-flex uk-flex-bottom" href="#">
+                                        <div class="featured-img uk-background-cover uk-border-24 uk-position-relative uk-width"
+                                             data-src="images/about.jpg" uk-img>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div
+                                                        class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        Football
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">Under 15 football
+                                                        (GIRLS)
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                                        Organizer name
+                                                    </div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                                                        name @ 3.45 pm
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                </ul>
+                            </div>
+                            <div class="uk-slider-navigation uk-grid uk-grid-32@m uk-flex-middle uk-flex-between" uk-grid>
+                                <div><a class="cta cta--black" href="#">Get in touch<span
+                                    class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                               fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                                    width="30" height="30" rx="15" fill="white"></rect><path
+                                    d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                    stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                </div>
+                                <div>
+                                    <div class="uk-grid uk-grid-16 uk-grid-24@m" uk-grid>
+                                        <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                             viewbox="0 0 50 50" fill="none"
+                                                                                                             xmlns="http://www.w3.org/2000/svg"><rect
+                                            x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                            d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round"></path></svg></span></a></div>
+                                        <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                            x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                            d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round"></path></svg></span></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-grid uk-grid-40@m uk-flex-center uk-flex-middle uk-margin-top-40 uk-margin-top-72@m" uk-grid>
+                            <div class="uk-width-auto@m">
+                                <div class="uk-text-24 uk-text-30@m">Unlock Exclusive Features in the App</div>
+                            </div>
+                            <div class="uk-width-auto@m"><a class="cta cta--lime" href="#">SOCS App<span
+                                class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                           fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                                width="30" height="30" rx="15" fill="white"></rect><path
+                                d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="gallery uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand uk-margin-bottom-32 uk-margin-bottom-56@m">
+                <hr class="uk-margin-bottom-72 uk-margin-bottom-120@m">
+                <div class="section-content"><h2
+                    class="section-title uk-text-35 uk-text-50@m uk-text-uppercase uk-margin-bottom-24 uk-margin-bottom-40@m">
+                    Gallery</h2>
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">Fuel
+                        your fire, Dominate The
+                        <strong>GAME</strong></div>
+                </div>
+            </div>
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-24 uk-flex-bottom" uk-grid>
+                    <div class="uk-width-2-5@m">
+                        <div class="uk-slider uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid" uk-grid>
+                                    <li class="uk-width">
+                                        <div class="gallery-item gallery-item--photo">
+                                            <div class="featured-img-container uk-position-relative">
+                                                <div
+                                                    class="featured-img uk-background-cover uk-background-cover uk-position-cover uk-position-z-index-negative uk-border-24"
+                                                    data-src="images/about.jpg" uk-img></div>
+                                                <div
+                                                    class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-12 uk-padding-20@m">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                        <div
+                                                            class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-padding-8 uk-padding-12@m uk-display-inline-block">
+                                                            Photos
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-width">
+                                        <div class="gallery-item gallery-item--photo">
+                                            <div class="featured-img-container uk-position-relative">
+                                                <div
+                                                    class="featured-img uk-background-cover uk-background-cover uk-position-cover uk-position-z-index-negative uk-border-24"
+                                                    data-src="images/about.jpg" uk-img></div>
+                                                <div
+                                                    class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-12 uk-padding-20@m">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                        <div
+                                                            class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-padding-8 uk-padding-12@m uk-display-inline-block">
+                                                            Photos
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-width">
+                                        <div class="gallery-item gallery-item--photo">
+                                            <div class="featured-img-container uk-position-relative">
+                                                <div
+                                                    class="featured-img uk-background-cover uk-background-cover uk-position-cover uk-position-z-index-negative uk-border-24"
+                                                    data-src="images/about.jpg" uk-img></div>
+                                                <div
+                                                    class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-12 uk-padding-20@m">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                        <div
+                                                            class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-padding-8 uk-padding-12@m uk-display-inline-block">
+                                                            Photos
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-20 uk-margin-bottom-32@m"></ul>
+                        </div>
+                    </div>
+                    <div class="uk-width-3-5@m">
+                        <div class="uk-slider uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid" uk-grid>
+                                    <li class="uk-width">
+                                        <div class="gallery-item gallery-item--video" uk-lightbox="video-autoplay: true">
+                                            <div class="featured-img-container uk-position-relative">
+                                                <div
+                                                    class="featured-img uk-background-cover uk-background-cover uk-position-cover uk-position-z-index-negative uk-border-24"
+                                                    data-src="images/about.jpg" uk-img></div>
+                                                <div
+                                                    class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-20 uk-padding-32@m">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                        <div
+                                                            class="category uk-text-white uk-text-20 uk-text-25@m uk-text-medium uk-border-40 uk-padding-12 uk-padding-16@m uk-display-inline-block">
+                                                            Videos
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                </div>
+                                                <a class="uk-position-center" href="#"><span class="play-icon"><svg width="82" height="81"
+                                                                                                                    viewbox="0 0 82 81" fill="none"
+                                                                                                                    xmlns="http://www.w3.org/2000/svg"><path
+                                                    d="M35.901 54.0825L53.4773 42.8238C54.3693 42.2555 54.8153 41.4806 54.8153 40.4991C54.8153 39.5176 54.3693 38.7427 53.4773 38.1744L35.8964 26.9157C34.9861 26.2715 34.0422 26.2137 33.0647 26.7425C32.0873 27.2712 31.5985 28.1023 31.5985 29.2358V51.7624C31.5985 52.8959 32.0873 53.727 33.0647 54.2557C34.0422 54.7845 34.9861 54.7283 35.8964 54.0871M2.01742 45.0573C2.67111 45.0573 3.23317 45.2852 3.70358 45.741C4.17399 46.1968 4.51459 46.7788 4.72536 47.4868C5.24159 49.9361 5.95637 52.2896 6.86971 54.5474C7.78305 56.8053 8.92395 58.9279 10.2924 60.9152C10.6865 61.4713 10.8698 62.073 10.8423 62.7203C10.8178 63.3706 10.5521 63.9464 10.045 64.4478C9.61735 64.8733 9.10112 65.048 8.4963 64.972C7.89149 64.8961 7.39205 64.5983 6.998 64.0786C5.08275 61.4318 3.56765 58.7881 2.45271 56.1474C1.33471 53.5127 0.529813 50.635 0.0380163 47.5142C-0.0750052 46.8821 0.0639811 46.3154 0.454974 45.814C0.845968 45.3095 1.36678 45.0573 2.01742 45.0573ZM10.045 16.6415C10.5521 17.1429 10.8132 17.7173 10.8285 18.3645C10.8438 19.0118 10.6651 19.6043 10.2924 20.1422C8.92395 22.1326 7.79832 24.2461 6.91553 26.4827C6.03274 28.7192 5.33017 31.0621 4.80783 33.5114C4.60622 34.2194 4.25341 34.8014 3.7494 35.2572C3.24844 35.713 2.67111 35.9409 2.01742 35.9409C1.36373 35.9409 0.842913 35.6705 0.454974 35.1295C0.0670357 34.5886 -0.0643135 34.0037 0.0609266 33.3746C0.555778 30.3115 1.34693 27.49 2.43438 24.9101C3.52183 22.3271 5.01402 19.7137 6.91095 17.07C7.30499 16.5473 7.80443 16.2237 8.40925 16.0991C9.01406 15.9745 9.55932 16.1583 10.045 16.6415ZM16.4597 70.8521C16.9668 70.3355 17.5655 70.0818 18.2559 70.0909C18.9462 70.1 19.5694 70.3021 20.1253 70.6971C22.065 72.0585 24.1849 73.2132 26.4851 74.1614C28.7852 75.1064 31.1861 75.8357 33.6879 76.3493C34.3385 76.4982 34.8792 76.8173 35.3099 77.3065C35.7375 77.7988 35.9514 78.3686 35.9514 79.0158C35.9514 79.6631 35.6948 80.1782 35.1816 80.5611C34.6684 80.9439 34.0942 81.0488 33.4588 80.8756C30.1445 80.2678 27.2227 79.423 24.6935 78.3412C22.1673 77.2594 19.5938 75.8129 16.9729 74.0018C16.4322 73.6098 16.0901 73.113 15.9466 72.5113C15.803 71.9096 15.9741 71.3535 16.4597 70.8521ZM36.1805 1.98237C36.1805 2.69041 35.9559 3.27538 35.5069 3.73727C35.0579 4.19917 34.4775 4.53192 33.7658 4.73552C31.2457 5.24907 28.8463 5.96015 26.5675 6.86875C24.2888 7.77735 22.1811 8.92146 20.2444 10.3011C19.6824 10.6931 19.0715 10.8754 18.4117 10.8481C17.7519 10.8237 17.1684 10.5594 16.6613 10.0549C16.2154 9.61127 16.0351 9.08403 16.1207 8.47324C16.2062 7.86244 16.5193 7.36104 17.06 6.96903C19.7389 5.15791 22.3506 3.716 24.8951 2.64331C27.4427 1.57061 30.4026 0.730386 33.7749 0.122627C34.4103 0.0132301 34.9693 0.134782 35.4519 0.487282C35.9376 0.836743 36.1805 1.33511 36.1805 1.98237ZM77.4181 40.4991C77.4181 31.6228 74.5879 23.8404 68.9277 17.152C63.2674 10.4636 56.1089 6.27771 47.4521 4.59421C46.835 4.46659 46.3295 4.15663 45.9354 3.66434C45.5414 3.17206 45.3444 2.6114 45.3444 1.98237C45.3444 1.35334 45.5887 0.84434 46.0775 0.455375C46.5662 0.0664088 47.1084 -0.0733758 47.7041 0.0360208C57.6316 1.6952 65.8303 6.31417 72.3 13.8929C78.7697 21.4717 82.0031 30.3404 82 40.4991C81.9969 50.6578 78.7636 59.5265 72.3 67.1053C65.8364 74.684 57.6393 79.303 47.7087 80.9622C47.1069 81.0746 46.5632 80.9363 46.0775 80.5474C45.5887 80.1584 45.3444 79.6479 45.3444 79.0158C45.3444 78.3838 45.5414 77.8216 45.9354 77.3293C46.3295 76.8431 46.8335 76.5347 47.4475 76.404C56.1074 74.7205 63.2674 70.5346 68.9277 63.8462C74.5879 57.1578 77.4181 49.3754 77.4181 40.4991Z"
+                                                    fill="white"></path></svg></span></a></div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-width">
+                                        <div class="gallery-item gallery-item--video" uk-lightbox="video-autoplay: true">
+                                            <div class="featured-img-container uk-position-relative">
+                                                <div
+                                                    class="featured-img uk-background-cover uk-background-cover uk-position-cover uk-position-z-index-negative uk-border-24"
+                                                    data-src="images/about.jpg" uk-img></div>
+                                                <div
+                                                    class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-20 uk-padding-32@m">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                        <div
+                                                            class="category uk-text-white uk-text-20 uk-text-25@m uk-text-medium uk-border-40 uk-padding-12 uk-padding-16@m uk-display-inline-block">
+                                                            Videos
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                </div>
+                                                <a class="uk-position-center" href="#"><span class="play-icon"><svg width="82" height="81"
+                                                                                                                    viewbox="0 0 82 81" fill="none"
+                                                                                                                    xmlns="http://www.w3.org/2000/svg"><path
+                                                    d="M35.901 54.0825L53.4773 42.8238C54.3693 42.2555 54.8153 41.4806 54.8153 40.4991C54.8153 39.5176 54.3693 38.7427 53.4773 38.1744L35.8964 26.9157C34.9861 26.2715 34.0422 26.2137 33.0647 26.7425C32.0873 27.2712 31.5985 28.1023 31.5985 29.2358V51.7624C31.5985 52.8959 32.0873 53.727 33.0647 54.2557C34.0422 54.7845 34.9861 54.7283 35.8964 54.0871M2.01742 45.0573C2.67111 45.0573 3.23317 45.2852 3.70358 45.741C4.17399 46.1968 4.51459 46.7788 4.72536 47.4868C5.24159 49.9361 5.95637 52.2896 6.86971 54.5474C7.78305 56.8053 8.92395 58.9279 10.2924 60.9152C10.6865 61.4713 10.8698 62.073 10.8423 62.7203C10.8178 63.3706 10.5521 63.9464 10.045 64.4478C9.61735 64.8733 9.10112 65.048 8.4963 64.972C7.89149 64.8961 7.39205 64.5983 6.998 64.0786C5.08275 61.4318 3.56765 58.7881 2.45271 56.1474C1.33471 53.5127 0.529813 50.635 0.0380163 47.5142C-0.0750052 46.8821 0.0639811 46.3154 0.454974 45.814C0.845968 45.3095 1.36678 45.0573 2.01742 45.0573ZM10.045 16.6415C10.5521 17.1429 10.8132 17.7173 10.8285 18.3645C10.8438 19.0118 10.6651 19.6043 10.2924 20.1422C8.92395 22.1326 7.79832 24.2461 6.91553 26.4827C6.03274 28.7192 5.33017 31.0621 4.80783 33.5114C4.60622 34.2194 4.25341 34.8014 3.7494 35.2572C3.24844 35.713 2.67111 35.9409 2.01742 35.9409C1.36373 35.9409 0.842913 35.6705 0.454974 35.1295C0.0670357 34.5886 -0.0643135 34.0037 0.0609266 33.3746C0.555778 30.3115 1.34693 27.49 2.43438 24.9101C3.52183 22.3271 5.01402 19.7137 6.91095 17.07C7.30499 16.5473 7.80443 16.2237 8.40925 16.0991C9.01406 15.9745 9.55932 16.1583 10.045 16.6415ZM16.4597 70.8521C16.9668 70.3355 17.5655 70.0818 18.2559 70.0909C18.9462 70.1 19.5694 70.3021 20.1253 70.6971C22.065 72.0585 24.1849 73.2132 26.4851 74.1614C28.7852 75.1064 31.1861 75.8357 33.6879 76.3493C34.3385 76.4982 34.8792 76.8173 35.3099 77.3065C35.7375 77.7988 35.9514 78.3686 35.9514 79.0158C35.9514 79.6631 35.6948 80.1782 35.1816 80.5611C34.6684 80.9439 34.0942 81.0488 33.4588 80.8756C30.1445 80.2678 27.2227 79.423 24.6935 78.3412C22.1673 77.2594 19.5938 75.8129 16.9729 74.0018C16.4322 73.6098 16.0901 73.113 15.9466 72.5113C15.803 71.9096 15.9741 71.3535 16.4597 70.8521ZM36.1805 1.98237C36.1805 2.69041 35.9559 3.27538 35.5069 3.73727C35.0579 4.19917 34.4775 4.53192 33.7658 4.73552C31.2457 5.24907 28.8463 5.96015 26.5675 6.86875C24.2888 7.77735 22.1811 8.92146 20.2444 10.3011C19.6824 10.6931 19.0715 10.8754 18.4117 10.8481C17.7519 10.8237 17.1684 10.5594 16.6613 10.0549C16.2154 9.61127 16.0351 9.08403 16.1207 8.47324C16.2062 7.86244 16.5193 7.36104 17.06 6.96903C19.7389 5.15791 22.3506 3.716 24.8951 2.64331C27.4427 1.57061 30.4026 0.730386 33.7749 0.122627C34.4103 0.0132301 34.9693 0.134782 35.4519 0.487282C35.9376 0.836743 36.1805 1.33511 36.1805 1.98237ZM77.4181 40.4991C77.4181 31.6228 74.5879 23.8404 68.9277 17.152C63.2674 10.4636 56.1089 6.27771 47.4521 4.59421C46.835 4.46659 46.3295 4.15663 45.9354 3.66434C45.5414 3.17206 45.3444 2.6114 45.3444 1.98237C45.3444 1.35334 45.5887 0.84434 46.0775 0.455375C46.5662 0.0664088 47.1084 -0.0733758 47.7041 0.0360208C57.6316 1.6952 65.8303 6.31417 72.3 13.8929C78.7697 21.4717 82.0031 30.3404 82 40.4991C81.9969 50.6578 78.7636 59.5265 72.3 67.1053C65.8364 74.684 57.6393 79.303 47.7087 80.9622C47.1069 81.0746 46.5632 80.9363 46.0775 80.5474C45.5887 80.1584 45.3444 79.6479 45.3444 79.0158C45.3444 78.3838 45.5414 77.8216 45.9354 77.3293C46.3295 76.8431 46.8335 76.5347 47.4475 76.404C56.1074 74.7205 63.2674 70.5346 68.9277 63.8462C74.5879 57.1578 77.4181 49.3754 77.4181 40.4991Z"
+                                                    fill="white"></path></svg></span></a></div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-width">
+                                        <div class="gallery-item gallery-item--video" uk-lightbox="video-autoplay: true">
+                                            <div class="featured-img-container uk-position-relative">
+                                                <div
+                                                    class="featured-img uk-background-cover uk-background-cover uk-position-cover uk-position-z-index-negative uk-border-24"
+                                                    data-src="images/about.jpg" uk-img></div>
+                                                <div
+                                                    class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-20 uk-padding-32@m">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                                                        <div
+                                                            class="category uk-text-white uk-text-20 uk-text-25@m uk-text-medium uk-border-40 uk-padding-12 uk-padding-16@m uk-display-inline-block">
+                                                            Videos
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                </div>
+                                                <a class="uk-position-center" href="#"><span class="play-icon"><svg width="82" height="81"
+                                                                                                                    viewbox="0 0 82 81" fill="none"
+                                                                                                                    xmlns="http://www.w3.org/2000/svg"><path
+                                                    d="M35.901 54.0825L53.4773 42.8238C54.3693 42.2555 54.8153 41.4806 54.8153 40.4991C54.8153 39.5176 54.3693 38.7427 53.4773 38.1744L35.8964 26.9157C34.9861 26.2715 34.0422 26.2137 33.0647 26.7425C32.0873 27.2712 31.5985 28.1023 31.5985 29.2358V51.7624C31.5985 52.8959 32.0873 53.727 33.0647 54.2557C34.0422 54.7845 34.9861 54.7283 35.8964 54.0871M2.01742 45.0573C2.67111 45.0573 3.23317 45.2852 3.70358 45.741C4.17399 46.1968 4.51459 46.7788 4.72536 47.4868C5.24159 49.9361 5.95637 52.2896 6.86971 54.5474C7.78305 56.8053 8.92395 58.9279 10.2924 60.9152C10.6865 61.4713 10.8698 62.073 10.8423 62.7203C10.8178 63.3706 10.5521 63.9464 10.045 64.4478C9.61735 64.8733 9.10112 65.048 8.4963 64.972C7.89149 64.8961 7.39205 64.5983 6.998 64.0786C5.08275 61.4318 3.56765 58.7881 2.45271 56.1474C1.33471 53.5127 0.529813 50.635 0.0380163 47.5142C-0.0750052 46.8821 0.0639811 46.3154 0.454974 45.814C0.845968 45.3095 1.36678 45.0573 2.01742 45.0573ZM10.045 16.6415C10.5521 17.1429 10.8132 17.7173 10.8285 18.3645C10.8438 19.0118 10.6651 19.6043 10.2924 20.1422C8.92395 22.1326 7.79832 24.2461 6.91553 26.4827C6.03274 28.7192 5.33017 31.0621 4.80783 33.5114C4.60622 34.2194 4.25341 34.8014 3.7494 35.2572C3.24844 35.713 2.67111 35.9409 2.01742 35.9409C1.36373 35.9409 0.842913 35.6705 0.454974 35.1295C0.0670357 34.5886 -0.0643135 34.0037 0.0609266 33.3746C0.555778 30.3115 1.34693 27.49 2.43438 24.9101C3.52183 22.3271 5.01402 19.7137 6.91095 17.07C7.30499 16.5473 7.80443 16.2237 8.40925 16.0991C9.01406 15.9745 9.55932 16.1583 10.045 16.6415ZM16.4597 70.8521C16.9668 70.3355 17.5655 70.0818 18.2559 70.0909C18.9462 70.1 19.5694 70.3021 20.1253 70.6971C22.065 72.0585 24.1849 73.2132 26.4851 74.1614C28.7852 75.1064 31.1861 75.8357 33.6879 76.3493C34.3385 76.4982 34.8792 76.8173 35.3099 77.3065C35.7375 77.7988 35.9514 78.3686 35.9514 79.0158C35.9514 79.6631 35.6948 80.1782 35.1816 80.5611C34.6684 80.9439 34.0942 81.0488 33.4588 80.8756C30.1445 80.2678 27.2227 79.423 24.6935 78.3412C22.1673 77.2594 19.5938 75.8129 16.9729 74.0018C16.4322 73.6098 16.0901 73.113 15.9466 72.5113C15.803 71.9096 15.9741 71.3535 16.4597 70.8521ZM36.1805 1.98237C36.1805 2.69041 35.9559 3.27538 35.5069 3.73727C35.0579 4.19917 34.4775 4.53192 33.7658 4.73552C31.2457 5.24907 28.8463 5.96015 26.5675 6.86875C24.2888 7.77735 22.1811 8.92146 20.2444 10.3011C19.6824 10.6931 19.0715 10.8754 18.4117 10.8481C17.7519 10.8237 17.1684 10.5594 16.6613 10.0549C16.2154 9.61127 16.0351 9.08403 16.1207 8.47324C16.2062 7.86244 16.5193 7.36104 17.06 6.96903C19.7389 5.15791 22.3506 3.716 24.8951 2.64331C27.4427 1.57061 30.4026 0.730386 33.7749 0.122627C34.4103 0.0132301 34.9693 0.134782 35.4519 0.487282C35.9376 0.836743 36.1805 1.33511 36.1805 1.98237ZM77.4181 40.4991C77.4181 31.6228 74.5879 23.8404 68.9277 17.152C63.2674 10.4636 56.1089 6.27771 47.4521 4.59421C46.835 4.46659 46.3295 4.15663 45.9354 3.66434C45.5414 3.17206 45.3444 2.6114 45.3444 1.98237C45.3444 1.35334 45.5887 0.84434 46.0775 0.455375C46.5662 0.0664088 47.1084 -0.0733758 47.7041 0.0360208C57.6316 1.6952 65.8303 6.31417 72.3 13.8929C78.7697 21.4717 82.0031 30.3404 82 40.4991C81.9969 50.6578 78.7636 59.5265 72.3 67.1053C65.8364 74.684 57.6393 79.303 47.7087 80.9622C47.1069 81.0746 46.5632 80.9363 46.0775 80.5474C45.5887 80.1584 45.3444 79.6479 45.3444 79.0158C45.3444 78.3838 45.5414 77.8216 45.9354 77.3293C46.3295 76.8431 46.8335 76.5347 47.4475 76.404C56.1074 74.7205 63.2674 70.5346 68.9277 63.8462C74.5879 57.1578 77.4181 49.3754 77.4181 40.4991Z"
+                                                    fill="white"></path></svg></span></a></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-24 uk-margin-bottom-40@m"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="rte rte--featured uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <div class="uk-background-cover uk-background-fixed uk-border-24" data-src="images/featured.jpg" uk-img>
+                    <div class="uk-container uk-padding-top-88 uk-padding-bottom-88 uk-padding-top-144@m uk-padding-bottom-144@m">
+                        <div class="content uk-padding-left-16 uk-padding-right-16 uk-width-4-5@m">
+                            <div class="uk-text-white uk-text-40 uk-text-56@m uk-text-height-130">Stay Ahead of the Game - Get Monthly
+                                Highlights and Inside Updates!
+                            </div>
+                            <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-48 uk-margin-top-88@m" uk-grid>
+                                <div><a class="cta cta--lime" href="#">View Our Instagram<span
+                                    class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                               fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                                    width="30" height="30" rx="15" fill="white"></rect><path
+                                    d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                    stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="testimonial uk-padding-top-72 uk-padding-top-120@m uk-overflow-hidden">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-grid uk-flex-between uk-margin-bottom-16" uk-grid>
+                    <div class="uk-width-auto@m"><h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">Testimonial</h2>
+                    </div>
+                    <div class="uk-width-3-5@m">
+                        <div
+                            class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium uk-text-right@m">
+                            What they say
+                            <strong>About us</strong></div>
+                    </div>
+                </div>
+                <div class="uk-slider uk-position-relative" uk-slider>
+                    <div class="uk-slider-container">
+                        <ul class="uk-slider-items uk-grid uk-grid-184@m uk-grid-match" uk-grid>
+                            <li class="uk-width-2-3@m">
+                                <div class="testimonial-item uk-flex uk-flex-bottom uk-position-relative">
+                                    <div class="uk-grid uk-grid-80@m uk-flex-bottom" uk-grid>
+                                        <div class="uk-width-1-2@m">
+                                            <div class="featured-img-container uk-flex uk-flex-column uk-flex-right uk-height-1-1">
+                                                <div class="featured-img uk-background-cover uk-border-24" data-src="images/testimonial.jpg"
+                                                     uk-img></div>
+                                                <div class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-top-20 uk-margin-top-32@m"><span
+                                                    class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-expand@m">
+                                            <div class="content uk-padding-top-48@m uk-padding-bottom-48@m">
+                                                <div class="quote-icon uk-margin-bottom-24 uk-margin-bottom-48@m">
+                                                    <svg width="60" height="55" viewbox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M35.7252 55V44.7594C35.9542 38.6994 36.2595 32.9463 36.6412 27.5C37.0992 22.0537 38.3588 17.0293 40.4198 12.4268C42.4809 7.74756 46.0687 3.6053 51.1832 0L57.4809 7.24895C56.0305 8.553 54.1603 11.2378 51.8702 15.3033C49.5802 19.2922 48.3588 24.8152 48.2061 31.8724L60 33.3682V55H35.7252ZM0 55V44.7594C0 38.7761 0.267176 33.0614 0.801527 27.6151C1.41221 22.1688 2.82443 17.106 5.03817 12.4268C7.32824 7.74756 11.0305 3.6053 16.145 0L22.4427 7.24895C20.9924 8.553 19.1221 11.1994 16.8321 15.1883C14.542 19.1771 13.3206 24.7001 13.1679 31.7573L24.2748 33.3682V55H0Z"
+                                                            fill="#BEEE0F"></path>
+                                                    </svg>
+                                                </div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                                    type and scrambled</p>
+                                                <div
+                                                    class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-bottom-8 uk-margin-top-48 uk-margin-top-88@m">
+                                                    <span class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="uk-width-2-3@m">
+                                <div class="testimonial-item uk-flex uk-flex-bottom uk-position-relative">
+                                    <div class="uk-grid uk-grid-80@m uk-flex-bottom" uk-grid>
+                                        <div class="uk-width-1-2@m">
+                                            <div class="featured-img-container uk-flex uk-flex-column uk-flex-right uk-height-1-1">
+                                                <div class="featured-img uk-background-cover uk-border-24" data-src="images/testimonial.jpg"
+                                                     uk-img></div>
+                                                <div class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-top-20 uk-margin-top-32@m"><span
+                                                    class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-expand@m">
+                                            <div class="content uk-padding-top-48@m uk-padding-bottom-48@m">
+                                                <div class="quote-icon uk-margin-bottom-24 uk-margin-bottom-48@m">
+                                                    <svg width="60" height="55" viewbox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M35.7252 55V44.7594C35.9542 38.6994 36.2595 32.9463 36.6412 27.5C37.0992 22.0537 38.3588 17.0293 40.4198 12.4268C42.4809 7.74756 46.0687 3.6053 51.1832 0L57.4809 7.24895C56.0305 8.553 54.1603 11.2378 51.8702 15.3033C49.5802 19.2922 48.3588 24.8152 48.2061 31.8724L60 33.3682V55H35.7252ZM0 55V44.7594C0 38.7761 0.267176 33.0614 0.801527 27.6151C1.41221 22.1688 2.82443 17.106 5.03817 12.4268C7.32824 7.74756 11.0305 3.6053 16.145 0L22.4427 7.24895C20.9924 8.553 19.1221 11.1994 16.8321 15.1883C14.542 19.1771 13.3206 24.7001 13.1679 31.7573L24.2748 33.3682V55H0Z"
+                                                            fill="#BEEE0F"></path>
+                                                    </svg>
+                                                </div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                                    type and scrambled</p>
+                                                <div
+                                                    class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-bottom-8 uk-margin-top-48 uk-margin-top-88@m">
+                                                    <span class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="uk-width-2-3@m">
+                                <div class="testimonial-item uk-flex uk-flex-bottom uk-position-relative">
+                                    <div class="uk-grid uk-grid-80@m uk-flex-bottom" uk-grid>
+                                        <div class="uk-width-1-2@m">
+                                            <div class="featured-img-container uk-flex uk-flex-column uk-flex-right uk-height-1-1">
+                                                <div class="featured-img uk-background-cover uk-border-24" data-src="images/testimonial.jpg"
+                                                     uk-img></div>
+                                                <div class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-top-20 uk-margin-top-32@m"><span
+                                                    class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-expand@m">
+                                            <div class="content uk-padding-top-48@m uk-padding-bottom-48@m">
+                                                <div class="quote-icon uk-margin-bottom-24 uk-margin-bottom-48@m">
+                                                    <svg width="60" height="55" viewbox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M35.7252 55V44.7594C35.9542 38.6994 36.2595 32.9463 36.6412 27.5C37.0992 22.0537 38.3588 17.0293 40.4198 12.4268C42.4809 7.74756 46.0687 3.6053 51.1832 0L57.4809 7.24895C56.0305 8.553 54.1603 11.2378 51.8702 15.3033C49.5802 19.2922 48.3588 24.8152 48.2061 31.8724L60 33.3682V55H35.7252ZM0 55V44.7594C0 38.7761 0.267176 33.0614 0.801527 27.6151C1.41221 22.1688 2.82443 17.106 5.03817 12.4268C7.32824 7.74756 11.0305 3.6053 16.145 0L22.4427 7.24895C20.9924 8.553 19.1221 11.1994 16.8321 15.1883C14.542 19.1771 13.3206 24.7001 13.1679 31.7573L24.2748 33.3682V55H0Z"
+                                                            fill="#BEEE0F"></path>
+                                                    </svg>
+                                                </div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                                    type and scrambled</p>
+                                                <div
+                                                    class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-bottom-8 uk-margin-top-48 uk-margin-top-88@m">
+                                                    <span class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="uk-width-2-3@m">
+                                <div class="testimonial-item uk-flex uk-flex-bottom uk-position-relative">
+                                    <div class="uk-grid uk-grid-80@m uk-flex-bottom" uk-grid>
+                                        <div class="uk-width-1-2@m">
+                                            <div class="featured-img-container uk-flex uk-flex-column uk-flex-right uk-height-1-1">
+                                                <div class="featured-img uk-background-cover uk-border-24" data-src="images/testimonial.jpg"
+                                                     uk-img></div>
+                                                <div class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-top-20 uk-margin-top-32@m"><span
+                                                    class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-expand@m">
+                                            <div class="content uk-padding-top-48@m uk-padding-bottom-48@m">
+                                                <div class="quote-icon uk-margin-bottom-24 uk-margin-bottom-48@m">
+                                                    <svg width="60" height="55" viewbox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M35.7252 55V44.7594C35.9542 38.6994 36.2595 32.9463 36.6412 27.5C37.0992 22.0537 38.3588 17.0293 40.4198 12.4268C42.4809 7.74756 46.0687 3.6053 51.1832 0L57.4809 7.24895C56.0305 8.553 54.1603 11.2378 51.8702 15.3033C49.5802 19.2922 48.3588 24.8152 48.2061 31.8724L60 33.3682V55H35.7252ZM0 55V44.7594C0 38.7761 0.267176 33.0614 0.801527 27.6151C1.41221 22.1688 2.82443 17.106 5.03817 12.4268C7.32824 7.74756 11.0305 3.6053 16.145 0L22.4427 7.24895C20.9924 8.553 19.1221 11.1994 16.8321 15.1883C14.542 19.1771 13.3206 24.7001 13.1679 31.7573L24.2748 33.3682V55H0Z"
+                                                            fill="#BEEE0F"></path>
+                                                    </svg>
+                                                </div>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                                    type and scrambled</p>
+                                                <div
+                                                    class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-bottom-8 uk-margin-top-48 uk-margin-top-88@m">
+                                                    <span class="uk-text-black">William</span>
+                                                    <span class="uk-text-gray">| UAE</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-margin-bottom-32@m uk-position-bottom-right" uk-grid>
+                        <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50" viewbox="0 0 50 50"
+                                                                                             fill="none"
+                                                                                             xmlns="http://www.w3.org/2000/svg"><rect
+                            x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                            d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path></svg></span></a></div>
+                        <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50" viewbox="0 0 50 50"
+                                                                                         fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                            x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                            d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path></svg></span></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        -->
+
+        {% partial 'site/footer' %}
+
+    </body>
+</html>

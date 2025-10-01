@@ -1,0 +1,8 @@
+[staticMenu]
+==
+{% for link in staticMenu.resetMenu('header-main-menu') %}
+    <li>
+        <a class="{{ link.viewBag.cssClass }} parent-link uk-text-25 {{ (link.isActive == true)?'uk-active':''}}" href="{{ link.url  }}">{{ link.title }}</a>
+    </li>
+{% endfor %}
+

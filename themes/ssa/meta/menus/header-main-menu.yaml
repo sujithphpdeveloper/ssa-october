@@ -1,0 +1,35 @@
+items:
+    -
+        title: Home
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: index
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'About Us'
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: about-us
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Contact Us'
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: contact-us
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+name: 'Header Main Menu'

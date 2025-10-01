@@ -1,0 +1,8 @@
+{
+    "name": "sms/ssa-theme",
+    "type": "october-theme",
+    "description": "This is a custom made template for SSA.",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
