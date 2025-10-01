@@ -1,0 +1,74 @@
+# ------------------------------------------------------------------------------
+# .gitignore for OctoberCMS (http://octobercms.com/)
+# Based on https://gist.github.com/salcode/b515f520d3f8207ecd04 for WordPress
+# ------------------------------------------------------------------------------
+# By default all files are ignored.
+#
+# At the end of the file you will need to whitelist themes and plugins you want
+# to include in the repo.
+#
+# Update the {PLACEHOLDERS} to reflect your setup.
+# ------------------------------------------------------------------------------
+
+.idea
+
+# October-specific rules
+# ----------------------------------------------------------
+
+# Ignore everything in the root except the "plugins" and "themes" directories
+/*
+!themes/
+!plugins/
+
+# Ignore everything in the "themes" directory
+themes/*
+!themes/ssa/
+
+# Ignore everything in the "plugins" directory, except your own namespace
+plugins/*
+!plugins/ssa/
+
+docker/*
+!docker/nginx/
+!docker/php-fpm/
+
+
+# If you have a mixture of private (in repo) and public (published to market)
+# plugins, uncomment the following line to ignore all plugins in your namespace
+# because you'll want to manage public plugins via the automatic updater
+#plugins/{AUTHOR_NAMESPACE}/*
+
+# Miscellaneous rules
+# ----------------------------------------------------------
+
+# Ignore node depenencies
+node_modules/
+
+# Ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# Ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Whitelist rules
+# ----------------------------------------------------------
+
+# Misc
+!.editorconfig
+!composer.json
+!package.json
+!.gitignore
+!config/backend.php
+
+# adding a line for testing the staging repository
+# second comming check with ssh keys for the pull
+
