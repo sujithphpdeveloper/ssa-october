@@ -1,0 +1,34 @@
+description = "Feature List"
+==
+{% if data.settings['publish'] %}
+    <section class="icon-text uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+        <div class="uk-container uk-container--expand">
+            {% if data.settings['hide_separator'] != true %}
+                <hr class="uk-margin-bottom-72 uk-margin-bottom-120@m">
+            {% endif %}
+            <div class="section-content uk-text-center uk-margin-bottom-40 uk-margin-bottom-80@m"><h2
+                class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.title }}</h2></div>
+            <div class="uk-grid uk-grid-64@m uk-flex-between uk-flex-bottom" uk-grid>
+                <div class="uk-width-1-3@m">
+                    <div class="featured-img uk-background-contain" data-src="{{ data.thumbnail | media }}" uk-img></div>
+                </div>
+                <div class="uk-width-3-5@m">
+                    <div class="uk-grid uk-grid-48 uk-grid-88@m" uk-grid>
+                        {% for feature in data.features %}
+                            <div class="uk-width-1-2@s">
+                                <div class="icon-text-item">
+                                    <span class="icon uk-display-block uk-margin-bottom-20 uk-margin-bottom-32@m">
+                                        <img data-src="{{feature.icon | media}}" width="60" height="60" alt="icon" uk-img>
+                                    </span>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">{{ feature.title }}</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">{{ feature.description}}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endif %}

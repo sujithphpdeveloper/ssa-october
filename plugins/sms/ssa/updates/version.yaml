@@ -1,0 +1,8 @@
+v1.0.1:
+    - 'Initialize plugin'
+v1.0.2:
+    - 'Created table sms_ssa_testimonials'
+    - builder_table_create_sms_ssa_testimonials.php
+v1.0.3:
+    - 'Updated table sms_ssa_testimonials'
+    - builder_table_update_sms_ssa_testimonials.php

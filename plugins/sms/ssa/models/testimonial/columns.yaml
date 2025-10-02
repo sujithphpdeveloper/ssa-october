@@ -1,0 +1,20 @@
+columns:
+    id:
+        label: ID
+        type: number
+    name:
+        label: Name
+        type: text
+    location:
+        label: Location
+        type: text
+    message:
+        label: Message
+        type: text
+    created_at:
+        label: 'Created At'
+        type: datetime
+    is_published:
+        label: Published
+        type: switch
+

@@ -7,8 +7,7 @@ description = "Hero Carousal"
                 <ul class="uk-slider-items uk-grid" uk-grid>
                     {% for slider in data.slides %}
                         <li class="uk-width">
-                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
-                                 data-src="{{ slider.bg | media }}" uk-img></div>
+                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative" data-src="{{ slider.bg | media }}" uk-img></div>
                             <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
                                 <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
                                     class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
@@ -19,11 +18,13 @@ description = "Hero Carousal"
                                         {{ slider.description }}
                                     </div>
                                     <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
-                                    {% for button in slider.cta_buttons %}
-                                        <div class="uk-width-auto@s">
-                                            {% partial 'blocks/single-button' button=button %}
-                                        </div>
-                                    {% endfor %}
+                                        {% for button in slider.cta_buttons %}
+                                            <div class="uk-width-auto@s">
+                                                {% partial 'blocks/single-button' button=button %}
+                                            </div>
+                                        {% endfor %}
+
+                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
                                     </div>
                                 </div>
                             </div>

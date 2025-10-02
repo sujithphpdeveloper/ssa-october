@@ -1,0 +1,86 @@
+description = "Stats"
+==
+function onStart() {
+    $testimonials = SMS\SSA\Models\Testimonial::published();
+
+    if (isset($this->data['type']) && $this->data['type'] == 'custom' && isset($this->data['custom_list']) && !empty($this->data['custom_list'])) {
+        $testimonials = $testimonials->selectedTestimonials(array_column($this->data['custom_list'], 'testimonials'));
+    } else {
+        $testimonials = $testimonials->limit((isset($this->data['no_of_items']) && $this->data['no_of_items'] > 0)?$this->data['no_of_items']:5);
+    }
+    $this['testimonials'] = $testimonials->get();
+}
+==
+{% if data.settings['publish'] and (testimonials | length > 0) %}
+    <section class="testimonial uk-padding-top-72 uk-padding-top-120@m uk-overflow-hidden" id="{{ data.settings['id']}}">
+        <div class="uk-container uk-container--expand">
+            <div class="section-content uk-grid uk-flex-between uk-margin-bottom-16" uk-grid>
+                <div class="uk-width-auto@m"><h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.title }}</h2>
+                </div>
+                <div class="uk-width-3-5@m">
+                    <div
+                        class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium uk-text-right@m">
+                        {{ data.pre_title}}
+                        <strong>{{ data.highlight_title}}</strong></div>
+                </div>
+            </div>
+            <div class="uk-slider uk-position-relative" uk-slider>
+                <div class="uk-slider-container">
+                    <ul class="uk-slider-items uk-grid uk-grid-184@m uk-grid-match" uk-grid>
+                        {% for testimonial in testimonials %}
+                            <li class="uk-width-2-3@m">
+                                <div class="testimonial-item uk-flex uk-flex-bottom uk-position-relative">
+                                    <div class="uk-grid uk-grid-80@m uk-flex-bottom" uk-grid>
+                                        <div class="uk-width-1-2@m">
+                                            <div class="featured-img-container uk-flex uk-flex-column uk-flex-right uk-height-1-1">
+                                                <div class="featured-img uk-background-cover uk-border-24" data-src="{{testimonial.avatar.url}}" uk-img></div>
+                                                <div class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-top-20 uk-margin-top-32@m"><span
+                                                    class="uk-text-black">{{testimonial.name}}</span>
+                                                    {% if testimonial.location != "" %}
+                                                        <span class="uk-text-gray">| {{ testimonial.location }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-expand@m">
+                                            <div class="content uk-padding-top-48@m uk-padding-bottom-48@m">
+                                                <div class="quote-icon uk-margin-bottom-24 uk-margin-bottom-48@m">
+                                                    <svg width="60" height="55" viewbox="0 0 60 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M35.7252 55V44.7594C35.9542 38.6994 36.2595 32.9463 36.6412 27.5C37.0992 22.0537 38.3588 17.0293 40.4198 12.4268C42.4809 7.74756 46.0687 3.6053 51.1832 0L57.4809 7.24895C56.0305 8.553 54.1603 11.2378 51.8702 15.3033C49.5802 19.2922 48.3588 24.8152 48.2061 31.8724L60 33.3682V55H35.7252ZM0 55V44.7594C0 38.7761 0.267176 33.0614 0.801527 27.6151C1.41221 22.1688 2.82443 17.106 5.03817 12.4268C7.32824 7.74756 11.0305 3.6053 16.145 0L22.4427 7.24895C20.9924 8.553 19.1221 11.1994 16.8321 15.1883C14.542 19.1771 13.3206 24.7001 13.1679 31.7573L24.2748 33.3682V55H0Z"
+                                                            fill="#BEEE0F"></path>
+                                                    </svg>
+                                                </div>
+                                                <p>{{ testimonial.message }}</p>
+                                                <div
+                                                    class="name uk-text-24 uk-text-29@m uk-text-medium uk-margin-bottom-8 uk-margin-top-48 uk-margin-top-88@m">
+                                                    <span class="uk-text-black">{{testimonial.name }}</span>
+                                                    {% if testimonial.location != "" %}
+                                                        <span class="uk-text-gray">| UAE</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="uk-grid uk-grid-16 uk-grid-24@m uk-margin-bottom-32@m uk-position-bottom-right" uk-grid>
+                    <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50" viewbox="0 0 50 50"
+                                                                                         fill="none"
+                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                        d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path></svg></span></a></div>
+                    <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50" viewbox="0 0 50 50"
+                                                                                     fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                        d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path></svg></span></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

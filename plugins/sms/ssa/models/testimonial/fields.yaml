@@ -1,0 +1,32 @@
+fields:
+    name:
+        label: Name
+        type: text
+        span: row
+        spanClass: col-md-4
+    location:
+        label: Location
+        type: text
+        span: row
+        spanClass: col-md-4
+    is_published:
+        label: Publish/Unpublish
+        default: 1
+        type: switch
+        span: row
+        spanClass: col-md-4
+    message:
+        label: Message
+        size: ''
+        span: auto
+        type: textarea
+    avatar:
+        label: 'Profile Image'
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+

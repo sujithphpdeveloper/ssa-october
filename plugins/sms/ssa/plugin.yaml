@@ -1,0 +1,16 @@
+plugin:
+    name: 'sms.ssa::lang.plugin.name'
+    description: 'sms.ssa::lang.plugin.description'
+    author: 'Sujith M Surendran'
+    icon: oc-icon-cogs
+    homepage: ''
+navigation:
+    ssa:
+        label: 'SSA Settings'
+        url: sms/ssa/testimonials
+        icon: icon-gears
+        sideMenu:
+            ssa-testimonials:
+                label: Testimonials
+                url: sms/ssa/testimonials
+                icon: icon-smile-o

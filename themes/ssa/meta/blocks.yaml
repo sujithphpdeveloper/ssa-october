@@ -1,3 +1,126 @@
+banner:
+    name: Banner
+    description: A full-width background image section with a prominent title and button, designed to capture attention and drive a key action.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[separator]:
+            type: section
+            span: full
+        title:
+            label: Title
+            type: textarea
+            span: row
+            size: small
+            spanClass: col-md-3
+        background:
+            label: Background Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-3
+            imageWidth: 120
+            imageHeight: 80
+            comment: Size (1760 X 578)
+        cta_buttons:
+            label: Call to Action Buttons
+            type: repeater
+            prompt: Add New Button
+            style: accordion
+            minItems: 1
+            maxItems: 1
+            groups: '~/themes/ssa/meta/buttons.yaml'
+            defaultGroup: button
+feature-list:
+    name: Feature List
+    description: A component that presents a series of items, each with an icon, title, and short description — ideal for showcasing features, services, or benefits.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[hide_separator]:
+            label: Hide the Separator line
+            comment: This will allow to hide the separator line between the sections
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: false
+        settings[separator]:
+            type: section
+            span: full
+        title:
+            label: Title for the Section
+            type: text
+            span: row
+            spanClass: col-md-3
+        thumbnail:
+            label: Featured Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-3
+            imageWidth: 120
+            imageHeight: 80
+            comment: Size (600 X 600)
+        features[separator]:
+            type: section
+            span: full
+        features:
+            type: repeater
+            label: Features
+            span: row
+            spanClass: col-md-9
+            size: small
+            style: accordion
+            collapsed: true
+            titleFrom: title
+            prompt: 'Add new Item'
+            form:
+                fields:
+                    title:
+                        label: Title
+                        type: text
+                        span: row
+                        spanClass: col-md-4
+                    description:
+                        label: Description
+                        type: textarea
+                        span: row
+                        spanClass: col-md-4
+                        size: small
+                    icon:
+                        label: Icon
+                        type: mediafinder
+                        mode: image
+                        maxFiles: 1
+                        span: row
+                        spanClass: col-md-4
+                        imageWidth: 100
+                        imageHeight: 100
+                        comment: Upload SVG Icons
 hero-carousel:
     name: Hero Carousel
     description: A dynamic slider component that displays images with titles, descriptions, and action buttons. Ideal for highlighting featured content, promotions, or campaigns on the pages.
@@ -15,7 +138,7 @@ hero-carousel:
             type: text
             span: row
             spanClass: col-md-3
-        settings[seperator]:
+        settings[separator]:
             type: section
             span: full
         slides:
@@ -44,7 +167,7 @@ logo-list:
             type: text
             span: row
             spanClass: col-md-3
-        settings[seperator]:
+        settings[separator]:
             type: section
             span: full
         title:
@@ -102,7 +225,14 @@ stats:
             type: text
             span: row
             spanClass: col-md-3
-        settings[seperator]:
+        settings[hide_separator]:
+            label: Hide the Separator line
+            comment: This will allow to hide the separator line between the sections
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: false
+        settings[separator]:
             type: section
             span: full
         stats:
@@ -132,4 +262,76 @@ stats:
                         type: text
                         span: row
                         spanClass: col-md-4
+testimonials:
+    name: Testimonials
+    description: A component for displaying customer feedback or reviews, either in custom order or sorted by latest.
+    icon: icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[separator]:
+            type: section
+            span: full
+        title:
+            label: Section Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        pre_title:
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        testimonials_separator:
+            type: section
+            span: full
+        type:
+            label: Type of the Testimonials List
+            options:
+                latest: Latest
+                custom: Custom
+            span: row
+            spanClass: col-md-6
+            type: balloon-selector
+            default: latest
+        no_of_items:
+            label: 'No of Testimonials to Show'
+            span: row
+            spanClass: col-md-4
+            required: 1
+            trigger:
+                action: show
+                field: type
+                condition: 'value[latest]'
+        custom_list:
+            type: repeater
+            titleFrom: title_when_collapsed
+            label: Select Testimonials
+            span: row
+            spanClass: col-md-6
+            trigger:
+                action: show
+                field: type
+                condition: 'value[custom]'
+            form:
+                fields:
+                    testimonials:
+                        label: Testimonial
+                        type: dropdown
+
 

@@ -1,0 +1,10 @@
+name: Testimonials
+form: $/sms/ssa/models/testimonial/fields.yaml
+modelClass: SMS\SSA\Models\Testimonial
+defaultRedirect: sms/ssa/testimonials
+create:
+    redirect: 'sms/ssa/testimonials/update/:id'
+    redirectClose: sms/ssa/testimonials
+update:
+    redirect: sms/ssa/testimonials
+    redirectClose: sms/ssa/testimonials

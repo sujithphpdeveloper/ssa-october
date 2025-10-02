@@ -3,7 +3,9 @@ description = "Stats"
 {% if data.settings['publish'] and data.stats | length > 0 %}
     <section class="stat uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
         <div class="uk-container uk-container--expand">
-            <hr class="uk-margin-bottom-40 uk-margin-bottom-88@m">
+            {% if data.settings['hide_separator'] != true %}
+                <hr class="uk-margin-bottom-40 uk-margin-bottom-88@m">
+            {% endif %}
             <div class="uk-grid uk-grid-row-64@m uk-grid-120@m uk-flex-center@m" uk-grid>
                 {% for stat in data.stats %}
                     <div class="uk-width-1-2 uk-width-auto@m">
@@ -12,7 +14,7 @@ description = "Stats"
                                 <span class="stat-value" data-target="{{stat.value}}">{{stat.value}}</span>
                                 <span class="stat-unit">{{stat.unit}}</span>
                             </div>
-                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase">{{stat.title}}</div>
+                            <div class="uk-font-primary uk-text-gray uk-text-24 uk-text-30@m uk-text-uppercase uk-margin-top-12 uk-margin-top-20@m">{{stat.title}}</div>
                         </div>
                     </div>
                 {% endfor %}
