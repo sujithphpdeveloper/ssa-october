@@ -27,3 +27,109 @@ hero-carousel:
             prompt: 'Add new Slide'
             groups: '~/themes/ssa/meta/slides.yaml'
             defaultGroup: slide
+logo-list:
+    name: Logo Grid
+    description: A flexible component that displays a set of logos with a title, ideal for sponsors, partners, schools, or affiliated organizations.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[seperator]:
+            type: section
+            span: full
+        title:
+            label: Title for the Section
+            type: text
+            span: row
+            spanClass: col-md-3
+        description:
+            label: Description
+            type: textarea
+            span: row
+            spanClass: col-md-3
+            size: small
+        logos:
+            type: repeater
+            label: Logos
+            span: row
+            spanClass: col-md-6
+            size: small
+            style: accordion
+            collapsed: true
+            titleFrom: title
+            prompt: 'Add new Logo'
+            form:
+                fields:
+                    title:
+                        label: Title
+                        type: text
+                        span: row
+                        spanClass: col-md-6
+                    logo:
+                        label: Logo
+                        type: mediafinder
+                        mode: image
+                        maxFiles: 1
+                        span: row
+                        spanClass: col-md-6
+                        imageWidth: 100
+                        imageHeight: 100
+                        comment: Size (200 X 200)
+stats:
+    name: Stats
+    description: A component that displays key numbers and statistics in a visually engaging way, ideal for highlighting achievements, milestones, or performance metrics.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[seperator]:
+            type: section
+            span: full
+        stats:
+            type: repeater
+            label: Stats
+            span: row
+            spanClass: col-md-9
+            size: small
+            style: accordion
+            collapsed: true
+            titleFrom: title
+            prompt: 'Add new Stat'
+            form:
+                fields:
+                    title:
+                        label: Title
+                        type: text
+                        span: row
+                        spanClass: col-md-4
+                    unit:
+                        label: Unit
+                        type: text
+                        span: row
+                        spanClass: col-md-4
+                    value:
+                        label: Value
+                        type: text
+                        span: row
+                        spanClass: col-md-4
+

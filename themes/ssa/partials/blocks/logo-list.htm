@@ -1,0 +1,28 @@
+description = "Logo List"
+==
+{% if data.settings['publish'] %}
+    <section class="logo-list uk-overflow-hidden uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+        <div class="uk-container uk-container--expand">
+            <div class="section-content uk-text-center uk-margin-bottom-24 uk-margin-bottom-48@m"><h2
+                class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.title }}</h2>
+                <div class="section-description uk-text-18 uk-text-24@m uk-text-height-120 uk-margin-top-12 uk-margin-top-20@m">
+                    {{  data.description  }}
+                </div>
+            </div>
+            {% if data.logos | length > 0 %}
+                <div class="uk-slider" uk-slider>
+                    <div class="uk-slider-container">
+                        <ul class="uk-slider-items uk-grid uk-grid-64@m uk-flex-center@m" uk-grid>
+                            {% for singleLogo in data.logos %}
+                                <li>
+                                    <img data-src="{{singleLogo.logo | media }}" width="200" height="200" alt="{{singleLogo.title }}" uk-img>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <ul class="uk-slider-nav uk-dotnav uk-dotnav--dark uk-flex-center uk-margin-top-20 uk-margin-tops-32@m"></ul>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endif %}
