@@ -1,8 +1,8 @@
 [staticMenu]
 ==
 {% for link in staticMenu.resetMenu('header-mobile-menu') %}
-    <li>
-        <a class="{{ link.viewBag.cssClass }} uk-text-20@m uk-text-medium {{ (link.isActive == true)?'uk-active':''}}" href="{{ link.url  }}">{{ link.title }}</a>
+    <li class="{{ (link.isActive == true)?'uk-active':''}}">
+        <a class="{{ link.viewBag.cssClass }} uk-text-20@m uk-text-medium" href="{{ link.url  }}">{{ link.title }}</a>
     </li>
 {% endfor %}
 

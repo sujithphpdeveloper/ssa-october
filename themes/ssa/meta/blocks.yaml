@@ -1,4 +1,4 @@
-accordion:
+hero-carousel:
     name: Hero Carousel
     description: A dynamic slider component that displays images with titles, descriptions, and action buttons. Ideal for highlighting featured content, promotions, or campaigns on the pages.
     icon:  icon-clone
@@ -18,25 +18,12 @@ accordion:
         settings[seperator]:
             type: section
             span: full
-        items:
+        slides:
             type: repeater
-            titleFrom: title_when_collapsed
             label: Slides
             span: full
+            style: accordion
+            collapsed: true
             prompt: 'Add new Slide'
-            form:
-                fields:
-                    box_section:
-                        type: section
-                        span: full
-                        label: Slide Informations
-                    title :
-                        label: Title
-                        type: text
-                        span: auto
-                    content:
-                        label: Content
-                        type: richeditor
-                        size: small
-                        span: full
-
+            groups: '~/themes/ssa/meta/slides.yaml'
+            defaultGroup: slide

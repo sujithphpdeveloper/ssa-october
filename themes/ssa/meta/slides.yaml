@@ -1,0 +1,46 @@
+slide:
+    name: Slide
+    description: Single Slide
+    fields:
+        pre_title :
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        post_title:
+            label: Title After Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        bg:
+            label: Background Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-4
+            imageWidth: 150
+            imageHeight: 30
+            comment: Size (1920 X 1080)
+        description:
+            label: Small Description
+            type: textarea
+            span: row
+            spanClass: col-md-4
+            size: small
+        slides_seperator:
+            type: section
+            span: full
+        cta_buttons:
+            label: Call to Action Buttons
+            type: repeater
+            prompt: Add New Button
+            style: accordion
+            maxItems: 3
+            groups: '~/themes/ssa/meta/buttons.yaml'
+            defaultGroup: button

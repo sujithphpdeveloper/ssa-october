@@ -1,0 +1,12 @@
+{% set buttonUrl = link(button.url, { nesting: true }) %}
+<a class="cta cta--{{button.style}}" href="{{ buttonUrl.url }}" target="{{ button.open == true ? '_blank': ''}}">
+        {{ button.label != ""? button.label : buttonUrl.title }}
+    {% if button.style == "lime" %}
+        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8">
+            <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                width="30" height="30" rx="15" fill="white"></rect><path
+                d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+    {% endif %}
+</a>

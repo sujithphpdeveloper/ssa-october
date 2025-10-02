@@ -7,7 +7,7 @@ default = 0
 [staticBreadcrumbs]
 ==
 <!DOCTYPE html>
-{repeater name="sections" groups="~/themes/ssa/meta/blocks.yaml" tab="Page Content"}
+{repeater name="sections" prompt="Add New Component" groups="~/themes/ssa/meta/blocks.yaml" collapsed=true style="accordion" tab="Content"}
     {variable name="_dummy" type="text"}{/variable}
 {/repeater}
 <html class="no-js" dir="ltr" lang="en">
@@ -28,96 +28,16 @@ default = 0
 
         {% partial 'site/flash-messages' %}
 
-        <section class="banner banner--carousel uk-position-relative">
-            <div class="uk-slider" uk-slider>
-                <div class="uk-slider-container">
-                    <ul class="uk-slider-items uk-grid" uk-grid>
-                        <li class="uk-width">
-                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
-                                 data-src="images/home-banner.jpg" uk-img></div>
-                            <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
-                                <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
-                                    class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
-                                    <span>Shaping the future of</span><br>
-                                    <span class="uk-text-tertiary">School Sports</span><br>
-                                    <span>in Saudi Arabia</span></h1>
-                                    <div
-                                        class="description uk-text-white uk-text-20 uk-text-25@m uk-text-height-120 uk-margin-top-24 uk-margin-top-40@m">
-                                        Create Opportunities for Talented Athletes
-                                    </div>
-                                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
-                                        <div class="uk-width-auto@s"><a class="cta cta--lime" href="#">Register Now<span
-                                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
-                                                                                                       fill="none"
-                                                                                                       xmlns="http://www.w3.org/2000/svg"><rect
-                                            width="30" height="30" rx="15" fill="white"></rect><path
-                                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
-                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
-                                        </div>
-                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="uk-width">
-                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
-                                 data-src="images/home-banner.jpg" uk-img></div>
-                            <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
-                                <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
-                                    class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
-                                    <span>Shaping the future of</span><br>
-                                    <span class="uk-text-tertiary">School Sports</span><br>
-                                    <span>in Saudi Arabia</span></h1>
-                                    <div
-                                        class="description uk-text-white uk-text-20 uk-text-25@m uk-text-height-120 uk-margin-top-24 uk-margin-top-40@m">
-                                        Create Opportunities for Talented Athletes
-                                    </div>
-                                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
-                                        <div class="uk-width-auto@s"><a class="cta cta--lime" href="#">Register Now<span
-                                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
-                                                                                                       fill="none"
-                                                                                                       xmlns="http://www.w3.org/2000/svg"><rect
-                                            width="30" height="30" rx="15" fill="white"></rect><path
-                                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
-                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
-                                        </div>
-                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="uk-width">
-                            <div class="banner-bg uk-background-cover uk-position-cover uk-position-z-index-negative"
-                                 data-src="images/home-banner.jpg" uk-img></div>
-                            <div class="uk-container uk-container--expand uk-height-1-1 uk-flex uk-flex-middle">
-                                <div class="content uk-padding-top-48 uk-padding-top-88@m"><h1
-                                    class="title uk-font-secondary uk-text-white uk-text-28 uk-text-70@m uk-text-medium uk-text-uppercase">
-                                    <span>Shaping the future of</span><br>
-                                    <span class="uk-text-tertiary">School Sports</span><br>
-                                    <span>in Saudi Arabia</span></h1>
-                                    <div
-                                        class="description uk-text-white uk-text-20 uk-text-25@m uk-text-height-120 uk-margin-top-24 uk-margin-top-40@m">
-                                        Create Opportunities for Talented Athletes
-                                    </div>
-                                    <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
-                                        <div class="uk-width-auto@s"><a class="cta cta--lime" href="#">Register Now<span
-                                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
-                                                                                                       fill="none"
-                                                                                                       xmlns="http://www.w3.org/2000/svg"><rect
-                                            width="30" height="30" rx="15" fill="white"></rect><path
-                                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
-                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
-                                        </div>
-                                        <div class="uk-width-auto@s"><a class="cta cta--border-white" href="#">SSA Schedule</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-40 uk-margin-bottom-72@m"></ul>
-                </div>
-            </div>
-        </section>
+        {% if sections | length > 0 %}
+            {% for blockNumber, section in sections %}
+                {% partial 'blocks/' ~ section._group data=section blockNumber=blockNumber %}
+            {% endfor %}
+        {% else %}
+            {% page %}
+        {% endif %}
+
+
+
 
 
         <!--

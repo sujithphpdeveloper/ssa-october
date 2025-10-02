@@ -1,0 +1,32 @@
+button:
+    name: CTA Button
+    description: Single Button
+    fields:
+        label:
+            label: Button Text
+            type: text
+            comment: 'The text displayed on the button (e.g., "Learn More"). Only use this to override the default button text.'
+            span: row
+            spanClass: col-md-3
+        url:
+            label: Button URL
+            type: pagefinder
+            comment: 'Select an internal page, or paste an external URL.'
+            span: row
+            spanClass: col-md-3
+        style:
+            label: Button Type
+            type: dropdown
+            span: row
+            spanClass: col-md-3
+            options:
+                lime: Primary (Green)
+                border-white: Secondary (White Border)
+            default: lime
+        open:
+            label: Open in new window
+            type: switch
+            default: false
+            span: row
+            spanClass: col-md-3
+
