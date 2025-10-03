@@ -26,12 +26,12 @@ class Programme extends Model
      * @var array rules for validation.
      */
     public $rules = [
-        'title' => 'required',
+        'name' => 'required',
         'slug' => 'required|unique:sms_ssa_programs' // Ensure slug is unique
     ];
 
     protected $slugs = [
-        'slug' => 'title'
+        'slug' => 'name'
     ];
 
     public $attachOne = [

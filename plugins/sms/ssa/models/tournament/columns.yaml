@@ -6,8 +6,8 @@ columns:
         label: Programme
         type: number
         relation: programme
-    title:
-        label: Title
+    name:
+        label: Name
         type: text
     location:
         label: Location

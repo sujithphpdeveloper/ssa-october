@@ -1,24 +1,39 @@
 fields:
-    title:
-        label: Title
-        span: auto
+    name:
+        label: Name
+        span: row
+        spanClass: col-md-4
+        type: text
+    location:
+        label: Location
+        span: row
+        spanClass: col-md-4
         type: text
     is_published:
         label: Publish/Unpublish
-        span: auto
+        span: row
+        spanClass: col-md-4
         type: switch
-    location:
-        label: Location
-        span: auto
-        type: text
     date:
         label: 'Date & Time'
         mode: datetime
-        span: auto
+        span: row
+        spanClass: col-md-8
         type: datepicker
     programme:
         label: Programme
         nameFrom: name
         descriptionFrom: description
-        span: auto
+        span: row
+        spanClass: col-md-4
         type: relation
+    thumbnail:
+        label: Poster
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: row
+        spanClass: col-md-4
+        type: fileupload

@@ -1,0 +1,160 @@
+description = "Tournaments"
+==
+function onStart() {
+    $tournaments = SMS\SSA\Models\Tournament::published();
+    $tournaments = $tournaments->orderBy('date', 'asc');
+    $this['tournaments'] = $tournaments->get();
+}
+==
+{% if data.settings['publish'] %}
+    <section class="calendar uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+        <div class="uk-container uk-container--expand">
+            <div class="calendar-bg uk-background-white uk-border-24">
+                <div class="uk-container">
+                    <div class="section-content uk-text-center uk-margin-bottom-24 uk-margin-bottom-40@m">
+                        <h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.title }}</h2>
+                    </div>
+                    <div class="uk-grid uk-grid-8 uk-grid-32@m uk-flex-bottom uk-flex-center uk-margin-bottom-48 uk-margin-bottom-120@m"
+                        uk-grid>
+                        <div class="uk-width-auto">
+                            <div
+                                class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">18</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                    Fri
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto">
+                            <div
+                                class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">21</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                    Mon
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto">
+                            <div
+                                class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">23</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                    Wed
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto">
+                            <div
+                                class="date-item date-item--active uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="month uk-text-12 uk-text-15@m uk-text-medium uk-text-uppercase uk-margin-bottom-12">July</div>
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">25</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                    Fri
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto">
+                            <div
+                                class="date-item uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">27</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                    Sun
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto">
+                            <div
+                                class="date-item uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                                <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m">30</div>
+                                <div
+                                    class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-margin-top-8 uk-margin-top-12@m">
+                                    Wed
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-auto"><label
+                            class="date-item uk-text-center uk-border-24 uk-display-block uk-position-relative uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m">
+                            <div class="date uk-font-primary uk-text-gray uk-text-20 uk-text-30@m uk-invisible">Dummy</div>
+                            <div
+                                class="day uk-text-gray uk-text-11 uk-text-14@m uk-text-medium uk-text-uppercase uk-invisible uk-margin-top-8 uk-margin-top-12@m">
+                                Dummy
+                            </div>
+                            <span class="calendar-icon uk-position-center"><svg width="26" height="25" viewbox="0 0 26 25" fill="none"
+                                                                                xmlns="http://www.w3.org/2000/svg"><path
+                                fill-rule="evenodd" clip-rule="evenodd"
+                                d="M6.94744 0C7.18778 0 7.41827 0.0939849 7.58822 0.261279C7.75816 0.428573 7.85363 0.655473 7.85363 0.892062V1.79959C8.65349 1.78412 9.53431 1.78412 10.5045 1.78412H15.4729C16.4431 1.78412 17.3239 1.78412 18.1238 1.79959V0.892062C18.1238 0.655473 18.2192 0.428573 18.3892 0.261279C18.5591 0.0939849 18.7896 0 19.03 0C19.2703 0 19.5008 0.0939849 19.6707 0.261279C19.8407 0.428573 19.9361 0.655473 19.9361 0.892062V1.87571C20.2503 1.8995 20.5479 1.92963 20.829 1.96611C22.2451 2.15403 23.3917 2.54892 24.2967 3.4386C25.2005 4.32948 25.6016 5.45823 25.7925 6.85223C25.8521 7.29786 25.8952 7.78553 25.9218 8.31521C25.9876 8.49071 25.9956 8.68211 25.9448 8.86234C25.9774 9.81507 25.9774 10.8986 25.9774 12.1249V14.5704C25.9774 14.8069 25.8819 15.0338 25.712 15.2011C25.542 15.3684 25.3115 15.4624 25.0712 15.4624C24.8309 15.4624 24.6004 15.3684 24.4304 15.2011C24.2605 15.0338 24.165 14.8069 24.165 14.5704V12.1915C24.165 11.1758 24.165 10.292 24.1493 9.51533H1.82808C1.81238 10.292 1.81238 11.1758 1.81238 12.1915V14.5704C1.81238 16.8386 1.81479 18.4502 1.98153 19.673C2.14465 20.8683 2.45154 21.5582 2.96263 22.0613C3.47372 22.5644 4.17451 22.8665 5.39001 23.0271C6.63209 23.1912 8.26806 23.1936 10.5722 23.1936H15.4052C15.6455 23.1936 15.876 23.2876 16.046 23.4549C16.2159 23.6222 16.3114 23.8491 16.3114 24.0857C16.3114 24.3223 16.2159 24.5492 16.046 24.7165C15.876 24.8838 15.6455 24.9777 15.4052 24.9777H10.5045C8.28377 24.9777 6.52456 24.9777 5.14836 24.7958C3.73229 24.6078 2.58566 24.213 1.68068 23.3233C0.776905 22.4324 0.375766 21.3036 0.184862 19.9096C0 18.5537 0 16.8231 0 14.637V12.1249C0 10.8986 -6.07647e-08 9.81507 0.0326227 8.86115C-0.0177965 8.68079 -0.00934288 8.48939 0.0567879 8.31402C0.0825639 7.78513 0.125255 7.29786 0.184862 6.85223C0.375766 5.45823 0.776905 4.32948 1.68068 3.4386C2.58566 2.54892 3.73229 2.15403 5.14836 1.96611C5.43028 1.92963 5.72792 1.8995 6.04125 1.87571V0.892062C6.04125 0.655473 6.13673 0.428573 6.30667 0.261279C6.47661 0.0939849 6.70711 0 6.94744 0ZM1.91145 7.73121H24.0659C24.0466 7.50601 24.0233 7.29192 23.9959 7.08892C23.8328 5.89356 23.5259 5.2037 23.0148 4.70057C22.5037 4.19745 21.8029 3.89534 20.5874 3.73477C19.3465 3.57063 17.7093 3.56825 15.4052 3.56825H10.5722C8.26806 3.56825 6.63209 3.57063 5.3888 3.73477C4.17451 3.89534 3.47372 4.19745 2.96263 4.70057C2.45154 5.2037 2.14465 5.89356 1.98153 7.08892C1.95414 7.29112 1.93079 7.50482 1.91145 7.73002M20.2382 16.6518C19.5172 16.6518 18.8257 16.9338 18.3159 17.4357C17.8061 17.9376 17.5196 18.6183 17.5196 19.328C17.5196 20.0378 17.8061 20.7185 18.3159 21.2204C18.8257 21.7223 19.5172 22.0042 20.2382 22.0042C20.9592 22.0042 21.6507 21.7223 22.1605 21.2204C22.6703 20.7185 22.9568 20.0378 22.9568 19.328C22.9568 18.6183 22.6703 17.9376 22.1605 17.4357C21.6507 16.9338 20.9592 16.6518 20.2382 16.6518ZM15.7073 19.328C15.7075 18.6326 15.8729 17.9468 16.1903 17.3256C16.5076 16.7043 16.9682 16.1646 17.5351 15.7497C18.1021 15.3349 18.7598 15.0562 19.4556 14.9361C20.1514 14.816 20.8661 14.8577 21.5427 15.0579C22.2192 15.2581 22.8388 15.6113 23.352 16.0892C23.8652 16.5671 24.2577 17.1566 24.4983 17.8104C24.7389 18.4643 24.8208 19.1644 24.7376 19.855C24.6543 20.5456 24.4082 21.2075 24.0188 21.7877L25.7116 23.4553C25.8006 23.537 25.872 23.6354 25.9216 23.7449C25.9711 23.8543 25.9977 23.9724 25.9999 24.0922C26.002 24.212 25.9796 24.331 25.934 24.442C25.8885 24.5531 25.8206 24.654 25.7346 24.7387C25.6485 24.8234 25.546 24.8902 25.4332 24.9351C25.3204 24.9799 25.1995 25.002 25.0778 24.9999C24.9562 24.9977 24.8362 24.9715 24.725 24.9228C24.6138 24.874 24.5138 24.8037 24.4308 24.7161L22.7369 23.0497C22.0539 23.4941 21.2614 23.7481 20.4436 23.7847C19.6257 23.8212 18.8131 23.6389 18.0921 23.2572C17.3711 22.8754 16.7686 22.3085 16.3487 21.6167C15.9288 20.9249 15.7071 20.1339 15.7073 19.328Z"
+                                fill="#9F9F9F"></path></svg></span><input
+                            class="datepicker uk-position-cover uk-position-z-index-negative" type="text"></label></div>
+                    </div>
+                    <div class="uk-slider uk-position-relative" uk-slider>
+                        <div class="uk-slider-container">
+                            <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-flex-bottom" uk-grid>
+                                {% for tournament in tournaments %}
+                                    <li class="uk-width-1-3@m">
+                                        <a class="featured-img-container uk-flex uk-flex-bottom uk-position-relative"
+                                                              href="#">
+                                            <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
+                                                 data-src="{{ tournament.thumbnail.url }}" uk-img></div>
+                                            <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div>
+                                                    <div class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        {{ tournament.programme.name }}
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">{{ tournament.name }}</div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">{{ tournament.location }}</div>
+                                                    <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">{{ tournament.date | date("l, jS M Y @ g:i a") }}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="uk-slider-navigation uk-grid uk-grid-32@m uk-flex-middle uk-flex-between" uk-grid>
+                            <div><a class="cta cta--black" href="#">Get in touch<span
+                                class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                           fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                                width="30" height="30" rx="15" fill="white"></rect><path
+                                d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                                stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                            </div>
+                            <div>
+                                <div class="uk-grid uk-grid-16 uk-grid-24@m" uk-grid>
+                                    <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                    <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-grid uk-grid-40@m uk-flex-center uk-flex-middle uk-margin-top-40 uk-margin-top-72@m" uk-grid>
+                        <div class="uk-width-auto@m">
+                            <div class="uk-text-24 uk-text-30@m">{{ data.cta_message }}</div>
+                        </div>
+                        {% for button in data.cta_buttons %}
+                            <div class="uk-width-auto@m">
+                                {% partial 'blocks/single-button' button=button %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}

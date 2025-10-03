@@ -2,8 +2,8 @@ columns:
     id:
         label: ID
         type: number
-    title:
-        label: Title
+    name:
+        label: Name
         type: text
     type:
         label: Type

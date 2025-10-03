@@ -1,6 +1,6 @@
 fields:
-    title:
-        label: Title
+    name:
+        label: Name
         type: text
         span: row
         spanClass: col-md-4
@@ -10,7 +10,7 @@ fields:
         spanClass: col-md-4
         readOnly: 1
         preset:
-            field: title
+            field: name
             type: slug
         type: text
     is_published:
