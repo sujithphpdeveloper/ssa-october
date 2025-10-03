@@ -1,0 +1,10 @@
+name: Tournaments
+form: $/sms/ssa/models/tournament/fields.yaml
+modelClass: SMS\SSA\Models\Tournament
+defaultRedirect: sms/ssa/tournaments
+create:
+    redirect: 'sms/ssa/tournaments/update/:id'
+    redirectClose: sms/ssa/tournaments
+update:
+    redirect: sms/ssa/tournaments
+    redirectClose: sms/ssa/tournaments

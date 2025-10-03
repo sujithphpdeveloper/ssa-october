@@ -27,11 +27,11 @@ class Plugin extends PluginBase
             });
 
             $model->addDynamicMethod('getPhotosOptions', function() {
-                return Media::type('photo')->published()->get()->lists('title', 'id');
+                return Media::type('photo')->published()->get()->lists('name', 'id');
             });
 
             $model->addDynamicMethod('getVideosOptions', function() {
-                return Media::type('video')->published()->get()->lists('title', 'id');
+                return Media::type('video')->published()->get()->lists('name', 'id');
             });
         });
     }

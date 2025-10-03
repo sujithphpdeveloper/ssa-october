@@ -1,7 +1,7 @@
 {% set buttonUrl = link(button.url, { nesting: true }) %}
 <a class="cta cta--{{button.style}}" href="{{ buttonUrl.url }}" target="{{ button.open == true ? '_blank': ''}}">
         {{ button.label != ""? button.label : buttonUrl.title }}
-    {% if button.style == "lime" %}
+    {% if button.style == "lime" or button.style == "black" %}
         <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8">
             <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><rect
                 width="30" height="30" rx="15" fill="white"></rect><path

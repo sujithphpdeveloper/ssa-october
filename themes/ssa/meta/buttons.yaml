@@ -22,6 +22,7 @@ button:
             options:
                 lime: Primary (Green)
                 border-white: Secondary (White Border)
+                black: Black Button
             default: lime
         open:
             label: Open in new window

@@ -1,0 +1,10 @@
+name: Programs
+form: $/sms/ssa/models/programme/fields.yaml
+modelClass: SMS\SSA\Models\Programme
+defaultRedirect: sms/ssa/programs
+create:
+    redirect: 'sms/ssa/programs/update/:id'
+    redirectClose: sms/ssa/programs
+update:
+    redirect: sms/ssa/programs
+    redirectClose: sms/ssa/programs

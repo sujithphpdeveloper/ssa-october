@@ -18,3 +18,11 @@ navigation:
                 label: Media
                 url: sms/ssa/medias
                 icon: icon-video-camera
+            ssa-programs:
+                label: Programs
+                url: sms/ssa/programs
+                icon: icon-sitemap
+            ssa-tournaments:
+                label: Tournaments
+                url: sms/ssa/tournaments
+                icon: icon-trophy

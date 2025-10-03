@@ -1,0 +1,24 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        type: text
+    is_published:
+        label: Publish/Unpublish
+        span: auto
+        type: switch
+    location:
+        label: Location
+        span: auto
+        type: text
+    date:
+        label: 'Date & Time'
+        mode: datetime
+        span: auto
+        type: datepicker
+    programme:
+        label: Programme
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation

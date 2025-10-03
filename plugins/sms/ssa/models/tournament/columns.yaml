@@ -1,0 +1,23 @@
+columns:
+    id:
+        label: ID
+        type: number
+    programme_id:
+        label: Programme
+        type: number
+        relation: programme
+    title:
+        label: Title
+        type: text
+    location:
+        label: Location
+        type: text
+    date:
+        label: Date
+        type: datetime
+    is_published:
+        label: Published
+        type: switch
+    created_at:
+        label: created_at
+        type: datetime

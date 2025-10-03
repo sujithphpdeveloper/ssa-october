@@ -1,0 +1,37 @@
+fields:
+    title:
+        label: Title
+        type: text
+        span: row
+        spanClass: col-md-4
+    slug:
+        label: Slug
+        span: row
+        spanClass: col-md-4
+        readOnly: 1
+        preset:
+            field: title
+            type: slug
+        type: text
+    is_published:
+        label: Publish/Unpublish
+        span: row
+        spanClass: col-md-4
+        type: switch
+    excerpt:
+        label: Excerpt
+        size: ''
+        span: row
+        spanClass: col-md-6
+        type: textarea
+        comment: 'Small descripion will shows on the listings'
+    thumbnail:
+        label: Thumbnail
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: row
+        spanClass: col-md-6
+        type: fileupload
