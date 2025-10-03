@@ -208,6 +208,126 @@ logo-list:
                         imageWidth: 100
                         imageHeight: 100
                         comment: Size (200 X 200)
+media:
+    name: Media Gallery
+    description: A flexible component that showcases a mix of photos and videos in separate sliders, with content pulled randomly or from curated selections. Ideal for highlighting visual stories and engaging media content.
+    icon: icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[hide_separator]:
+            label: Hide the Separator line
+            comment: This will allow to hide the separator line between the sections
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: false
+        settings[separator]:
+            type: section
+            span: full
+        title:
+            label: Section Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        pre_title:
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        photo_separator:
+            type: section
+            span: full
+        photo_type:
+            label: Type of the Photos
+            options:
+                latest: Latest
+                custom: Custom
+            span: row
+            spanClass: col-md-4
+            type: balloon-selector
+            default: latest
+        photo_no_of_items:
+            label: 'No of Photos to Show'
+            span: row
+            spanClass: col-md-4
+            required: 1
+            trigger:
+                action: show
+                field: photo_type
+                condition: 'value[latest]'
+        photo_custom_list:
+            type: repeater
+            titleFrom: title_when_collapsed
+            label: Select Photos
+            span: row
+            spanClass: col-md-4
+            style: accordion
+            collapsed: true
+            prompt: 'Select Photos'
+            trigger:
+                action: show
+                field: photo_type
+                condition: 'value[custom]'
+            form:
+                fields:
+                    photos:
+                        label: Photo
+                        type: dropdown
+        video_separator:
+            type: section
+            span: full
+        video_type:
+            label: Type of the Videos
+            options:
+                latest: Latest
+                custom: Custom
+            span: row
+            spanClass: col-md-4
+            type: balloon-selector
+            default: latest
+        video_no_of_items:
+            label: 'No of Videos to Show'
+            span: row
+            spanClass: col-md-4
+            required: 1
+            trigger:
+                action: show
+                field: video_type
+                condition: 'value[latest]'
+        video_custom_list:
+            type: repeater
+            titleFrom: title_when_collapsed
+            label: Select Videos
+            span: row
+            spanClass: col-md-4
+            style: accordion
+            collapsed: true
+            prompt: 'Select Video'
+            trigger:
+                action: show
+                field: video_type
+                condition: 'value[custom]'
+            form:
+                fields:
+                    videos:
+                        label: Video
+                        type: dropdown
 stats:
     name: Stats
     description: A component that displays key numbers and statistics in a visually engaging way, ideal for highlighting achievements, milestones, or performance metrics.
@@ -324,6 +444,9 @@ testimonials:
             label: Select Testimonials
             span: row
             spanClass: col-md-6
+            style: accordion
+            collapsed: true
+            prompt: 'Select Testimonial'
             trigger:
                 action: show
                 field: type

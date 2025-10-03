@@ -6,3 +6,12 @@ v1.0.2:
 v1.0.3:
     - 'Updated table sms_ssa_testimonials'
     - builder_table_update_sms_ssa_testimonials.php
+v1.0.4:
+    - 'Created table sms_ssa_medias'
+    - builder_table_create_sms_ssa_medias.php
+v1.0.5:
+    - 'Updated table sms_ssa_medias'
+    - builder_table_update_sms_ssa_medias.php
+v1.0.6:
+    - 'Updated table sms_ssa_medias'
+    - builder_table_update_sms_ssa_medias_2.php

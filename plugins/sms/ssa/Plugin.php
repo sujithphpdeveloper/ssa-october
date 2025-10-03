@@ -1,6 +1,7 @@
 <?php namespace SMS\SSA;
 
 use SMS\SSA\Models\Testimonial;
+use SMS\SSA\Models\Media;
 use System\Classes\PluginBase;
 
 /**
@@ -23,6 +24,14 @@ class Plugin extends PluginBase
         \RainLab\Pages\Classes\Page::extend(function($model) {
             $model->addDynamicMethod('getTestimonialsOptions', function() {
                 return Testimonial::published()->get()->lists('name', 'id');
+            });
+
+            $model->addDynamicMethod('getPhotosOptions', function() {
+                return Media::type('photo')->published()->get()->lists('title', 'id');
+            });
+
+            $model->addDynamicMethod('getVideosOptions', function() {
+                return Media::type('video')->published()->get()->lists('title', 'id');
             });
         });
     }

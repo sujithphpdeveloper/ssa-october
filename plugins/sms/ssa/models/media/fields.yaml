@@ -1,0 +1,37 @@
+fields:
+    title:
+        label: Title
+        type: text
+        span: row
+        spanClass: col-md-4
+    type:
+        label: Type
+        showSearch: true
+        span: row
+        spanClass: col-md-4
+        type: dropdown
+    is_published:
+        label: Publish/Unpublish
+        type: switch
+        span: row
+        spanClass: col-md-4
+    thumbnail:
+        label: Thumbnail
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        type: fileupload
+        comment: 'For video this will be the poster'
+        span: row
+        spanClass: col-md-4
+    video_url:
+        label: 'Video URL'
+        span: row
+        spanClass: col-md-4
+        trigger:
+            action: show
+            field: type
+            condition: 'value[video]'
+        type: text

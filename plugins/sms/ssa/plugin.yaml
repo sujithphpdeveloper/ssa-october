@@ -14,3 +14,7 @@ navigation:
                 label: Testimonials
                 url: sms/ssa/testimonials
                 icon: icon-smile-o
+            ssa-medias:
+                label: Media
+                url: sms/ssa/medias
+                icon: icon-video-camera

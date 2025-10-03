@@ -1,0 +1,10 @@
+name: Medias
+form: $/sms/ssa/models/media/fields.yaml
+modelClass: SMS\SSA\Models\Media
+defaultRedirect: sms/ssa/medias
+create:
+    redirect: 'sms/ssa/medias/update/:id'
+    redirectClose: sms/ssa/medias
+update:
+    redirect: sms/ssa/medias
+    redirectClose: sms/ssa/medias
