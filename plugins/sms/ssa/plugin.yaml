@@ -26,3 +26,7 @@ navigation:
                 label: Tournaments
                 url: sms/ssa/tournaments
                 icon: icon-trophy
+            ssa-form-submissions:
+                label: 'Form Submissions'
+                url: sms/ssa/formsubmissions
+                icon: icon-list

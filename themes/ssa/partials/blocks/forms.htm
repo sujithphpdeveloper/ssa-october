@@ -1,0 +1,103 @@
+description = "Forms"
+==
+{% if data.settings['publish'] %}
+    {% if data.form_type == 'registration' %}
+        <section class="uk-overflow-hidden uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-margin-bottom-72 uk-margin-bottom-120@m">
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">{{ data.pre_title }}
+                        <strong>{{ data.highlight_title }}</strong></div>
+                </div>
+                <div class="uk-grid uk-grid-24@m" uk-grid>
+                    <div class="uk-width-2-5@m">
+                        <section class="rte">
+                            <div class="content content--default"><img data-src="{{ data.thumbnail.url }}" uk-img>
+                                {{data.content | raw }}
+                            </div>
+                        </section>
+                    </div>
+                    <div class="uk-width-3-5@m">
+                        <section class="form">
+                            {% partial 'forms/contact' %}
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="uk-overflow-hidden uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-margin-bottom-72 uk-margin-bottom-120@m">
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">
+                        {{ data.pre_title}}
+                        <strong>{{data.highlight_title}}</strong></div>
+                </div>
+                <div class="uk-grid uk-grid-104@m" uk-grid>
+                    <div class="uk-width-3-5@m">
+                        <section class="form">
+                            {% partial 'forms/contact' %}
+                        </section>
+                    </div>
+                    <div class="uk-width-2-5@m uk-flex-first@m">
+                        <div class="icon-text">
+                            <div class="icon-text-item uk-flex"><span
+                                class="icon uk-flex-no-shrink uk-margin-right-20 uk-margin-right-32@m"><svg width="60" height="60"
+                                                                                                            viewbox="0 0 60 60" fill="none"
+                                                                                                            xmlns="http://www.w3.org/2000/svg"><rect
+                                width="60" height="60" rx="30" fill="#BEEE0F"></rect><path
+                                d="M30.0017 32.143C28.9421 32.143 27.9064 31.8288 27.0254 31.2402C26.1444 30.6515 25.4578 29.8148 25.0523 28.8359C24.6469 27.8571 24.5408 26.7799 24.7475 25.7407C24.9542 24.7015 25.4644 23.747 26.2136 22.9978C26.9628 22.2486 27.9174 21.7384 28.9566 21.5316C29.9957 21.3249 31.0729 21.431 32.0518 21.8365C33.0307 22.242 33.8673 22.9286 34.456 23.8096C35.0446 24.6906 35.3588 25.7263 35.3588 26.7859C35.3571 28.2061 34.7922 29.5678 33.7879 30.5721C32.7836 31.5763 31.422 32.1413 30.0017 32.143ZM30.0017 23.5716C29.366 23.5716 28.7445 23.7601 28.2159 24.1133C27.6873 24.4665 27.2753 24.9685 27.0321 25.5558C26.7888 26.1431 26.7251 26.7894 26.8492 27.4129C26.9732 28.0364 27.2793 28.6092 27.7288 29.0587C28.1784 29.5082 28.7511 29.8144 29.3746 29.9384C29.9981 30.0624 30.6444 29.9988 31.2317 29.7555C31.8191 29.5122 32.3211 29.1002 32.6743 28.5716C33.0274 28.043 33.216 27.4216 33.216 26.7859C33.2151 25.9336 32.8762 25.1166 32.2736 24.514C31.671 23.9113 30.8539 23.5724 30.0017 23.5716Z"
+                                fill="white"></path><path
+                                d="M30.0006 45L20.962 34.3404C20.8364 34.1803 20.7121 34.0192 20.5891 33.8571C19.046 31.8229 18.212 29.339 18.2149 26.7857C18.2149 23.6599 19.4566 20.6622 21.6668 18.452C23.8771 16.2417 26.8748 15 30.0006 15C33.1263 15 36.1241 16.2417 38.3343 18.452C40.5446 20.6622 41.7863 23.6599 41.7863 26.7857C41.7888 29.3378 40.9552 31.8205 39.4131 33.8539L39.412 33.8571C39.412 33.8571 39.0906 34.2793 39.0424 34.3361L30.0006 45ZM22.3002 32.5661C22.3002 32.5661 22.5499 32.8961 22.6066 32.9668L30.0006 41.6871L37.4041 32.955C37.4513 32.8961 37.702 32.5639 37.7031 32.5629C38.9644 30.9012 39.646 28.8718 39.6434 26.7857C39.6434 24.2283 38.6275 21.7756 36.8191 19.9672C35.0107 18.1588 32.558 17.1429 30.0006 17.1429C27.4431 17.1429 24.9904 18.1588 23.182 19.9672C21.3736 21.7756 20.3577 24.2283 20.3577 26.7857C20.3551 28.8732 21.0375 30.9038 22.3002 32.5661Z"
+                                fill="white"></path></svg></span>
+                                <div>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Address</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">KSA
+                                        School Sports Association<br>Downe House<br>Al Aqiq Riyadh
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="icon-text-item uk-flex uk-margin-top-64 uk-margin-top-104@m"><span
+                                class="icon uk-flex-no-shrink uk-margin-right-20 uk-margin-right-32@m"><svg width="60" height="60"
+                                                                                                            viewbox="0 0 60 60" fill="none"
+                                                                                                            xmlns="http://www.w3.org/2000/svg"><rect
+                                width="60" height="60" rx="30" fill="#BEEE0F"></rect><path
+                                d="M37.9459 17.5H22.0541C18.7105 17.5 16 20.1336 16 23.3824V36.6176C16 39.8664 18.7105 42.5 22.0541 42.5H37.9459C41.2895 42.5 44 39.8664 44 36.6176V23.3824C44 20.1336 41.2895 17.5 37.9459 17.5Z"
+                                stroke="white" stroke-width="2"></path><path
+                                d="M16.0703 23.5156L26.9752 29.5892C27.889 30.1044 28.9268 30.3757 29.9833 30.3757C31.0398 30.3757 32.0776 30.1044 32.9914 29.5892L43.9265 23.5156"
+                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                                <div>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Email</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Send
+                                        inquiries at<br><strong><a class="uk-text-black" href="mailto:info@ssa.events">info@ssa.event</a></strong></div>
+                                </div>
+                            </div>
+                            <div class="icon-text-item uk-flex uk-margin-top-64 uk-margin-top-104@m"><span
+                                class="icon uk-flex-no-shrink uk-margin-right-20 uk-margin-right-32@m"><svg width="60" height="60"
+                                                                                                            viewbox="0 0 60 60" fill="none"
+                                                                                                            xmlns="http://www.w3.org/2000/svg"><rect
+                                width="60" height="60" rx="30" fill="#BEEE0F"></rect><path
+                                d="M39.4878 34.5268L44.4933 39.5323C44.6539 39.6921 44.7813 39.8821 44.8683 40.0913C44.9552 40.3006 45 40.5249 45 40.7515C45 40.9781 44.9552 41.2024 44.8683 41.4117C44.7813 41.6209 44.6539 41.8109 44.4933 41.9707C42.7332 43.7312 40.397 44.7976 37.9138 44.974C35.4306 45.1504 32.9671 44.425 30.9758 42.931L27.9986 40.6967C24.7029 38.2249 21.7751 35.2971 19.3033 32.0014L17.069 29.0242C15.575 27.0329 14.8496 24.5694 15.026 22.0862C15.2024 19.603 16.2688 17.2668 18.0293 15.5067C18.1891 15.3461 18.3791 15.2187 18.5883 15.1317C18.7976 15.0448 19.0219 15 19.2485 15C19.4751 15 19.6994 15.0448 19.9087 15.1317C20.1179 15.2187 20.3079 15.3461 20.4677 15.5067L25.4732 20.5122C25.8276 20.8667 26.0267 21.3474 26.0267 21.8486C26.0267 22.3499 25.8276 22.8306 25.4732 23.1851L23.5432 25.1151C23.3926 25.2642 23.2931 25.4573 23.2592 25.6665C23.2252 25.8757 23.2585 26.0903 23.3542 26.2795C25.5969 30.7656 29.2344 34.4031 33.7205 36.6458C33.9097 36.7415 34.1243 36.7748 34.3335 36.7408C34.5427 36.7069 34.7358 36.6074 34.8849 36.4568L36.813 34.5287C36.9886 34.3529 37.1971 34.2135 37.4265 34.1184C37.656 34.0232 37.902 33.9743 38.1504 33.9743C38.3988 33.9743 38.6448 34.0232 38.8743 34.1184C39.1038 34.2135 39.3122 34.3529 39.4878 34.5287V34.5268Z"
+                                stroke="white" stroke-width="2"></path></svg></span>
+                                <div>
+                                    <div class="title uk-font-primary uk-text-slate uk-text-25 uk-text-35@m uk-text-uppercase">Contact</div>
+                                    <div class="info uk-text-18 uk-text-24@m uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">Open a
+                                        Chat or give us call at<br><strong>+966 58 346 955</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="map uk-padding-top-72 uk-padding-top-120@m">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-margin-bottom-24 uk-margin-bottom-40@m"><h2
+                    class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">Find us on map</h2></div>
+                <div class="google-map uk-border-24" data-coordinates="25.2048, 55.2708">
+                    <div class="coordinate-item" data-coordinates="25.2048, 55.2708"></div>
+                </div>
+            </div>
+        </section>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBL3TT8wNks0FdY-icw45FKUAfRKagfh7c"></script>
+    {% endif %}
+{% endif %}

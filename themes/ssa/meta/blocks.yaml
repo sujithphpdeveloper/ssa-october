@@ -121,6 +121,80 @@ feature-list:
                         imageWidth: 100
                         imageHeight: 100
                         comment: Upload SVG Icons
+forms:
+    name: Form Manager
+    description: A flexible component that manages multiple types of forms (e.g., contact, registration), allowing different form structures and submissions from one central system.
+    icon: icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[hide_separator]:
+            label: Hide the Separator line
+            comment: This will allow to hide the separator line between the sections
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: false
+        settings[separator]:
+            type: section
+            span: full
+        pre_title :
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        form_type:
+            label: Form Type
+            type: dropdown
+            span: row
+            spanClass: col-md-4
+            default: contact
+        forms_separator:
+            type: section
+            span: full
+            trigger:
+                action: show
+                field: form_type
+                condition: 'value[registration]'
+        thumbnail:
+            label: Thumbnail Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-4
+            imageWidth: 120
+            imageHeight: 80
+            comment: Size (720 X 324)
+            trigger:
+                action: show
+                field: form_type
+                condition: 'value[registration]'
+        content:
+            label: Content
+            type: richeditor
+            span: row
+            spanClass: col-md-8
+            size: small
+            trigger:
+                action: show
+                field: form_type
+                condition: 'value[registration]'
 hero-carousel:
     name: Hero Carousel
     description: A dynamic slider component that displays images with titles, descriptions, and action buttons. Ideal for highlighting featured content, promotions, or campaigns on the pages.

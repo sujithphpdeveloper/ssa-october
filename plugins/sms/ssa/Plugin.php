@@ -1,5 +1,6 @@
 <?php namespace SMS\SSA;
 
+use SMS\SSA\Models\FormSubmission;
 use SMS\SSA\Models\Testimonial;
 use SMS\SSA\Models\Media;
 use System\Classes\PluginBase;
@@ -33,6 +34,15 @@ class Plugin extends PluginBase
             $model->addDynamicMethod('getVideosOptions', function() {
                 return Media::type('video')->published()->get()->lists('name', 'id');
             });
+
+            $model->addDynamicMethod('getFormTypeOptions', function() {
+                $formSubmission = new FormSubmission;
+                return $formSubmission->getTypeOptions();
+            });
+
+            $model->addDynamicMethod('onContact', function() {
+                dd('test');
+            });
         });
     }
 
@@ -41,6 +51,9 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
+        return [
+            'SMS\SSA\Components\FormSubmission' => 'formSubmissions'
+        ];
     }
 
     /**

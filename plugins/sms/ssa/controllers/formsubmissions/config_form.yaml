@@ -1,0 +1,10 @@
+name: FormSubmissions
+form: $/sms/ssa/models/formsubmission/fields.yaml
+modelClass: SMS\SSA\Models\FormSubmission
+defaultRedirect: sms/ssa/formsubmissions
+create:
+    redirect: 'sms/ssa/formsubmissions/update/:id'
+    redirectClose: sms/ssa/formsubmissions
+update:
+    redirect: sms/ssa/formsubmissions
+    redirectClose: sms/ssa/formsubmissions

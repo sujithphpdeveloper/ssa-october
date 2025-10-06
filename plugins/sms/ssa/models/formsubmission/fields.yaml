@@ -1,0 +1,29 @@
+tabs:
+    fields:
+        data:
+            span: auto
+            path: $/sms/ssa/controllers/formsubmissions/_data.htm
+            type: partial
+            tab: Additional Information
+fields:
+    name:
+        label: Name
+        type: text
+        span: row
+        spanClass: col-md-3
+    email:
+        label: Email
+        span: row
+        spanClass: col-md-3
+        type: text
+    phone:
+        label: Phone
+        span: row
+        spanClass: col-md-3
+        type: text
+    type:
+        label: Type
+        showSearch: true
+        span: row
+        disabled: 1
+        type: dropdown
