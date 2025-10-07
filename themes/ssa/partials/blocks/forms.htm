@@ -11,14 +11,14 @@ description = "Forms"
                 <div class="uk-grid uk-grid-24@m" uk-grid>
                     <div class="uk-width-2-5@m">
                         <section class="rte">
-                            <div class="content content--default"><img data-src="{{ data.thumbnail.url }}" uk-img>
+                            <div class="content content--default"><img data-src="{{ data.thumbnail | media }}" uk-img>
                                 {{data.content | raw }}
                             </div>
                         </section>
                     </div>
                     <div class="uk-width-3-5@m">
                         <section class="form">
-                            {% partial 'forms/contact' %}
+                            {% partial 'forms/registration' %}
                         </section>
                     </div>
                 </div>

@@ -1,4 +1,7 @@
-<form data-request="formSubmissions::onSubmit" data-request-flash>
+<form id="formContact"
+      data-request="formSubmissions::onSubmit"
+      data-request-success="document.getElementById('formContact').reset();"
+      data-request-flash>
     <div class="form-wrapper uk-background-white uk-border-24">
         <div class="uk-grid uk-grid-40@m" uk-grid>
             <div class="uk-width"><input class="uk-input" name="name" type="text" placeholder="Full Name"></div>

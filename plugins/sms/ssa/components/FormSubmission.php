@@ -64,14 +64,14 @@ class FormSubmission extends ComponentBase
             );
         } elseif ($formSubmissions->type == 'registration') {
             $additionalData = array(
-                'company' => $data['company'],
+                'school' => $data['school'],
             );
         }
         $formSubmissions->data = $additionalData;
         if ($formSubmissions->save()) {
-            Flash::success('Form submitted successfully!');
+            Flash::success('Thank you! Your submission has been received successfully.');
         } else {
-            Flash::error('Form submission failed!');
+            Flash::error('Sorry! Your submission has been failed!');
         }
     }
 }
