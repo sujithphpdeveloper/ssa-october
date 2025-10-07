@@ -1,0 +1,49 @@
+description = "Call To Actions"
+==
+{% if data.settings['publish'] %}
+    {% if data.settings['type'] == 'image_left' %}
+        <section class="rte rte--media uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="uk-grid uk-grid-collapse uk-grid-match uk-border-24 uk-overflow-hidden" uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <div class="featured-img uk-background-cover" data-src="{{ data.background | media }}" uk-img></div>
+                    </div>
+                    <div class="uk-width-1-2@m">
+                        <div class="uk-background-lime uk-flex uk-flex-column uk-flex-center uk-padding-32 uk-padding-80@m"><h2
+                            class="section-title uk-text-black uk-text-35 uk-text-50@ms">{{ data.title }}</h2>
+                            <div class="content content--default uk-text-black uk-margin-top-24@m">
+                                {{ data.content | raw }}
+                            </div>
+                            <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-48@m" uk-grid>
+                                {% for button in data.cta_buttons %}
+                                    <div>
+                                        {% partial 'blocks/single-button' button=button %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="rte rte--featured uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="uk-background-cover uk-background-fixed uk-border-24" data-src="{{ data.background | media }}" uk-img>
+                    <div class="uk-container uk-padding-top-88 uk-padding-bottom-88 uk-padding-top-144@m uk-padding-bottom-144@m">
+                        <div class="content uk-padding-left-16 uk-padding-right-16 uk-width-4-5@m">
+                            <div class="uk-text-white uk-text-40 uk-text-56@m uk-text-height-130">{{ data.title }}</div>
+                            <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-48 uk-margin-top-88@m" uk-grid>
+                                {% for button in data.cta_buttons %}
+                                <div>
+                                    {% partial 'blocks/single-button' button=button %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endif %}

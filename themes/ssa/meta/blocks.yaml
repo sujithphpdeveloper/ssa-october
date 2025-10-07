@@ -1,6 +1,6 @@
 banner:
     name: Banner
-    description: A full-width background image section with a prominent title and button, designed to capture attention and drive a key action.
+    description: A full-width image section without any content.
     icon:  icon-clone
     fields:
         settings[publish]:
@@ -15,6 +15,166 @@ banner:
             type: text
             span: row
             spanClass: col-md-3
+        settings[separator]:
+            type: section
+            span: full
+        thumbnail:
+            label: Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-3
+            imageWidth: 120
+            imageHeight: 80
+            comment: Size (1766 X 644)
+content:
+    name: Content Showcase
+    description: A flexible component that displays different types of content layouts — combining titles, subtitles, text, and image sliders. Ideal for building visually engaging content sections with adaptable structures.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[type]:
+            label: Type
+            type: dropdown
+            span: row
+            spanClass: col-md-3
+            default: two_columns
+            options:
+                two_columns: Two Columns Content Layout
+                single_slider: Content with Carousel Slider (1 Active)
+                double_slider: Content with Carousel Slider (2 Active)
+                programs: Content with Programs
+        settings[hide_separator]:
+            label: Hide the Separator line
+            comment: This will allow to hide the separator line between the sections
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: false
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[two_columns]'
+        title_separator:
+            type: section
+            span: full
+        pre_title:
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[two_columns]'
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[two_columns]'
+        settings[separator]:
+            type: section
+            span: full
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[two_columns]'
+        content_1:
+            label: Content
+            type: nestedform
+            form: '~/themes/ssa/meta/content.yaml'
+            span: auto
+            spanClass: col-md-6
+        content_2:
+            label: Content for Second Column
+            type: nestedform
+            form: '~/themes/ssa/meta/content.yaml'
+            span: auto
+            spanClass: col-md-6
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[two_columns]'
+        carousel_separator:
+            type: section
+            span: full
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[single_slider]|value[double_slider]'
+        carousel_sliders:
+            label: Carousel Sliders
+            type: repeater
+            prompt: Add New Slider
+            style: accordion
+            groups: '~/themes/ssa/meta/carousel.yaml'
+            defaultGroup: button
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[single_slider]|value[double_slider]'
+        button_separator:
+            type: section
+            span: full
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[programs]'
+        cta_buttons:
+            label: Call to Action Buttons
+            type: repeater
+            prompt: Add New Button
+            style: accordion
+            minItems: 1
+            maxItems: 1
+            groups: '~/themes/ssa/meta/buttons.yaml'
+            defaultGroup: button
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[programs]'
+cta:
+    name: Call To Actions
+    description: A versatile call-to-action component that displays a title and button with optional imagery in different layout styles.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[type]:
+            label: Type
+            type: dropdown
+            span: row
+            spanClass: col-md-3
+            default: fullwidth
+            options:
+                fullwidth: Full Width Background Image
+                image_left: Image is on the left column
         settings[separator]:
             type: section
             span: full
@@ -33,7 +193,20 @@ banner:
             spanClass: col-md-3
             imageWidth: 120
             imageHeight: 80
-            comment: Size (1760 X 578)
+            comment: Full Width (1760 X 578), Left Image (870 X 630)
+        content:
+            label: Content
+            type: richeditor
+            span: row
+            spanClass: col-md-6
+            size: small
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[image_left]'
+        button_separator:
+            type: section
+            span: full
         cta_buttons:
             label: Call to Action Buttons
             type: repeater
@@ -402,49 +575,6 @@ media:
                     videos:
                         label: Video
                         type: dropdown
-programs:
-    name: Programs
-    description: A component that displays all available programs with a title, description, and call-to-action button, alongside a slider showing program details and links to the full program pages.
-    icon: icon-clone
-    fields:
-        settings[publish]:
-            label: Publish on Page
-            comment: This will allow to hide the block on the page
-            type: switch
-            span: row
-            spanClass: col-md-3
-            default: true
-        settings[id]:
-            label: Unique ID for the section
-            type: text
-            span: row
-            spanClass: col-md-3
-        settings[separator]:
-            type: section
-            span: full
-        title:
-            label: Section Title
-            type: text
-            span: row
-            spanClass: col-md-4
-        content:
-            label: Content
-            type: richeditor
-            span: row
-            spanClass: col-md-8
-            size: small
-        programs_separator:
-            type: section
-            span: full
-        cta_buttons:
-            label: Call to Action Buttons
-            type: repeater
-            prompt: Add New Button
-            style: accordion
-            minItems: 1
-            maxItems: 1
-            groups: '~/themes/ssa/meta/buttons.yaml'
-            defaultGroup: button
 stats:
     name: Stats
     description: A component that displays key numbers and statistics in a visually engaging way, ideal for highlighting achievements, milestones, or performance metrics.
@@ -499,6 +629,42 @@ stats:
                         type: text
                         span: row
                         spanClass: col-md-4
+team-members:
+    name: Team Members
+    description: Displays a list of team members on the website, showcasing their names, positions, bios, and photos. Optionally limits the number of members displayed.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[separator]:
+            type: section
+            span: full
+        title:
+            label: Section Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        pre_title:
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+
 testimonials:
     name: Testimonials
     description: A component for displaying customer feedback or reviews, either in custom order or sorted by latest.

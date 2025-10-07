@@ -30,3 +30,7 @@ navigation:
                 label: 'Form Submissions'
                 url: sms/ssa/formsubmissions
                 icon: icon-list
+            ssa-team-members:
+                label: 'Team Members'
+                url: sms/ssa/teammembers
+                icon: icon-users

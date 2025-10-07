@@ -1,0 +1,51 @@
+description = "Team Members"
+==
+function onStart() {
+    $teamMembers = SMS\SSA\Models\TeamMember::published();
+    $this['teamMembers'] = $teamMembers->limit(10)->get();
+}
+==
+{% if data.settings['publish'] %}
+    <section class="team uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-text-right uk-margin-bottom-72 uk-margin-bottom-120@m"><h2
+                    class="section-title uk-text-35 uk-text-50@m uk-text-uppercase uk-margin-bottom-24 uk-margin-bottom-40@m">{{ data.section_title}}</h2>
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">{{data.pre_title}}
+                        <strong>{{ data.highlight_title }}</strong></div>
+                </div>
+                <div class="uk-slider uk-position-relative" uk-slider>
+                    <div class="uk-slider-container">
+                        <ul class="uk-slider-items uk-grid uk-grid-24" uk-grid>
+                            {% for member in teamMembers %}
+                                <li class="uk-width-1-2@s uk-width-1-4@m">
+                                    <div class="team-item">
+                                        <div class="featured-img uk-background-cover uk-border-24" data-src="{{member.avatar | media}}" uk-img></div>
+                                        <div class="content uk-margin-top-24 uk-margin-top-40@m">
+                                            <div class="uk-text-black uk-text-24 uk-text-34@m uk-text-medium">{{member.name }}</div>
+                                            <div class="uk-text-gray uk-text-18 uk-text-28@m uk-margin-top-8 uk-margin-top-12@m">{{ member.designation }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="uk-slider-navigation uk-margin-top-12 uk-margin-top-20@m">
+                        <div class="uk-grid uk-grid-16 uk-grid-24@m uk-flex-right" uk-grid>
+                            <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                 viewbox="0 0 50 50" fill="none"
+                                                                                                 xmlns="http://www.w3.org/2000/svg"><rect
+                                x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg></span></a></div>
+                            <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50" viewbox="0 0 50 50"
+                                                                                             fill="none"
+                                                                                             xmlns="http://www.w3.org/2000/svg"><rect
+                                x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg></span></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endif %}

@@ -1,0 +1,35 @@
+button:
+    name: Carousel Slider
+    description: Single Slider
+    fields:
+        title:
+            label: Title
+            type: text
+            span: row
+            spanClass: col-md-3
+        tag:
+            label: Tag
+            type: text
+            span: row
+            spanClass: col-md-3
+        image:
+            label: Slider Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-3
+            imageWidth: 120
+            imageHeight: 80
+            comment: Image size will be mentioned above
+        url:
+            label: URL
+            type: pagefinder
+            comment: 'Select an internal page, or paste an external URL.'
+            span: row
+            spanClass: col-md-3
+            trigger:
+                action: show
+                field: ^settings[type]
+                condition: 'value[double_slider]'
+

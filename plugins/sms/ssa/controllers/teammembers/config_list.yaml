@@ -1,0 +1,12 @@
+list: $/sms/ssa/models/teammember/columns.yaml
+modelClass: SMS\SSA\Models\TeamMember
+title: TeamMembers
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'sms/ssa/teammembers/update/:id'

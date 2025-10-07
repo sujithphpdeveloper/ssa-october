@@ -1,0 +1,10 @@
+name: TeamMembers
+form: $/sms/ssa/models/teammember/fields.yaml
+modelClass: SMS\SSA\Models\TeamMember
+defaultRedirect: sms/ssa/teammembers
+create:
+    redirect: 'sms/ssa/teammembers/update/:id'
+    redirectClose: sms/ssa/teammembers
+update:
+    redirect: sms/ssa/teammembers
+    redirectClose: sms/ssa/teammembers

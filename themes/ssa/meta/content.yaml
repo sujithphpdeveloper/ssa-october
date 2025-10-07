@@ -1,0 +1,12 @@
+fields:
+    title:
+        label: Title
+        type: text
+        span: row
+        spanClass: col-md-12
+    content:
+        label: Content
+        type: richeditor
+        span: row
+        spanClass: col-md-12
+        size: small

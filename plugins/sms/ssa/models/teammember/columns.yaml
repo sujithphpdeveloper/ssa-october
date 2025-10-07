@@ -1,0 +1,16 @@
+columns:
+    id:
+        label: ID
+        type: number
+    name:
+        label: Name
+        type: text
+    designation:
+        label: Designation
+        type: text
+    created_at:
+        label: 'Created At'
+        type: datetime
+    is_published:
+        label: Published
+        type: switch

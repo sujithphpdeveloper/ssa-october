@@ -1,0 +1,226 @@
+description = "Content Showcase"
+==
+function onStart() {
+    if($this['data']['settings']['type'] == 'programs') {
+        $programs = SMS\SSA\Models\Programme::published();
+        $this['programs'] = $programs->get();
+    }
+}
+==
+{% if data.settings['publish'] %}
+    {% if data.settings['type'] == 'two_columns' %}
+        <section class="rte rte--grid uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                {% if data.settings['hide_separator'] != true %}
+                    <hr class="uk-margin-bottom-64 uk-margin-bottom-104@m">
+                {% endif %}
+                <div class="section-content uk-margin-bottom-64 uk-margin-bottom-104@m">
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">
+                        {{ data.pre_title }}
+                        <strong>{{ data.highlight_title }}</strong></div>
+                </div>
+                <div class="uk-grid uk-grid-64 uk-grid-128@m" uk-grid>
+                    <div class="uk-width-1-2@m"><h2
+                        class="section-title section-title--line uk-text-35 uk-text-50@m uk-text-uppercase uk-margin-bottom-24 uk-margin-bottom-40@m">{{ data.content_1.title }}</h2>
+                        <div class="content content--default">{{ data.content_1.content | raw }}</div>
+                    </div>
+                    <div class="uk-width-1-2@m"><h2
+                        class="section-title section-title--line uk-text-35 uk-text-50@m uk-text-uppercase uk-margin-bottom-24 uk-margin-bottom-40@m">{{ data.content_2.title }}</h2>
+                        <div class="content content--default">{{ data.content_2.content | raw }}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% elseif data.settings['type'] == 'single_slider' %}
+        <section class="rte rte--media uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">z
+            <div class="uk-container uk-container--expand">
+                <div class="uk-grid uk-grid-40@m uk-flex-between" uk-grid>
+                    <div class="uk-width-1-2@m">
+                        <div class="section-content uk-margin-bottom-40 uk-margin-bottom-80@m"><h2
+                            class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.content_1.title }}</h2></div>
+                        <div class="content content--default">{{ data.content_1.content | raw }}</div>
+                    </div>
+                    <div class="uk-width-2-5@m">
+                        <div class="uk-slider uk-slider--full uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-grid-match" uk-grid>
+                                    {% for slide in data.carousel_sliders %}
+                                        <li class="uk-width">
+                                            <div class="featured-img uk-background-cover uk-border-24 uk-position-relative"
+                                                 data-src="{{slide.image | media }}" uk-img>
+                                                <div class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-position-top-left uk-margin-20 uk-margin-32@m">
+                                                    {{ slide.tag }}
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="title uk-text-charcoal uk-text-15 uk-text-20@m uk-text-height-110 uk-text-italic uk-width-4-5 uk-width-3-4@m uk-margin-top-12 uk-margin-top-20@m">
+                                                {{ slide.title }}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="uk-slider-navigation">
+                                <div class="uk-grid uk-grid-16 uk-grid-24@m uk-flex-right" uk-grid>
+                                    <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                    <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% elseif data.settings['type'] == 'double_slider' %}
+        <section class="rte rte--media uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="uk-grid uk-grid-40@m" uk-grid>
+                    <div class="uk-width-1-3@m">
+                        <div class="section-content uk-margin-bottom-40 uk-margin-bottom-80@m">
+                            <h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.content_1.title }}</h2>
+                        </div>
+                        <div class="content content--default">
+                            {{ data.content_1.content | raw }}
+                        </div>
+                        <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
+                            {% for button in data.cta_buttons %}
+                            <div>
+                                {% partial 'blocks/single-button' button=button %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="uk-width-2-3@m">
+                        <div class="uk-slider uk-slider--grid uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-grid-match" uk-grid>
+                                    {% for slide in data.carousel_sliders %}
+                                        {% set slideUrl = link(slide.url, { nesting: true }) %}
+                                        <li class="uk-width-1-2@m">
+                                            <a class="featured-img-container uk-position-relative" href="{{ slideUrl.url }}">
+                                                <div class="featured-img uk-background-cover uk-border-24 uk-position-relative"
+                                                     data-src="{{ side.image | media }}" uk-img></div>
+                                                <div class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                    <div class="uk-flex uk-flex-between uk-flex-middle uk-padding-20 uk-padding-32@m">
+                                                        <div class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                            {{ slide.tag }}
+                                                        </div>
+                                                        <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                                            width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                            d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path></svg></span></div>
+                                                    <div class="title uk-text-white uk-text-20 uk-text-25@m uk-text-height-110 uk-width-4-5 uk-width-3-4@m uk-padding-20 uk-padding-32@m">
+                                                        {{ slide.title }}
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="uk-slider-navigation">
+                                <div class="uk-grid uk-grid-16 uk-grid-24@m uk-flex-right" uk-grid>
+                                    <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                    <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% elseif data.settings['type'] == 'programs' %}
+        <section class="rte rte--media uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="uk-grid uk-grid-40@m" uk-grid>
+                    <div class="uk-width-1-3@m">
+                        <div class="section-content uk-margin-bottom-40 uk-margin-bottom-80@m">
+                            <h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.content_1.title }}</h2>
+                        </div>
+                        <div class="content content--default">
+                            {{ data.content_1.content | raw }}
+                        </div>
+                        <div class="uk-grid uk-grid-16 uk-grid-24@m uk-grid-match uk-margin-top-24 uk-margin-top-40@m" uk-grid>
+                            {% for button in data.cta_buttons %}
+                            <div>
+                                {% partial 'blocks/single-button' button=button %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="uk-width-2-3@m">
+                        <div class="uk-slider uk-slider--grid uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-grid-match" uk-grid>
+                                    {% for programme in programs %}
+                                    <li class="uk-width-1-2@m">
+                                        <a class="featured-img-container uk-position-relative" href="#">
+                                            <div class="featured-img uk-background-cover uk-border-24 uk-position-relative"
+                                                 data-src="{{programme.thumbnail.url}}" uk-img></div>
+                                            <div class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                                                <div class="uk-flex uk-flex-between uk-flex-middle uk-padding-20 uk-padding-32@m">
+                                                    <div class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                                        {{ programme.name }}
+                                                    </div>
+                                                    <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="50" height="50"
+                                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                                        width="50" height="50" rx="25" fill="#BEEE0F"></rect><path
+                                                        d="M15.9849 17.0765L32.9202 15.9839M32.9202 15.9839L34.0128 32.9192M32.9202 15.9839L17.0775 34.0118"
+                                                        stroke="white" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path></svg></span></div>
+                                                <div class="title uk-text-white uk-text-20 uk-text-25@m uk-text-height-110 uk-width-4-5 uk-width-3-4@m uk-padding-20 uk-padding-32@m">
+                                                    {{ programme.excerpt }}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="uk-slider-navigation">
+                                <div class="uk-grid uk-grid-16 uk-grid-24@m uk-flex-right" uk-grid>
+                                    <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                         viewbox="0 0 50 50" fill="none"
+                                                                                                         xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                    <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                        x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                        d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round"></path></svg></span></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endif %}
