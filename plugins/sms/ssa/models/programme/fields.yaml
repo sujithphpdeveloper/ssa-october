@@ -1,3 +1,31 @@
+tabs:
+    fields:
+        'data[stat][name]':
+            label: 'Stat Title'
+            span: row
+            spanClass: col-md-4
+            type: text
+            tab: Stats
+        'data[stat][unit]':
+            label: 'Stat Unit'
+            span: row
+            spanClass: col-md-4
+            type: text
+            tab: Stats
+        'data[stat][value]':
+            label: 'Stat Value'
+            span: row
+            spanClass: col-md-4
+            type: text
+            tab: Stats
+        small_description:
+            label: 'Small Description'
+            span: row
+            spanClass: col-md-6
+            type: richeditor
+            comment: 'This will be used in the listing pages'
+            tab: Descripttion
+            size: small
 fields:
     name:
         label: Name

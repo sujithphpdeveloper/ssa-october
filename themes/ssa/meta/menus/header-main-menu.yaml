@@ -3,8 +3,10 @@ items:
         title: Home
         nesting: 0
         type: static-page
+        url: null
         code: ''
         reference: index
+        cmsPage: null
         replace: 0
         viewBag:
             isHidden: '0'
@@ -14,8 +16,21 @@ items:
         title: 'About Us'
         nesting: 0
         type: static-page
+        url: null
         code: ''
         reference: about-us
+        cmsPage: null
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Programs
+        nesting: 0
+        type: static-page
+        code: ''
+        reference: programs
         replace: 0
         viewBag:
             isHidden: '0'
@@ -25,8 +40,10 @@ items:
         title: 'Contact Us'
         nesting: 0
         type: static-page
+        url: null
         code: ''
         reference: contact-us
+        cmsPage: null
         replace: 0
         viewBag:
             isHidden: '0'

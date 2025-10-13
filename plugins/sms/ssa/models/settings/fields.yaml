@@ -1,0 +1,56 @@
+tabs:
+    fields:
+        'social_media[facebook]':
+            label: 'Facebook URL'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Social Media URLs
+        'social_media[youtube]':
+            label: 'Youtube URL'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Social Media URLs
+        'social_media[x]':
+            label: 'X URL'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Social Media URLs
+        'social_media[linkedin]':
+            label: 'LinkedIn URL'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Social Media URLs
+        'social_media[instagram]':
+            label: 'Instagram'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Social Media URLs
+        'contacts[email]':
+            label: 'Email'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Contact Channels
+        'contacts[phone]':
+            label: 'Phone'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Contact Channels
+        'contacts[whatsapp]':
+            label: 'WhatsApp'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Contact Channels
+        'contacts[address]':
+            label: 'Address'
+            span: row
+            spanClass: col-md-6
+            type: textarea
+            tab: Contact Channels

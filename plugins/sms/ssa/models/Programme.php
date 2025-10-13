@@ -2,6 +2,7 @@
 
 use Model;
 use October\Rain\Database\Traits\Sluggable;
+use October\Rain\Support\Facades\Url;
 
 /**
  * Model
@@ -30,6 +31,9 @@ class Programme extends Model
         'slug' => 'required|unique:sms_ssa_programs' // Ensure slug is unique
     ];
 
+    public $jsonable = ['data'];
+
+
     protected $slugs = [
         'slug' => 'name'
     ];
@@ -41,5 +45,15 @@ class Programme extends Model
     public function scopePublished($query)
     {
         return $query->where('is_published', 1);
+    }
+
+    public function getUrlAttribute()
+    {
+        return Url::to('programs/'.$this->slug);
+    }
+
+    public function getStatAttribute()
+    {
+        return isset($this->data['stat'])?$this->data['stat']:[];
     }
 }

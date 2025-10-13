@@ -629,6 +629,64 @@ stats:
                         type: text
                         span: row
                         spanClass: col-md-4
+tabs:
+    name: Tabbed Content
+    description: Displays tabbed sections that can contain either custom content or dynamically loaded program details.
+    icon:  icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
+        settings[type]:
+            label: Type of tab Contents
+            type: dropdown
+            span: row
+            spanClass: col-md-3
+            default: programs
+            options:
+                programs: Programs
+                custom: Custom Content
+        title_separator:
+            type: section
+            span: full
+        pre_title:
+            label: Title Before Highlight
+            type: text
+            span: row
+            spanClass: col-md-4
+        highlight_title:
+            label: Highlight Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        item_separator:
+            type: section
+            span: full
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[custom]'
+        items:
+            label: Custom Tab Contents
+            type: repeater
+            prompt: Add New Tab
+            style: accordion
+            groups: '~/themes/ssa/meta/tab.yaml'
+            defaultGroup: button
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[custom]'
+
 team-members:
     name: Team Members
     description: Displays a list of team members on the website, showcasing their names, positions, bios, and photos. Optionally limits the number of members displayed.
@@ -664,7 +722,6 @@ team-members:
             type: text
             span: row
             spanClass: col-md-4
-
 testimonials:
     name: Testimonials
     description: A component for displaying customer feedback or reviews, either in custom order or sorted by latest.

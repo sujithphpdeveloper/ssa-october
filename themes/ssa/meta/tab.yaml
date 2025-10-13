@@ -1,0 +1,58 @@
+slide:
+    name: Tab
+    description: Single Tab
+    fields:
+        name :
+            label: Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        thumbnail:
+            label: Thumbnail Image
+            type: mediafinder
+            mode: image
+            maxFiles: 1
+            span: row
+            spanClass: col-md-4
+            imageWidth: 150
+            imageHeight: 30
+            comment: Size (1920 X 1080)
+        stat_seperator:
+            type: section
+            span: full
+        stat[name]:
+            label: Stat Title
+            type: text
+            span: row
+            spanClass: col-md-4
+        stat[unit]:
+            label: Stat Unit
+            type: text
+            span: row
+            spanClass: col-md-4
+        stat[value]:
+            label: Stat Value
+            type: text
+            span: row
+            spanClass: col-md-4
+        content_seperator:
+            type: section
+            span: full
+        small_description:
+            label: Small Description
+            type: richeditor
+            span: row
+            spanClass: col-md-6
+            size: small
+        slides_seperator:
+            type: section
+            span: full
+        cta_buttons:
+            label: Call to Action Button
+            type: repeater
+            prompt: Add New Button
+            style: accordion
+            maxItems: 1
+            minItems: 1
+            groups: '~/themes/ssa/meta/buttons.yaml'
+            defaultGroup: button
