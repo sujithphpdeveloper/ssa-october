@@ -8,7 +8,9 @@
                         <img data-src="{{ 'assets/images/footer-logo.svg' | theme }}" width="107" height="107" alt="logo" uk-img>
                     </a>
                     <div class="uk-text-white uk-text-25 uk-text-32@m uk-text-medium uk-text-height-130 uk-margin-top-20 uk-margin-top-32@m">
-                        A perfect place to play, train and compete
+                        {% if ssaSettings.footer.tagline != "" %}
+                            {{ ssaSettings.footer.tagline }}
+                        {% endif %}
                     </div>
                     <div class="uk-text-white uk-text-15 uk-text-18@m uk-text-height-170 uk-margin-top-12 uk-margin-top-20@m">
                         {% if ssaSettings.contacts.address %}

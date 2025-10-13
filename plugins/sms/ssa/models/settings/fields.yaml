@@ -54,3 +54,21 @@ tabs:
             spanClass: col-md-6
             type: textarea
             tab: Contact Channels
+        'header[cta]':
+            label: 'Header CTA'
+            span: row
+            spanClass: col-md-12
+            tab: Header
+            type: repeater
+            prompt: Add New Button
+            style: accordion
+            minItems: 1
+            maxItems: 1
+            groups: '~/themes/ssa/meta/buttons.yaml'
+            defaultGroup:
+        'footer[tagline]':
+            label: 'Tagline'
+            span: row
+            spanClass: col-md-6
+            type: text
+            tab: Footer
