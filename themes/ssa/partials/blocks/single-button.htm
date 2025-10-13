@@ -1,5 +1,5 @@
 {% set buttonUrl = link(button.url, { nesting: true }) %}
-<a class="cta cta--{{button.style}}" href="{{ buttonUrl.url }}" target="{{ button.open == true ? '_blank': ''}}">
+<a class="cta cta--{{button.style}} {{ classes }}" href="{{ buttonUrl.url }}" target="{{ button.open == true ? '_blank': ''}}">
         {{ button.label != ""? button.label : buttonUrl.title }}
     {% if button.style == "lime" or button.style == "black" %}
         <span class="arrow-icon uk-flex-no-shrink uk-margin-left-8">

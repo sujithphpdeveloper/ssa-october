@@ -35,14 +35,12 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="uk-visible@l"><a class="cta cta--lime" href="#">Register Now<span
-                                    class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
-                                                                                               fill="none"
-                                                                                               xmlns="http://www.w3.org/2000/svg"><rect
-                                    width="30" height="30" rx="15" fill="white"></rect><path
-                                    d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
-                                    stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                                <div class="uk-visible@l">
+                                    {% for headerButton in ssaSettings.header.cta_buttons %}
+                                        {% partial 'blocks/single-button' button=headerButton %}
+                                    {% endfor %}
                                 </div>
+
                                 <div class="uk-hidden@l"><a class="menu-toggle" href="#offcanvas" uk-toggle>
                                     <svg width="32" height="32" viewbox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <line y1="11.0459" x2="32" y2="11.0459" stroke="white" stroke-width="2"></line>
@@ -65,13 +63,9 @@
                 {% partial 'site/nav-mobile-links' %}
             </ul>
         </div>
-        <a class="cta cta--lime uk-width uk-margin-top-48" href="#">Register Now<span
-            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30" fill="none"
-                                                                       xmlns="http://www.w3.org/2000/svg"><rect width="30"
-                                                                                                                height="30"
-                                                                                                                rx="15"
-                                                                                                                fill="white"></rect><path
-            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
-            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a></div>
+        {% for headerButton in ssaSettings.header.cta_buttons %}
+            {% partial 'blocks/single-button' button=headerButton classes="uk-width uk-margin-top-48" %}
+        {% endfor %}
+    </div>
 </div>
 {% placeholder headerAfter %}

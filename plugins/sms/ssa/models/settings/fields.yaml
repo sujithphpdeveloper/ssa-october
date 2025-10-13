@@ -54,7 +54,7 @@ tabs:
             spanClass: col-md-6
             type: textarea
             tab: Contact Channels
-        'header[cta]':
+        'header[cta_buttons]':
             label: 'Header CTA'
             span: row
             spanClass: col-md-12
