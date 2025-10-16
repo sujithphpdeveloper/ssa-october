@@ -11977,6 +11977,19 @@ iframe[data-uk-cover] {
   font-weight: bold;
 }
 
+.air-datepicker-body--day-name {
+  color: #A3D000;
+}
+
+.air-datepicker-cell.-current- {
+  color: #A3D000;
+}
+
+.air-datepicker-cell.-selected- {
+  background-color: #BEEE0F;
+  color: #000000;
+}
+
 .uk-grid-row-8 > * + .uk-grid-margin {
   margin-top: 8px !important;
 }
@@ -15193,6 +15206,8 @@ svg path, svg rect {
   cursor: pointer;
   width: 32px;
   min-height: 4.8rem;
+  -webkit-transition: background-color 0.5s ease, border-color 0.5s ease, width 0.5s ease;
+  transition: background-color 0.5s ease, border-color 0.5s ease, width 0.5s ease;
 }
 @media (min-width: 960px) {
   .calendar .date-item {
@@ -15208,6 +15223,7 @@ svg path, svg rect {
 .calendar .date-item--active {
   background-color: #BEEE0F;
   border-color: #BEEE0F;
+  opacity: 1;
   width: 40px;
 }
 @media (min-width: 960px) {

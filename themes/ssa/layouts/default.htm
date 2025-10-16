@@ -8,8 +8,23 @@ default = 0
 
 [formSubmissions]
 ==
+use Cms\Classes\Theme;
+
 public function onInit() {
     $this['ssaSettings'] =  SMS\SSA\Models\Settings::instance();
+
+    $directory = 'assets/scripts';
+    $theme = Theme::getActiveTheme();
+    $absolutePath = $theme->getPath() . '/' . $directory;
+
+    if (is_dir($absolutePath)) {
+        $filePaths = glob($absolutePath . '/*.js');
+        foreach ($filePaths as $fullPath) {
+            $filename = basename($fullPath);
+            $relativePath = $directory . '/' . $filename;
+            $this->addJs($relativePath, ['defer']);
+        }
+    }
 }
 ==
 <!DOCTYPE html>
@@ -43,6 +58,6 @@ public function onInit() {
         {% endif %}
 
         {% partial 'site/footer' %}
-
+        {% partial 'site/footer/scripts' %}
     </body>
 </html>
