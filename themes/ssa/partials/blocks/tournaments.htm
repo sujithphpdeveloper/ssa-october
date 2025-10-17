@@ -177,5 +177,52 @@ function onStart() {
             },
         });
     }, 500);
+
+
+    function showTournament(calendar, dateId) {
+        const slider = calendar.querySelector('.uk-slider');
+        const tournamentItems = Array.from(calendar.querySelectorAll('.tournament-item'));
+
+        if (!slider || tournamentItems.length === 0) {
+            return;
+        }
+
+        const targetIndex = tournamentItems.findIndex(
+            item => item.getAttribute('data-date-id') === dateId
+        );
+
+        if (targetIndex !== -1) {
+            UIkit.slider(slider).show(targetIndex);
+        }
+    }
+
+    function initCalendar() {
+        const calendars = document.querySelectorAll('.calendar');
+
+        calendars.forEach(calendar => {
+            const initialActiveItem = calendar.querySelector('.date-item--active');
+
+            if (initialActiveItem) {
+                const initialDateId = initialActiveItem.getAttribute('data-date-id');
+                showTournament(calendar, initialDateId);
+            }
+
+            const dateItems = calendar.querySelectorAll('.date-item');
+            const activeClass = 'date-item--active';
+
+            dateItems.forEach(dateItem => {
+                dateItem.addEventListener('click', () => {
+                    dateItems.forEach(
+                        item => item.classList.remove(activeClass)
+                    );
+                    dateItem.classList.add(activeClass);
+                    const dateId = dateItem.getAttribute('data-date-id');
+                    showTournament(calendar, dateId);
+                });
+            });
+        });
+    }
+
+    window.addEventListener("load", initCalendar);
 </script>
 {% endput %}
