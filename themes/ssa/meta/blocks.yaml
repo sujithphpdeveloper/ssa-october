@@ -479,6 +479,15 @@ media:
             span: row
             spanClass: col-md-3
             default: false
+        settings[type]:
+            label: Type of the Component
+            type: dropdown
+            span: row
+            spanClass: col-md-3
+            default: section
+            options:
+                section: Section with Selected Media Items
+                list: List of the Media Items
         settings[separator]:
             type: section
             span: full
@@ -487,6 +496,10 @@ media:
             type: text
             span: row
             spanClass: col-md-4
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[section]'
         pre_title:
             label: Title Before Highlight
             type: text
@@ -497,84 +510,27 @@ media:
             type: text
             span: row
             spanClass: col-md-4
-        photo_separator:
-            type: section
-            span: full
-        photo_type:
-            label: Type of the Photos
-            options:
-                latest: Latest
-                custom: Custom
+        type_section:
+            label: Media Section Settings
+            type: nestedform
+            form: '~/themes/ssa/meta/media-section.yaml'
             span: row
-            spanClass: col-md-4
-            type: balloon-selector
-            default: latest
-        photo_no_of_items:
-            label: 'No of Photos to Show'
-            span: row
-            spanClass: col-md-4
-            required: 1
+            spanClass: col-md-12
             trigger:
                 action: show
-                field: photo_type
-                condition: 'value[latest]'
-        photo_custom_list:
-            type: repeater
-            titleFrom: title_when_collapsed
-            label: Select Photos
+                field: settings[type]
+                condition: 'value[section]'
+        type_list:
+            label: Media List Settings
+            type: nestedform
+            form: '~/themes/ssa/meta/media-list.yaml'
             span: row
-            spanClass: col-md-4
-            style: accordion
-            collapsed: true
-            prompt: 'Select Photos'
+            spanClass: col-md-12
             trigger:
                 action: show
-                field: photo_type
-                condition: 'value[custom]'
-            form:
-                fields:
-                    photos:
-                        label: Photo
-                        type: dropdown
-        video_separator:
-            type: section
-            span: full
-        video_type:
-            label: Type of the Videos
-            options:
-                latest: Latest
-                custom: Custom
-            span: row
-            spanClass: col-md-4
-            type: balloon-selector
-            default: latest
-        video_no_of_items:
-            label: 'No of Videos to Show'
-            span: row
-            spanClass: col-md-4
-            required: 1
-            trigger:
-                action: show
-                field: video_type
-                condition: 'value[latest]'
-        video_custom_list:
-            type: repeater
-            titleFrom: title_when_collapsed
-            label: Select Videos
-            span: row
-            spanClass: col-md-4
-            style: accordion
-            collapsed: true
-            prompt: 'Select Video'
-            trigger:
-                action: show
-                field: video_type
-                condition: 'value[custom]'
-            form:
-                fields:
-                    videos:
-                        label: Video
-                        type: dropdown
+                field: settings[type]
+                condition: 'value[list]'
+
 stats:
     name: Stats
     description: A component that displays key numbers and statistics in a visually engaging way, ideal for highlighting achievements, milestones, or performance metrics.
@@ -686,7 +642,6 @@ tabs:
                 action: show
                 field: settings[type]
                 condition: 'value[custom]'
-
 team-members:
     name: Team Members
     description: Displays a list of team members on the website, showcasing their names, positions, bios, and photos. Optionally limits the number of members displayed.

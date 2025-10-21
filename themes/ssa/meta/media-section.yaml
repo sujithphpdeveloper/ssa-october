@@ -1,0 +1,76 @@
+fields:
+    photo_type:
+        label: Type of the Photos
+        options:
+            latest: Latest
+            custom: Custom
+        span: row
+        spanClass: col-md-4
+        type: balloon-selector
+        default: latest
+    photo_no_of_items:
+        label: 'No of Photos to Show'
+        span: row
+        spanClass: col-md-4
+        required: 1
+        trigger:
+            action: show
+            field: photo_type
+            condition: 'value[latest]'
+    photo_custom_list:
+        type: repeater
+        titleFrom: title_when_collapsed
+        label: Select Photos
+        span: row
+        spanClass: col-md-4
+        style: accordion
+        collapsed: true
+        prompt: 'Select Photos'
+        trigger:
+            action: show
+            field: photo_type
+            condition: 'value[custom]'
+        form:
+            fields:
+                photos:
+                    label: Photo
+                    type: dropdown
+    video_separator:
+        type: section
+        span: full
+    video_type:
+        label: Type of the Videos
+        options:
+            latest: Latest
+            custom: Custom
+        span: row
+        spanClass: col-md-4
+        type: balloon-selector
+        default: latest
+    video_no_of_items:
+        label: 'No of Videos to Show'
+        span: row
+        spanClass: col-md-4
+        required: 1
+        trigger:
+            action: show
+            field: video_type
+            condition: 'value[latest]'
+    video_custom_list:
+        type: repeater
+        titleFrom: title_when_collapsed
+        label: Select Videos
+        span: row
+        spanClass: col-md-4
+        style: accordion
+        collapsed: true
+        prompt: 'Select Video'
+        trigger:
+            action: show
+            field: video_type
+            condition: 'value[custom]'
+        form:
+            fields:
+                videos:
+                    label: Video
+                    type: dropdown

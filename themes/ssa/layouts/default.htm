@@ -13,16 +13,27 @@ use Cms\Classes\Theme;
 public function onInit() {
     $this['ssaSettings'] =  SMS\SSA\Models\Settings::instance();
 
-    $directory = 'assets/scripts';
+    $jsDirectory = 'assets/scripts';
+    $cssDirectory = 'assets/styles';
     $theme = Theme::getActiveTheme();
-    $absolutePath = $theme->getPath() . '/' . $directory;
+    $jsAbsolutePath = $theme->getPath() . '/' . $jsDirectory;
+    $cssAbsolutePath = $theme->getPath() . '/' . $cssDirectory;
 
-    if (is_dir($absolutePath)) {
-        $filePaths = glob($absolutePath . '/*.js');
+    if (is_dir($jsAbsolutePath)) {
+        $filePaths = glob($jsAbsolutePath . '/*.js');
         foreach ($filePaths as $fullPath) {
             $filename = basename($fullPath);
-            $relativePath = $directory . '/' . $filename;
+            $relativePath = $jsDirectory . '/' . $filename;
             $this->addJs($relativePath, ['defer']);
+        }
+    }
+
+    if (is_dir($cssAbsolutePath)) {
+        $filePaths = glob($cssAbsolutePath . '/*.css');
+        foreach ($filePaths as $fullPath) {
+            $filename = basename($fullPath);
+            $relativePath = $cssDirectory . '/' . $filename;
+            $this->addCss($relativePath);
         }
     }
 }

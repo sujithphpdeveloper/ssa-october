@@ -30,6 +30,10 @@ class Media extends Model
         'thumbnail' => \System\Models\File::class
     ];
 
+    public $attachMany = [
+        'gallery' => \System\Models\File::class
+    ];
+
     public function getTypeOptions()
     {
         return [

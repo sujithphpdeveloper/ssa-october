@@ -1,49 +1,165 @@
 description = "Media Gallery"
+
+[viewBag]
 ==
 function onStart() {
-    $photos = SMS\SSA\Models\Media::type('photo')->published();
-    $videos = SMS\SSA\Models\Media::type('video')->published();
+    if($this['data']['settings']['type'] == 'list') {
+        $this['photos'] = SMS\SSA\Models\Media::type('photo')->published()->orderBy('created_at', 'desc')->get();
+        $this['videos'] = SMS\SSA\Models\Media::type('video')->published()->orderBy('created_at', 'desc')->get();
 
-    if (isset($this->data['photo_type']) && $this->data['photo_type'] == 'custom' && isset($this->data['photo_custom_list']) && !empty($this->data['photo_custom_list'])) {
-        $photos = $photos->selectedMedias(array_column($this->data['photo_custom_list'], 'photos'));
-    } else {
-        $photos = $photos->limit((isset($this->data['photo_no_of_items']) && $this->data['photo_no_of_items'] > 0)?$this->data['photo_no_of_items']:5);
-    }
-    $this['photos'] = $photos->get();
+        $this['activeTab'] = 0;
 
-    if (isset($this->data['video_type']) && $this->data['video_type'] == 'custom' && isset($this->data['video_custom_list']) && !empty($this->data['video_custom_list'])) {
-        $videos = $videos->selectedMedias(array_column($this->data['video_custom_list'], 'videos'));
+        if(request()->has('open') && request()->get('open') == 'videos')
+        {
+            $this['activeTab'] = 1;
+        }
     } else {
-        $videos = $videos->limit((isset($this->data['video_no_of_items']) && $this->data['video_no_of_items'] > 0)?$this->data['video_no_of_items']:5);
+        $photos = SMS\SSA\Models\Media::type('photo')->published();
+        $videos = SMS\SSA\Models\Media::type('video')->published();
+
+        if (isset($this->data['type_section']['photo_type']) && $this->data['type_section']['photo_type'] == 'custom' && isset($this->data['type_section']['photo_custom_list']) && !empty($this->data['type_section']['photo_custom_list'])) {
+            $photos = $photos->selectedMedias(array_column($this->data['type_section']['photo_custom_list'], 'photos'));
+        } else {
+            $photos = $photos->limit((isset($this->data['type_section']['photo_no_of_items']) && $this->data['type_section']['photo_no_of_items'] > 0)?$this->data['type_section']['photo_no_of_items']:5);
+        }
+        $this['photos'] = $photos->get();
+
+        if (isset($this->data['type_section']['video_type']) && $this->data['type_section']['video_type'] == 'custom' && isset($this->data['type_section']['video_custom_list']) && !empty($this->data['type_section']['video_custom_list'])) {
+            $videos = $videos->selectedMedias(array_column($this->data['type_section']['video_custom_list'], 'videos'));
+        } else {
+            $videos = $videos->limit((isset($this->data['type_section']['video_no_of_items']) && $this->data['type_section']['video_no_of_items'] > 0)?$this->data['type_section']['video_no_of_items']:5);
+        }
+        $this['videos'] = $videos->get();
     }
-    $this['videos'] = $videos->get();
 }
 ==
 {% if data.settings['publish'] %}
-    <section class="gallery uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
-        <div class="uk-container uk-container--expand uk-margin-bottom-32 uk-margin-bottom-56@m">
-            {% if data.settings['hide_separator'] != true %}
-                <hr class="uk-margin-bottom-72 uk-margin-bottom-120@m">
-            {% endif %}
+    {% if data.settings['type'] == 'list' %}
+        <section class="tab uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand">
+                <div class="section-content uk-margin-bottom-64 uk-margin-bottom-104@m">
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">{{data.pre_title}}<strong>{{data.highlight_title}}</strong></div>
+                </div>
+                <ul class="uk-tab uk-grid-8 uk-grid-16@m uk-flex-center uk-margin-bottom-40 uk-margin-bottom-80@m" uk-tab="active:{{activeTab}}" uk-grid>
+                    {% if data.type_list.hide_image_gallery != true %}
+                        <li class="uk-width-auto uk-width-1-4@m">
+                            <a class="uk-font-primary uk-text-24 uk-text-30@m uk-text-uppercase uk-border-24" href>{{ data.type_list.title_image_gallery}}</a>
+                        </li>
+                    {% endif %}
+                    {% if data.type_list.hide_videos != true %}
+                        <li class="uk-width-auto uk-width-1-4@m">
+                            <a class="uk-font-primary uk-text-24 uk-text-30@m uk-text-uppercase uk-border-24" href>{{ data.type_list.title_video}}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="uk-switcher">
+                    {% if data.type_list.hide_image_gallery != true %}
+                        <li>
+                            <section class="media media--gallery">
+                                <div class="uk-container">
+                                    <ul class="uk-grid uk-grid-64@m" uk-grid>
 
-            <div class="section-content"><h2
-                class="section-title uk-text-35 uk-text-50@m uk-text-uppercase uk-margin-bottom-24 uk-margin-bottom-40@m">{{data.title}}</h2>
-                <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">{{data.pre_title}}
-                    <strong> {{ data.highlight_title }}</strong></div>
+                                        {% for photo in photos %}
+                                            <li class="uk-width-1-3@m">
+                                                <div class="media-item" uk-lightbox="video-autoplay: true">
+                                                    <a href="{{photo.thumbnail.url}}">
+                                                        <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
+                                                             data-src="{{photo.thumbnail.url}}" uk-img>
+                                                            <div class="content uk-position-bottom">
+                                                                <div class="title uk-font-primary uk-text-white uk-text-24 uk-text-30@m">{{ photo.name }}</div>
+                                                                <div class="info uk-text-white uk-text-12 uk-text-15@m uk-margin-top-8 uk-text-uppercase">{{ photo.created_at | date('d M Y')}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    {% for galleryItem in photo.gallery %}
+                                                        <a href="{{ galleryItem.url }}"></a>
+                                                    {% endfor %}
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {#
+                                        <div class="uk-text-center uk-margin-top-40 uk-margin-top-80@m"><a class="cta cta--lime" href="#">Load
+                                            More<span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="31" height="30"
+                                                                                                                 viewbox="0 0 31 30" fill="none"
+                                                                                                                 xmlns="http://www.w3.org/2000/svg"><rect
+                                                x="0.5" width="30" height="30" rx="15" fill="white"></rect><path
+                                                d="M10.1214 19.6208L20.0003 20.2581M20.0003 20.2581L20.6377 10.3791M20.0003 20.2581L10.7587 9.7418"
+                                                stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round"></path></svg></span></a>
+                                        </div>
+                                    #}
+                                </div>
+                            </section>
+                        </li>
+                    {% endif %}
+                    {% if data.type_list.hide_videos != true %}
+                        <li>
+                            <section class="media media--video">
+                                <div class="uk-container">
+                                    <ul class="uk-grid uk-grid-64@m" uk-grid>
+                                        {% for video in videos %}
+                                            <li class="uk-width-1-3@m">
+                                                <div class="media-item" uk-lightbox="video-autoplay: true">
+                                                    <a href="{{video.video_url}}">
+                                                    <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
+                                                         data-src="{{video.thumbnail.url}}" uk-img>
+                                                        <div class="content uk-position-bottom">
+                                                            <div class="title uk-font-primary uk-text-white uk-text-24 uk-text-30@m">{{ video.name }}</div>
+                                                            <div class="info uk-text-white uk-text-12 uk-text-15@m uk-margin-top-8 uk-text-uppercase">{{ video.created_at | date('d M Y')}}</div>
+                                                        </div>
+                                                        <span class="uk-position-center play-icon"><svg width="82" height="81" viewbox="0 0 82 81"
+                                                                                                        fill="none" xmlns="http://www.w3.org/2000/svg"><path
+                                                            d="M35.901 54.0825L53.4773 42.8238C54.3693 42.2555 54.8153 41.4806 54.8153 40.4991C54.8153 39.5176 54.3693 38.7427 53.4773 38.1744L35.8964 26.9157C34.9861 26.2715 34.0422 26.2137 33.0647 26.7425C32.0872 27.2712 31.5985 28.1023 31.5985 29.2358V51.7624C31.5985 52.8959 32.0872 53.727 33.0647 54.2557C34.0422 54.7845 34.9861 54.7283 35.8964 54.0871M2.01742 45.0573C2.67111 45.0573 3.23316 45.2852 3.70358 45.741C4.17399 46.1968 4.51459 46.7788 4.72536 47.4868C5.24159 49.9361 5.95637 52.2896 6.86971 54.5474C7.78305 56.8053 8.92395 58.9279 10.2924 60.9152C10.6865 61.4713 10.8698 62.073 10.8423 62.7203C10.8178 63.3706 10.5521 63.9464 10.045 64.4478C9.61735 64.8733 9.10112 65.048 8.4963 64.972C7.89148 64.8961 7.39205 64.5983 6.998 64.0786C5.08275 61.4318 3.56765 58.7881 2.45271 56.1474C1.33471 53.5127 0.529813 50.635 0.0380163 47.5142C-0.0750052 46.8821 0.063981 46.3154 0.454974 45.814C0.845968 45.3095 1.36678 45.0573 2.01742 45.0573ZM10.045 16.6415C10.5521 17.1429 10.8132 17.7173 10.8285 18.3645C10.8438 19.0118 10.6651 19.6043 10.2924 20.1422C8.92395 22.1326 7.79832 24.2461 6.91553 26.4827C6.03274 28.7192 5.33017 31.0621 4.80783 33.5114C4.60622 34.2194 4.25341 34.8014 3.7494 35.2572C3.24844 35.713 2.67111 35.9409 2.01742 35.9409C1.36373 35.9409 0.842913 35.6704 0.454974 35.1295C0.0670357 34.5886 -0.0643135 34.0037 0.0609266 33.3746C0.555777 30.3115 1.34693 27.49 2.43438 24.9101C3.52183 22.3271 5.01402 19.7137 6.91095 17.07C7.30499 16.5473 7.80443 16.2237 8.40925 16.0991C9.01406 15.9745 9.55931 16.1583 10.045 16.6415ZM16.4597 70.8521C16.9668 70.3355 17.5655 70.0818 18.2559 70.0909C18.9462 70.1 19.5694 70.3021 20.1253 70.6971C22.065 72.0585 24.1849 73.2132 26.485 74.1614C28.7852 75.1064 31.1861 75.8357 33.6879 76.3493C34.3385 76.4982 34.8792 76.8173 35.3099 77.3065C35.7375 77.7988 35.9514 78.3686 35.9514 79.0158C35.9514 79.6631 35.6948 80.1782 35.1816 80.5611C34.6684 80.9439 34.0941 81.0488 33.4588 80.8756C30.1445 80.2678 27.2227 79.423 24.6935 78.3412C22.1673 77.2594 19.5938 75.8129 16.9729 74.0018C16.4322 73.6098 16.0901 73.113 15.9466 72.5113C15.803 71.9096 15.974 71.3535 16.4597 70.8521ZM36.1805 1.98237C36.1805 2.69041 35.9559 3.27538 35.5069 3.73727C35.0579 4.19917 34.4775 4.53192 33.7658 4.73552C31.2457 5.24907 28.8463 5.96015 26.5675 6.86875C24.2888 7.77735 22.1811 8.92146 20.2444 10.3011C19.6824 10.6931 19.0715 10.8754 18.4116 10.8481C17.7518 10.8237 17.1684 10.5594 16.6613 10.0549C16.2154 9.61126 16.0351 9.08403 16.1207 8.47324C16.2062 7.86244 16.5193 7.36104 17.06 6.96903C19.7389 5.15791 22.3506 3.716 24.8951 2.64331C27.4427 1.57061 30.4026 0.730386 33.7749 0.122627C34.4103 0.0132301 34.9693 0.134782 35.4519 0.487282C35.9376 0.836743 36.1805 1.33511 36.1805 1.98237ZM77.418 40.4991C77.418 31.6228 74.5879 23.8404 68.9277 17.152C63.2674 10.4636 56.1089 6.27771 47.4521 4.59421C46.835 4.46659 46.3295 4.15663 45.9354 3.66434C45.5414 3.17206 45.3444 2.6114 45.3444 1.98237C45.3444 1.35334 45.5887 0.84434 46.0775 0.455375C46.5662 0.0664088 47.1084 -0.0733758 47.7041 0.0360208C57.6316 1.6952 65.8303 6.31417 72.3 13.8929C78.7697 21.4717 82.003 30.3404 82 40.4991C81.9969 50.6578 78.7636 59.5265 72.3 67.1053C65.8364 74.684 57.6393 79.303 47.7087 80.9622C47.1069 81.0746 46.5632 80.9363 46.0775 80.5474C45.5887 80.1584 45.3444 79.6479 45.3444 79.0158C45.3444 78.3838 45.5414 77.8216 45.9354 77.3293C46.3295 76.8431 46.8335 76.5347 47.4475 76.404C56.1074 74.7205 63.2674 70.5345 68.9277 63.8462C74.5879 57.1578 77.418 49.3754 77.418 40.4991Z"
+                                                            fill="#BEEE0F"></path></svg></span></div>
+                                                </a></div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    {#
+                                    <div class="uk-text-center uk-margin-top-40 uk-margin-top-80@m">
+                                        <a class="cta cta--lime" href="#">Load More<span class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="31" height="30"
+                                                                                                             viewbox="0 0 31 30" fill="none"
+                                                                                                             xmlns="http://www.w3.org/2000/svg"><rect
+                                            x="0.5" width="30" height="30" rx="15" fill="white"></rect><path
+                                            d="M10.1214 19.6208L20.0003 20.2581M20.0003 20.2581L20.6377 10.3791M20.0003 20.2581L10.7587 9.7418"
+                                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round"></path></svg></span>
+                                        </a>
+                                    </div>
+                                    #}
+                                </div>
+                            </section>
+                        </li>
+                    {% endif %}
+                </ul>
             </div>
-        </div>
-        <div class="uk-container">
-            <div class="uk-grid uk-grid-24 uk-flex-bottom" uk-grid>
-                <div class="uk-width-2-5@m">
-                    <div class="uk-slider uk-position-relative" uk-slider>
-                        <div class="uk-slider-container">
-                            <ul class="uk-slider-items uk-grid" uk-grid>
-                                {% for photo in photos %}
+        </section>
+    {% else %}
+        <section class="gallery uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+            <div class="uk-container uk-container--expand uk-margin-bottom-32 uk-margin-bottom-56@m">
+                {% if data.settings['hide_separator'] != true %}
+                <hr class="uk-margin-bottom-72 uk-margin-bottom-120@m">
+                {% endif %}
+
+                <div class="section-content"><h2
+                    class="section-title uk-text-35 uk-text-50@m uk-text-uppercase uk-margin-bottom-24 uk-margin-bottom-40@m">{{data.title}}</h2>
+                    <div class="section-description uk-text-black uk-text-56 uk-text-130@m uk-text-height-110 uk-text-medium">{{data.pre_title}}
+                        <strong> {{ data.highlight_title }}</strong></div>
+                </div>
+            </div>
+            <div class="uk-container">
+                <div class="uk-grid uk-grid-24 uk-flex-bottom" uk-grid>
+                    <div class="uk-width-2-5@m">
+                        <div class="uk-slider uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid" uk-grid>
+                                    {% for photo in photos %}
                                     <li class="uk-width">
                                         <a class="gallery-item gallery-item--photo" href="#">
                                             <div class="featured-img-container uk-position-relative">
                                                 <div class="featured-img uk-background-cover uk-background-cover uk-border-24 uk-position-relative uk-height-1-1"
-                                                    data-src="{{photo.thumbnail.url}}" uk-img></div>
+                                                     data-src="{{photo.thumbnail.url}}" uk-img></div>
                                                 <div
                                                     class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-position-cover uk-padding-12 uk-padding-20@m">
                                                     <div class="uk-flex uk-flex-between uk-flex-middle">
@@ -61,22 +177,22 @@ function onStart() {
                                             </div>
                                         </a>
                                     </li>
-                                {% endfor %}
-                            </ul>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-20 uk-margin-bottom-32@m"></ul>
                         </div>
-                        <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-20 uk-margin-bottom-32@m"></ul>
                     </div>
-                </div>
-                <div class="uk-width-3-5@m">
-                    <div class="uk-slider uk-position-relative" uk-slider>
-                        <div class="uk-slider-container">
-                            <ul class="uk-slider-items uk-grid" uk-grid>
-                                {% for video in videos %}
+                    <div class="uk-width-3-5@m">
+                        <div class="uk-slider uk-position-relative" uk-slider>
+                            <div class="uk-slider-container">
+                                <ul class="uk-slider-items uk-grid" uk-grid>
+                                    {% for video in videos %}
                                     <li class="uk-width">
                                         <div class="gallery-item gallery-item--video">
                                             <div class="featured-img-container uk-position-relative">
                                                 <div class="featured-img uk-background-cover uk-background-cover uk-border-24 uk-position-cover uk-position-z-index-negative"
-                                                    data-src="{{video.thumbnail.url}}" uk-img></div>
+                                                     data-src="{{video.thumbnail.url}}" uk-img></div>
                                                 <div
                                                     class="featured-img-content uk-flex uk-flex-column uk-flex-between uk-height-1-1 uk-padding-20 uk-padding-32@m">
                                                     <div class="uk-flex uk-flex-between uk-flex-middle">
@@ -85,7 +201,7 @@ function onStart() {
                                                             {{ video.name }}
                                                         </div>
                                                         <a class="arrow-icon uk-flex-no-shrink uk-margin-left-8 uk-position-relative uk-position-z-index-high"
-                                                            href="#">
+                                                           href="{{ url('/media?open=videos#medias')}}">
                                                             <svg width="50" height="50" viewbox="0 0 50 50" fill="none"
                                                                  xmlns="http://www.w3.org/2000/svg">
                                                                 <rect width="50" height="50" rx="25" fill="#BEEE0F"></rect>
@@ -97,23 +213,24 @@ function onStart() {
                                                 </div>
                                                 <div class="uk-position-cover" uk-lightbox="video-autoplay: true">
                                                     <a class="uk-flex uk-flex-center uk-flex-middle uk-height-1-1" href="{{video.video_url}}">
-                                                        <span class="play-icon">
-                                                            <svg width="82" height="81" viewbox="0 0 82 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M35.901 54.0825L53.4773 42.8238C54.3693 42.2555 54.8153 41.4806 54.8153 40.4991C54.8153 39.5176 54.3693 38.7427 53.4773 38.1744L35.8964 26.9157C34.9861 26.2715 34.0422 26.2137 33.0647 26.7425C32.0873 27.2712 31.5985 28.1023 31.5985 29.2358V51.7624C31.5985 52.8959 32.0873 53.727 33.0647 54.2557C34.0422 54.7845 34.9861 54.7283 35.8964 54.0871M2.01742 45.0573C2.67111 45.0573 3.23317 45.2852 3.70358 45.741C4.17399 46.1968 4.51459 46.7788 4.72536 47.4868C5.24159 49.9361 5.95637 52.2896 6.86971 54.5474C7.78305 56.8053 8.92395 58.9279 10.2924 60.9152C10.6865 61.4713 10.8698 62.073 10.8423 62.7203C10.8178 63.3706 10.5521 63.9464 10.045 64.4478C9.61735 64.8733 9.10112 65.048 8.4963 64.972C7.89149 64.8961 7.39205 64.5983 6.998 64.0786C5.08275 61.4318 3.56765 58.7881 2.45271 56.1474C1.33471 53.5127 0.529813 50.635 0.0380163 47.5142C-0.0750052 46.8821 0.0639811 46.3154 0.454974 45.814C0.845968 45.3095 1.36678 45.0573 2.01742 45.0573ZM10.045 16.6415C10.5521 17.1429 10.8132 17.7173 10.8285 18.3645C10.8438 19.0118 10.6651 19.6043 10.2924 20.1422C8.92395 22.1326 7.79832 24.2461 6.91553 26.4827C6.03274 28.7192 5.33017 31.0621 4.80783 33.5114C4.60622 34.2194 4.25341 34.8014 3.7494 35.2572C3.24844 35.713 2.67111 35.9409 2.01742 35.9409C1.36373 35.9409 0.842913 35.6705 0.454974 35.1295C0.0670357 34.5886 -0.0643135 34.0037 0.0609266 33.3746C0.555778 30.3115 1.34693 27.49 2.43438 24.9101C3.52183 22.3271 5.01402 19.7137 6.91095 17.07C7.30499 16.5473 7.80443 16.2237 8.40925 16.0991C9.01406 15.9745 9.55932 16.1583 10.045 16.6415ZM16.4597 70.8521C16.9668 70.3355 17.5655 70.0818 18.2559 70.0909C18.9462 70.1 19.5694 70.3021 20.1253 70.6971C22.065 72.0585 24.1849 73.2132 26.4851 74.1614C28.7852 75.1064 31.1861 75.8357 33.6879 76.3493C34.3385 76.4982 34.8792 76.8173 35.3099 77.3065C35.7375 77.7988 35.9514 78.3686 35.9514 79.0158C35.9514 79.6631 35.6948 80.1782 35.1816 80.5611C34.6684 80.9439 34.0942 81.0488 33.4588 80.8756C30.1445 80.2678 27.2227 79.423 24.6935 78.3412C22.1673 77.2594 19.5938 75.8129 16.9729 74.0018C16.4322 73.6098 16.0901 73.113 15.9466 72.5113C15.803 71.9096 15.9741 71.3535 16.4597 70.8521ZM36.1805 1.98237C36.1805 2.69041 35.9559 3.27538 35.5069 3.73727C35.0579 4.19917 34.4775 4.53192 33.7658 4.73552C31.2457 5.24907 28.8463 5.96015 26.5675 6.86875C24.2888 7.77735 22.1811 8.92146 20.2444 10.3011C19.6824 10.6931 19.0715 10.8754 18.4117 10.8481C17.7519 10.8237 17.1684 10.5594 16.6613 10.0549C16.2154 9.61127 16.0351 9.08403 16.1207 8.47324C16.2062 7.86244 16.5193 7.36104 17.06 6.96903C19.7389 5.15791 22.3506 3.716 24.8951 2.64331C27.4427 1.57061 30.4026 0.730386 33.7749 0.122627C34.4103 0.0132301 34.9693 0.134782 35.4519 0.487282C35.9376 0.836743 36.1805 1.33511 36.1805 1.98237ZM77.4181 40.4991C77.4181 31.6228 74.5879 23.8404 68.9277 17.152C63.2674 10.4636 56.1089 6.27771 47.4521 4.59421C46.835 4.46659 46.3295 4.15663 45.9354 3.66434C45.5414 3.17206 45.3444 2.6114 45.3444 1.98237C45.3444 1.35334 45.5887 0.84434 46.0775 0.455375C46.5662 0.0664088 47.1084 -0.0733758 47.7041 0.0360208C57.6316 1.6952 65.8303 6.31417 72.3 13.8929C78.7697 21.4717 82.0031 30.3404 82 40.4991C81.9969 50.6578 78.7636 59.5265 72.3 67.1053C65.8364 74.684 57.6393 79.303 47.7087 80.9622C47.1069 81.0746 46.5632 80.9363 46.0775 80.5474C45.5887 80.1584 45.3444 79.6479 45.3444 79.0158C45.3444 78.3838 45.5414 77.8216 45.9354 77.3293C46.3295 76.8431 46.8335 76.5347 47.4475 76.404C56.1074 74.7205 63.2674 70.5346 68.9277 63.8462C74.5879 57.1578 77.4181 49.3754 77.4181 40.4991Z" fill="white"></path>
-                                                            </svg>
-                                                        </span>
+                                                                <span class="play-icon">
+                                                                    <svg width="82" height="81" viewbox="0 0 82 81" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M35.901 54.0825L53.4773 42.8238C54.3693 42.2555 54.8153 41.4806 54.8153 40.4991C54.8153 39.5176 54.3693 38.7427 53.4773 38.1744L35.8964 26.9157C34.9861 26.2715 34.0422 26.2137 33.0647 26.7425C32.0873 27.2712 31.5985 28.1023 31.5985 29.2358V51.7624C31.5985 52.8959 32.0873 53.727 33.0647 54.2557C34.0422 54.7845 34.9861 54.7283 35.8964 54.0871M2.01742 45.0573C2.67111 45.0573 3.23317 45.2852 3.70358 45.741C4.17399 46.1968 4.51459 46.7788 4.72536 47.4868C5.24159 49.9361 5.95637 52.2896 6.86971 54.5474C7.78305 56.8053 8.92395 58.9279 10.2924 60.9152C10.6865 61.4713 10.8698 62.073 10.8423 62.7203C10.8178 63.3706 10.5521 63.9464 10.045 64.4478C9.61735 64.8733 9.10112 65.048 8.4963 64.972C7.89149 64.8961 7.39205 64.5983 6.998 64.0786C5.08275 61.4318 3.56765 58.7881 2.45271 56.1474C1.33471 53.5127 0.529813 50.635 0.0380163 47.5142C-0.0750052 46.8821 0.0639811 46.3154 0.454974 45.814C0.845968 45.3095 1.36678 45.0573 2.01742 45.0573ZM10.045 16.6415C10.5521 17.1429 10.8132 17.7173 10.8285 18.3645C10.8438 19.0118 10.6651 19.6043 10.2924 20.1422C8.92395 22.1326 7.79832 24.2461 6.91553 26.4827C6.03274 28.7192 5.33017 31.0621 4.80783 33.5114C4.60622 34.2194 4.25341 34.8014 3.7494 35.2572C3.24844 35.713 2.67111 35.9409 2.01742 35.9409C1.36373 35.9409 0.842913 35.6705 0.454974 35.1295C0.0670357 34.5886 -0.0643135 34.0037 0.0609266 33.3746C0.555778 30.3115 1.34693 27.49 2.43438 24.9101C3.52183 22.3271 5.01402 19.7137 6.91095 17.07C7.30499 16.5473 7.80443 16.2237 8.40925 16.0991C9.01406 15.9745 9.55932 16.1583 10.045 16.6415ZM16.4597 70.8521C16.9668 70.3355 17.5655 70.0818 18.2559 70.0909C18.9462 70.1 19.5694 70.3021 20.1253 70.6971C22.065 72.0585 24.1849 73.2132 26.4851 74.1614C28.7852 75.1064 31.1861 75.8357 33.6879 76.3493C34.3385 76.4982 34.8792 76.8173 35.3099 77.3065C35.7375 77.7988 35.9514 78.3686 35.9514 79.0158C35.9514 79.6631 35.6948 80.1782 35.1816 80.5611C34.6684 80.9439 34.0942 81.0488 33.4588 80.8756C30.1445 80.2678 27.2227 79.423 24.6935 78.3412C22.1673 77.2594 19.5938 75.8129 16.9729 74.0018C16.4322 73.6098 16.0901 73.113 15.9466 72.5113C15.803 71.9096 15.9741 71.3535 16.4597 70.8521ZM36.1805 1.98237C36.1805 2.69041 35.9559 3.27538 35.5069 3.73727C35.0579 4.19917 34.4775 4.53192 33.7658 4.73552C31.2457 5.24907 28.8463 5.96015 26.5675 6.86875C24.2888 7.77735 22.1811 8.92146 20.2444 10.3011C19.6824 10.6931 19.0715 10.8754 18.4117 10.8481C17.7519 10.8237 17.1684 10.5594 16.6613 10.0549C16.2154 9.61127 16.0351 9.08403 16.1207 8.47324C16.2062 7.86244 16.5193 7.36104 17.06 6.96903C19.7389 5.15791 22.3506 3.716 24.8951 2.64331C27.4427 1.57061 30.4026 0.730386 33.7749 0.122627C34.4103 0.0132301 34.9693 0.134782 35.4519 0.487282C35.9376 0.836743 36.1805 1.33511 36.1805 1.98237ZM77.4181 40.4991C77.4181 31.6228 74.5879 23.8404 68.9277 17.152C63.2674 10.4636 56.1089 6.27771 47.4521 4.59421C46.835 4.46659 46.3295 4.15663 45.9354 3.66434C45.5414 3.17206 45.3444 2.6114 45.3444 1.98237C45.3444 1.35334 45.5887 0.84434 46.0775 0.455375C46.5662 0.0664088 47.1084 -0.0733758 47.7041 0.0360208C57.6316 1.6952 65.8303 6.31417 72.3 13.8929C78.7697 21.4717 82.0031 30.3404 82 40.4991C81.9969 50.6578 78.7636 59.5265 72.3 67.1053C65.8364 74.684 57.6393 79.303 47.7087 80.9622C47.1069 81.0746 46.5632 80.9363 46.0775 80.5474C45.5887 80.1584 45.3444 79.6479 45.3444 79.0158C45.3444 78.3838 45.5414 77.8216 45.9354 77.3293C46.3295 76.8431 46.8335 76.5347 47.4475 76.404C56.1074 74.7205 63.2674 70.5346 68.9277 63.8462C74.5879 57.1578 77.4181 49.3754 77.4181 40.4991Z" fill="white"></path>
+                                                                    </svg>
+                                                                </span>
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
-                                {% endfor %}
-                            </ul>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-24 uk-margin-bottom-40@m"></ul>
                         </div>
-                        <ul class="uk-slider-nav uk-dotnav uk-position-bottom-center uk-margin-bottom-24 uk-margin-bottom-40@m"></ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
 {% endif %}

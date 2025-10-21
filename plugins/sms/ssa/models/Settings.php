@@ -2,6 +2,7 @@
 
 use Model;
 
+
 class Settings extends Model
 {
     public $implement = [

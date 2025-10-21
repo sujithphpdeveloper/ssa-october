@@ -1,0 +1,25 @@
+fields:
+    hide_image_gallery:
+        label: Hide the Image Gallery
+        comment: This will allow to hide the Image Gallery from the Section
+        type: switch
+        span: row
+        spanClass: col-md-3
+        default: false
+    title_image_gallery:
+        label: Tab Title for the Image Gallery
+        type: text
+        span: row
+        spanClass: col-md-3
+    hide_videos:
+        label: Hide the Videos
+        comment: This will allow to hide the Videos from the Section
+        type: switch
+        span: row
+        spanClass: col-md-3
+        default: false
+    title_video:
+        label: Tab Title for the Videos
+        type: text
+        span: row
+        spanClass: col-md-3

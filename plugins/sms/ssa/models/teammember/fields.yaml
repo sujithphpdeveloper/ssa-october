@@ -24,3 +24,16 @@ fields:
         span: row
         spanClass: col-md-4
         type: fileupload
+tabs:
+    fields:
+        gallery:
+            label: 'Add Images'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            maxFiles: '20'
+            span: auto
+            type: fileupload
+            tab: 'Gallery Images'

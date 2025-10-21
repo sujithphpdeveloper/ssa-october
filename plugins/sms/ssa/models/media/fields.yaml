@@ -1,3 +1,21 @@
+tabs:
+    fields:
+        gallery:
+            label: 'Add Images'
+            mode: image
+            useCaption: true
+            thumbOptions:
+                mode: crop
+                extension: auto
+            maxFiles: '20'
+            span: row
+            spanClass: col-md-12
+            type: fileupload
+            tab: 'Image Gallery'
+            trigger:
+                action: show
+                field: type
+                condition: 'value[photo]'
 fields:
     name:
         label: Name
