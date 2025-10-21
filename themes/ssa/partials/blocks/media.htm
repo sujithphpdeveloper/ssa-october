@@ -156,7 +156,7 @@ function onStart() {
                                 <ul class="uk-slider-items uk-grid" uk-grid>
                                     {% for photo in photos %}
                                     <li class="uk-width">
-                                        <a class="gallery-item gallery-item--photo" href="#">
+                                        <a class="gallery-item gallery-item--photo" href="{{ url('/media#medias')}}">
                                             <div class="featured-img-container uk-position-relative">
                                                 <div class="featured-img uk-background-cover uk-background-cover uk-border-24 uk-position-relative uk-height-1-1"
                                                      data-src="{{photo.thumbnail.url}}" uk-img></div>
