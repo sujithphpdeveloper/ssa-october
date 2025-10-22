@@ -160,8 +160,10 @@ function onStart() {
 {% endif %}
 
 {% put footerScripts %}
-<script type="text/javascript">
+<script>
+    console.log('in');
     setTimeout(function () {
+        console.log('timer in');
         const tournamentDatepicker = document.querySelector('.tournament-datepicker');
         const availableDays = {{ calendarDays | json_encode | raw }};
         const startDate = '{{ now | date("Y-m-d")}}';
@@ -171,7 +173,7 @@ function onStart() {
             dateFormat: "dd-MM-yyyy",
             locale: localeEn,
             multipleDates: false,
-            viewDate: new Date(2025, 11),
+            viewDate: new Date(2025, 10),
             selectedDates: availableDays,
             onSelect({date, formattedDate, datepicker}) {
                 //alert("Date selected: " + formattedDate)
@@ -189,7 +191,7 @@ function onStart() {
                 }
             }
         });
-    }, 500);
+    }, 1000);
 
 
     function showTournament(calendar, dateId) {
