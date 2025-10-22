@@ -161,13 +161,11 @@ function onStart() {
 
 {% put footerScripts %}
 <script>
-    console.log('in');
     setTimeout(function () {
-        console.log('timer in');
         const tournamentDatepicker = document.querySelector('.tournament-datepicker');
         const availableDays = {{ calendarDays | json_encode | raw }};
         const startDate = '{{ now | date("Y-m-d")}}';
-        new AirDatepicker(tournamentDatepicker, {
+        var dp = new AirDatepicker(tournamentDatepicker, {
             startDate,
             autoClose: false,
             dateFormat: "dd-MM-yyyy",
@@ -191,6 +189,7 @@ function onStart() {
                 }
             }
         });
+        dp.setViewDate(new Date(2025, 10, 1));
     }, 1000);
 
 
