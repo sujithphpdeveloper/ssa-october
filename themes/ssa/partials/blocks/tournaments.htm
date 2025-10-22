@@ -171,7 +171,6 @@ function onStart() {
             dateFormat: "dd-MM-yyyy",
             locale: localeEn,
             multipleDates: false,
-            viewDate: new Date(2025, 10),
             selectedDates: availableDays,
             onSelect({date, formattedDate, datepicker}) {
                 //alert("Date selected: " + formattedDate)
@@ -189,7 +188,7 @@ function onStart() {
                 }
             }
         });
-        dp.setViewDate(new Date(2025, 10, 1));
+        dp.setViewDate(new Date({{ upcomingDays[0] | date("Y") }}, {{ upcomingDays[0] | date("n") - 1 }}, 1));
     }, 1000);
 
 
