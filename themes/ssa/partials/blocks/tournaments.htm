@@ -160,7 +160,7 @@ function onStart() {
 {% endif %}
 
 {% put footerScripts %}
-<script >
+<script type="text/javascript">
     setTimeout(function () {
         const tournamentDatepicker = document.querySelector('.tournament-datepicker');
         const availableDays = {{ calendarDays | json_encode | raw }};
@@ -170,11 +170,24 @@ function onStart() {
             autoClose: false,
             dateFormat: "dd-MM-yyyy",
             locale: localeEn,
-            multipleDates: true,
+            multipleDates: false,
+            viewDate: new Date(2025, 11),
             selectedDates: availableDays,
             onSelect({date, formattedDate, datepicker}) {
                 //alert("Date selected: " + formattedDate)
             },
+            onRenderCell: function ({ date, cellType }) {
+                if (cellType === 'day') {
+                    const isAllowed = availableDays .some(availableDay  => {
+                        const allowed = new Date(availableDay);
+                        return allowed.toDateString() === date.toDateString();
+                    });
+
+                    if (!isAllowed) {
+                        return { disabled: true };
+                    }
+                }
+            }
         });
     }, 500);
 
