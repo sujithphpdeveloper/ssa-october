@@ -1,23 +1,24 @@
-<?php namespace Sms\Ssa\Components;
+<?php namespace SMS\SSA\Components;
 
 use Cms\Classes\ComponentBase;
 use Flash;
 use Validator;
 use ValidationException;
-use SMS\SSA\Models\FormSubmission as SubmissionModel;
+use SMS\SSA\Models\FormSubmission;
+
 
 /**
- * FormSubmission Component
+ * SiteHelper Component
  *
  * @link https://docs.octobercms.com/4.x/extend/cms-components.html
  */
-class FormSubmission extends ComponentBase
+class SiteHelper extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name' => 'Form Submission Component',
-            'description' => 'No description provided yet...'
+            'name' => 'Site Helper Component',
+            'description' => 'Component will do the common functions in the website'
         ];
     }
 
@@ -33,7 +34,7 @@ class FormSubmission extends ComponentBase
     {
         $data = post();
 
-        $formSubmissions = new SubmissionModel();
+        $formSubmissions = new FormSubmission();
         $formTypes = $formSubmissions->getTypeOptions();
 
         $rules = [

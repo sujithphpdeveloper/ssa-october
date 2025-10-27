@@ -173,7 +173,7 @@ function onStart() {
             multipleDates: false,
             selectedDates: availableDays,
             onSelect({date, formattedDate, datepicker}) {
-                //alert("Date selected: " + formattedDate)
+                alert("Date selected: " + date)
             },
             onRenderCell: function ({ date, cellType }) {
                 if (cellType === 'day') {

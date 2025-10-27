@@ -60,7 +60,7 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            'SMS\SSA\Components\FormSubmission' => 'formSubmissions'
+            'SMS\SSA\Components\SiteHelper' => 'siteHelper',
         ];
     }
 
