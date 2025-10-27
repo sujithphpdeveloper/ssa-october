@@ -1,38 +1,10 @@
 description = "Tournaments"
 ==
 function onStart() {
-
-    $today = Carbon\Carbon::today()->toDateString();
-
-    $upcomingDayCount = 4;
-    $this['upcomingDays'] = $upcomingDays = SMS\SSA\Models\Tournament::published()
-        ->selectRaw('DISTINCT DATE(date) as unique_date')
-        ->where('date', '>=', $today)
-        ->orderBy('unique_date', 'asc')
-        ->pluck('unique_date')
-        ->take($upcomingDayCount);
-
-    $pastDayCount = ($upcomingDayCount - count($upcomingDays) == 0)? 2: (2+($upcomingDayCount - count($upcomingDays)));
-    $this['pastDays'] = $pastDays = SMS\SSA\Models\Tournament::published()
-    ->selectRaw('DISTINCT DATE(date) as unique_date')
-    ->where('date', '<', $today)
-    ->orderBy('unique_date', 'asc')
-    ->pluck('unique_date')
-    ->take($pastDayCount);
-
-    $allTournamentDays = $pastDays->merge($upcomingDays)->unique()->toArray();
-    $tournaments = SMS\SSA\Models\Tournament::published()
-        ->whereIn(DB::raw('DATE(date)'), $allTournamentDays);
-    $tournaments = $tournaments->orderBy('date', 'asc');
-    $this['tournaments'] = $tournaments->get();
-
-    $this['calendarDays'] = SMS\SSA\Models\Tournament::published()
-        ->selectRaw('DISTINCT DATE(date) as available_date')
-        ->where('date', '>=', Carbon\Carbon::today()->subMonths(6)->startOfDay())
-        ->where('date', '<=', Carbon\Carbon::today()->addYears(1)->endOfDay())
-        ->orderBy('available_date', 'asc')
-        ->pluck('available_date')
-        ->toArray();
+    if (isset($this['siteHelper'])) {
+        $component = $this['siteHelper'];
+        $this['tournamentData'] = $component->getTournamentList();
+    }
 }
 ==
 {% if data.settings['publish'] %}
@@ -44,7 +16,7 @@ function onStart() {
                         <h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.title }}</h2>
                     </div>
                     <div class="uk-grid uk-grid-8 uk-grid-32@m uk-flex-bottom uk-flex-center uk-margin-bottom-48 uk-margin-bottom-120@m" uk-grid>
-                        {% for pastDate in pastDays %}
+                        {% for pastDate in tournamentData.pastDays %}
                             <div class="uk-width-auto">
                                 <div class="date-item date-item--past uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m"
                                      data-date-id="{{ pastDate | date('dmY')}}" >
@@ -58,7 +30,7 @@ function onStart() {
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for upcomingDay in upcomingDays %}
+                        {% for upcomingDay in tournamentData.upcomingDays %}
                             <div class="uk-width-auto">
                                 <div class="date-item {{ loop.first ?'date-item--active':''}} uk-text-center uk-border-24 uk-padding-top-12 uk-padding-bottom-12 uk-padding-top-20@m uk-padding-bottom-20@m" data-date-id="{{ upcomingDay | date('dmY')}}">
                                     <div class="month uk-text-12 uk-text-15@m uk-text-medium uk-text-uppercase uk-margin-bottom-12">{{ upcomingDay | date('M') }}</div>
@@ -88,7 +60,7 @@ function onStart() {
                     <div class="uk-slider uk-position-relative" uk-slider>
                         <div class="uk-slider-container">
                             <ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-flex-bottom" uk-grid>
-                                {% for tournament in tournaments %}
+                                {% for tournament in tournamentData.tournaments %}
                                     <li class="tournament-item uk-width-1-3@m" data-date-id="{{ tournament.date | date('dmY') }}">
                                         <a class="featured-img-container uk-flex uk-flex-bottom uk-position-relative" href="#">
                                             <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
@@ -163,7 +135,7 @@ function onStart() {
 <script>
     setTimeout(function () {
         const tournamentDatepicker = document.querySelector('.tournament-datepicker');
-        const availableDays = {{ calendarDays | json_encode | raw }};
+        const availableDays = {{ tournamentData.calendarDays | json_encode | raw }};
         const startDate = '{{ now | date("Y-m-d")}}';
         var dp = new AirDatepicker(tournamentDatepicker, {
             startDate,
