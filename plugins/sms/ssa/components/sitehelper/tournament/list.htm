@@ -1,0 +1,33 @@
+<ul class="uk-slider-items uk-grid uk-grid-16 uk-grid-24@m uk-flex-bottom" uk-grid>
+    {% for tournament in tournamentData.tournaments %}
+    <li class="tournament-item uk-width-1-3@m" data-date-id="{{ tournament.date | date('dmY') }}">
+        <a class="featured-img-container uk-flex uk-flex-bottom uk-position-relative"
+           {% if tournament.link is not empty %}
+           href="{{ tournament.link }}"
+           {% endif %}
+        >
+            <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
+                 data-src="{{ tournament.thumbnail.url }}" uk-img>
+                <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                    <div>
+                        <div class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
+                            {{ tournament.programme.name }}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">
+                            {{ tournament.name }}
+                        </div>
+                        <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                            {{ tournament.location }}
+                        </div>
+                        <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
+                            {{ tournament.date | date("l, jS M Y @ g:i a") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>

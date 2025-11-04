@@ -37,3 +37,8 @@ fields:
         span: row
         spanClass: col-md-4
         type: fileupload
+    url:
+        label: URL
+        span: row
+        spanClass: col-md-4
+        type: pagefinder

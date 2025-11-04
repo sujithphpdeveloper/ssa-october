@@ -1,0 +1,158 @@
+<section class="calendar uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+    <div class="uk-container uk-container--expand">
+        <div class="calendar-bg uk-background-white uk-border-24">
+            <div class="uk-container">
+                <div class="section-content uk-text-center uk-margin-bottom-24 uk-margin-bottom-40@m">
+                    <h2 class="section-title uk-text-35 uk-text-50@m uk-text-uppercase">{{ data.title }}</h2>
+                </div>
+
+                <div class="uk-grid uk-grid-8 uk-grid-32@m uk-flex-bottom uk-flex-center uk-margin-bottom-48 uk-margin-bottom-120@m" uk-grid id="tournamentDays">
+                    {% partial 'tournamentHelper::tournament/days' tournamentData=tournamentData %}
+                </div>
+
+                <div class="uk-slider uk-position-relative" uk-slider>
+                    <div class="uk-slider-container" id="tournamentList">
+                        {% partial 'tournamentHelper::tournament/list' tournamentData=tournamentData %}
+                    </div>
+                    <div class="uk-slider-navigation uk-grid uk-grid-32@m uk-flex-middle uk-flex-between" uk-grid>
+                        <div><a class="cta cta--black" href="#">Get in touch<span
+                            class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
+                                                                                       fill="none" xmlns="http://www.w3.org/2000/svg"><rect
+                            width="30" height="30" rx="15" fill="white"></rect><path
+                            d="M9.62139 10.3753L19.5003 9.73799M19.5003 9.73799L20.1377 19.6169M19.5003 9.73799L10.2587 20.2543"
+                            stroke="#9F9F9F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></a>
+                        </div>
+                        <div>
+                            <div class="uk-grid uk-grid-16 uk-grid-24@m" uk-grid>
+                                <div><a href uk-slider-item="previous"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                     viewbox="0 0 50 50" fill="none"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"><rect
+                                    x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                    d="M25 35L15 25M15 25L25 15M15 25H35" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path></svg></span></a></div>
+                                <div><a href uk-slider-item="next"><span class="arrow-icon"><svg width="50" height="50"
+                                                                                                 viewbox="0 0 50 50" fill="none"
+                                                                                                 xmlns="http://www.w3.org/2000/svg"><rect
+                                    x="1" y="1" width="48" height="48" rx="24" stroke="#D4D4D4" stroke-width="2"></rect><path
+                                    d="M25 35L35 25M35 25L25 15M35 25H15" stroke="#9F9F9F" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path></svg></span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-grid uk-grid-40@m uk-flex-center uk-flex-middle uk-margin-top-40 uk-margin-top-72@m" uk-grid>
+                    <div class="uk-width-auto@m">
+                        <div class="uk-text-24 uk-text-30@m">{{ data.cta_message }}</div>
+                    </div>
+                    {% for button in data.cta_buttons %}
+                    <div class="uk-width-auto@m">
+                        {% partial 'blocks/single-button' button=button %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% put footerScripts %}
+<script>
+
+    const availableDays = {{ tournamentData.calendarDays | json_encode | raw }};
+    const startDate = '{{ now | date("Y-m-d")}}';
+    var dp;
+
+    function getTournametns(tournamentDate = new Date()) {
+        oc.request('.tournament-datepicker', 'onUpdateContainer', {
+            update: { '@tournament/days': '#tournamentDays',  '@tournament/list': '#tournamentList' },
+            data: {tournamentDate: tournamentDate},
+            afterUpdate: function() {
+                initCalendar();
+                console.log('Finished!');
+            }
+        });
+
+    }
+
+    setTimeout(function () {
+        initCalendar();
+    }, 1000);
+
+    function showTournament(calendar, dateId) {
+        const slider = calendar.querySelector('.uk-slider');
+        const tournamentItems = Array.from(calendar.querySelectorAll('.tournament-item'));
+
+        if (!slider || tournamentItems.length === 0) {
+            return;
+        }
+
+        const targetIndex = tournamentItems.findIndex(
+            item => item.getAttribute('data-date-id') === dateId
+        );
+
+        if (targetIndex !== -1) {
+            UIkit.slider(slider).show(targetIndex);
+        }
+    }
+
+    function initCalendar() {
+        const tournamentDatepicker = document.querySelector('.tournament-datepicker');
+        if (dp !== undefined) {
+            dp.destroy();
+        }
+        dp = new AirDatepicker(tournamentDatepicker, {
+            startDate,
+            autoClose: false,
+            dateFormat: "dd-MM-yyyy",
+            locale: localeEn,
+            multipleDates: false,
+            selectedDates: availableDays,
+            toggleSelected: false,
+            onSelect({date, formattedDate, datepicker}) {
+                getTournametns(formattedDate);
+            },
+            onRenderCell: function ({ date, cellType }) {
+                if (cellType === 'day') {
+                    const isAllowed = availableDays.some(availableDay  => {
+                        const allowed = new Date(availableDay);
+                        return allowed.toDateString() === date.toDateString();
+                    });
+
+                    if (!isAllowed) {
+                        return { disabled: true };
+                    }
+                }
+            }
+        });
+        dp.setViewDate(new Date({{ upcomingDays[0] | date("Y") }}, {{ upcomingDays[0] | date("n") - 1 }}, 1));
+
+        const calendars = document.querySelectorAll('.calendar');
+        calendars.forEach(calendar => {
+            const initialActiveItem = calendar.querySelector('.date-item--active');
+
+            if (initialActiveItem) {
+                const initialDateId = initialActiveItem.getAttribute('data-date-id');
+                showTournament(calendar, initialDateId);
+            }
+
+            const dateItems = calendar.querySelectorAll('.date-item');
+            const activeClass = 'date-item--active';
+
+            dateItems.forEach(dateItem => {
+                dateItem.addEventListener('click', () => {
+                    dateItems.forEach(
+                        item => item.classList.remove(activeClass)
+                    );
+                    dateItem.classList.add(activeClass);
+                    const dateId = dateItem.getAttribute('data-date-id');
+                    showTournament(calendar, dateId);
+                });
+            });
+        });
+    }
+
+    window.addEventListener("load", initCalendar);
+</script>
+{% endput %}

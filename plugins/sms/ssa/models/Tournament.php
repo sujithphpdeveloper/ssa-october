@@ -1,5 +1,7 @@
 <?php namespace SMS\SSA\Models;
 
+use Cms\Classes\PageManager;
+use Cms\FormWidgets\PageFinder;
 use Model;
 
 /**
@@ -42,4 +44,8 @@ class Tournament extends Model
         return $query->where('is_published', 1);
     }
 
+    public function getLinkAttribute()
+    {
+        return PageManager::url($this->url);
+    }
 }

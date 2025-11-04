@@ -4,11 +4,11 @@ use Carbon\Carbon;
 use Cms\Classes\ComponentBase;
 use Flash;
 use Illuminate\Support\Facades\DB;
+use October\Rain\Support\Facades\Input;
 use SMS\SSA\Models\Tournament;
 use Validator;
 use ValidationException;
 use SMS\SSA\Models\FormSubmission;
-
 
 /**
  * SiteHelper Component
@@ -17,6 +17,8 @@ use SMS\SSA\Models\FormSubmission;
  */
 class SiteHelper extends ComponentBase
 {
+    public $helperType;
+    private $tournamentData;
     public function componentDetails()
     {
         return [
@@ -30,7 +32,41 @@ class SiteHelper extends ComponentBase
      */
     public function defineProperties()
     {
-        return [];
+        return [
+            'helperType' => [
+                'title' => 'Type of the Helper',
+                'description' => 'Select the page type to be applied',
+                'default' => '',
+                'type'  => 'dropdown',
+            ],
+        ];
+    }
+
+    public function onRun()
+    {
+        $this->prepareVars();
+        $this->pageLoadVars();
+    }
+
+    public function onInit()
+    {
+        $this->prepareVars();
+        $this->pageLoadVars();
+    }
+
+    public function prepareVars()
+    {
+        $this->tournamentData = [];
+        $this->helperType = $this->page['helperType'] = $this->property('helperType');
+    }
+
+    public function pageLoadVars()
+    {
+        switch($this->helperType) {
+            case 'tournament':
+                $this->page['tournamentData'] = $this->getTournamentList();
+                break;
+        }
     }
 
     public function onSubmit()
@@ -79,16 +115,24 @@ class SiteHelper extends ComponentBase
         }
     }
 
-    public function getTournamentList() {
+    public function onTournamentList()
+    {
+        return $this->tournamentData = $this->page['tournamentData'] = $this->getTournamentList();
+    }
 
+    public function getTournamentList()
+    {
         $tournamentDetails = [];
-        $today = Carbon::today()->toDateString();
-
         $upcomingDayCount = 4;
+        $tournamentDate = Carbon::today()->toDateString();
+
+        if(Input::has('tournamentDate') && Input::post('tournamentDate') != '') {
+            $tournamentDate = Carbon::createFromFormat('d-m-Y', Input::post('tournamentDate'));
+        }
 
         $tournamentDetails['upcomingDays'] = Tournament::published()
             ->selectRaw('DISTINCT DATE(date) as unique_date')
-            ->where('date', '>=', $today)
+            ->where('date', '>=', $tournamentDate)
             ->orderBy('unique_date', 'asc')
             ->pluck('unique_date')
             ->take($upcomingDayCount);
@@ -96,12 +140,13 @@ class SiteHelper extends ComponentBase
         $pastDayCount = ($upcomingDayCount - count($tournamentDetails['upcomingDays']) == 0)? 2: (2+($upcomingDayCount - count($tournamentDetails['upcomingDays'])));
         $tournamentDetails['pastDays'] = $pastDays = Tournament::published()
             ->selectRaw('DISTINCT DATE(date) as unique_date')
-            ->where('date', '<', $today)
-            ->orderBy('unique_date', 'asc')
+            ->where('date', '<', $tournamentDate)
+            ->orderBy('unique_date', 'desc')
             ->pluck('unique_date')
-            ->take($pastDayCount);
+            ->take($pastDayCount)->reverse();
 
         $allTournamentDays = $pastDays->merge($tournamentDetails['upcomingDays'])->unique()->toArray();
+
         $tournaments = Tournament::published()
             ->whereIn(DB::raw('DATE(date)'), $allTournamentDays);
         $tournaments = $tournaments->orderBy('date', 'asc');
@@ -109,12 +154,24 @@ class SiteHelper extends ComponentBase
 
         $tournamentDetails['calendarDays'] = Tournament::published()
             ->selectRaw('DISTINCT DATE(date) as available_date')
-            ->where('date', '>=', Carbon::today()->subMonths(6)->startOfDay())
+            ->where('date', '>', Carbon::today()->subMonths(6)->startOfDay())
             ->where('date', '<=', Carbon::today()->addYears(1)->endOfDay())
             ->orderBy('available_date', 'asc')
             ->pluck('available_date')
             ->toArray();
-
         return $tournamentDetails;
+    }
+
+    public function getHelperTypeOptions()
+    {
+        return array(
+            '' => 'No type',
+            'tournament' => 'Tournament Listing',
+        );
+    }
+
+    public function onUpdateContainer()
+    {
+        $this->tournamentData = $this->page['tournamentData'] = $this->getTournamentList();
     }
 }
