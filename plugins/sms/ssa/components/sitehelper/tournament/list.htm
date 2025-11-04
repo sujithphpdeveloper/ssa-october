@@ -3,7 +3,8 @@
     <li class="tournament-item uk-width-1-3@m" data-date-id="{{ tournament.date | date('dmY') }}">
         <a class="featured-img-container uk-flex uk-flex-bottom uk-position-relative"
            {% if tournament.link is not empty %}
-           href="{{ tournament.link }}"
+                href="{{ tournament.link }}"
+                target="_blank"
            {% endif %}
         >
             <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
