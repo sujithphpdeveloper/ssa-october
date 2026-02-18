@@ -123,7 +123,7 @@ class SiteHelper extends ComponentBase
     public function getTournamentList()
     {
         $tournamentDetails = [];
-        $upcomingDayCount = 4;
+        $upcomingDayCount = 5;
         $tournamentDate = Carbon::today()->toDateString();
 
         if(Input::has('tournamentDate') && Input::post('tournamentDate') != '') {

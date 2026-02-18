@@ -2,10 +2,11 @@ columns:
     id:
         label: ID
         type: number
-    programme_id:
+    programme:
         label: Programme
-        type: number
+        type: text
         relation: programme
+        valueFrom: name
     name:
         label: Name
         type: text

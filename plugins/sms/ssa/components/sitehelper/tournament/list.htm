@@ -8,7 +8,11 @@
            {% endif %}
         >
             <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width"
-                 data-src="{{ tournament.thumbnail.url }}" uk-img>
+                 {% set thumbnailUrl = tournament.programme.thumbnail.url %}
+                 {% if tournament.thumbnail.url != null %}
+                   {% set thumbnailUrl = tournament.thumbnail.url %}
+                 {% endif %}
+                 data-src="{{ thumbnailUrl }}" uk-img>
                 <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
                     <div>
                         <div class="category uk-text-white uk-text-15 uk-text-20@m uk-text-medium uk-border-40 uk-display-inline-block">
@@ -19,10 +23,12 @@
                         <div class="title uk-font-primary uk-text-white uk-text-29 uk-text-40@m">
                             {{ tournament.name }}
                         </div>
+                        {% if tournament.location != null %}
+                            <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
+                                {{ tournament.location }}
+                            </div>
+                        {% endif %}
                         <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">
-                            {{ tournament.location }}
-                        </div>
-                        <div class="info uk-text-white uk-text-15 uk-text-18@m uk-margin-top-8 uk-margin-top-12@m">Place
                             {{ tournament.date | date("l, jS M Y @ g:i a") }}
                         </div>
                     </div>

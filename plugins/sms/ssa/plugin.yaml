@@ -6,7 +6,7 @@ plugin:
     homepage: ''
 navigation:
     ssa:
-        label: 'SSA Settings'
+        label: SSA
         url: sms/ssa/testimonials
         icon: icon-gears
         sideMenu:

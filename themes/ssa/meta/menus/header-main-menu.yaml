@@ -3,10 +3,8 @@ items:
         title: Home
         nesting: 0
         type: static-page
-        url: null
         code: ''
         reference: index
-        cmsPage: null
         replace: 0
         viewBag:
             isHidden: '0'
@@ -29,8 +27,23 @@ items:
         title: Programs
         nesting: 0
         type: static-page
+        url: null
         code: ''
         reference: programs
+        cmsPage: null
+        replace: 0
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Media
+        nesting: 0
+        type: static-page
+        url: null
+        code: ''
+        reference: media
+        cmsPage: null
         replace: 0
         viewBag:
             isHidden: '0'
