@@ -15,7 +15,7 @@
                         {% partial 'tournamentHelper::tournament/list' tournamentData=tournamentData %}
                     </div>
                     <div class="uk-slider-navigation uk-grid uk-grid-32@m uk-flex-middle uk-flex-between" uk-grid>
-                        <div><a class="cta cta--black" href="#">Get in touch<span
+                        <div><a class="cta cta--black" href="{{'/tournaments'}}">View All Tournaments<span
                             class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="30" height="30" viewbox="0 0 30 30"
                                                                                        fill="none" xmlns="http://www.w3.org/2000/svg"><rect
                             width="30" height="30" rx="15" fill="white"></rect><path
@@ -58,101 +58,101 @@
 
 
 {% put footerScripts %}
-<script>
+    <script>
 
-    const availableDays = {{ tournamentData.calendarDays | json_encode | raw }};
-    const startDate = '{{ now | date("Y-m-d")}}';
-    var dp;
+        const availableDays = {{ tournamentData.calendarDays | json_encode | raw }};
+        const startDate = '{{ now | date("Y-m-d")}}';
+        var dp;
 
-    function getTournametns(tournamentDate = new Date()) {
-        oc.request('.tournament-datepicker', 'onUpdateContainer', {
-            update: { '@tournament/days': '#tournamentDays',  '@tournament/list': '#tournamentList' },
-            data: {tournamentDate: tournamentDate},
-            afterUpdate: function() {
-                initCalendar();
-                console.log('Finished!');
+        function getTournametns(tournamentDate = new Date()) {
+            oc.request('.tournament-datepicker', 'onUpdateContainer', {
+                update: { '@tournament/days': '#tournamentDays',  '@tournament/list': '#tournamentList' },
+                data: {tournamentDate: tournamentDate},
+                afterUpdate: function() {
+                    initCalendar();
+                    console.log('Finished!');
+                }
+            });
+
+        }
+
+        setTimeout(function () {
+            initCalendar();
+        }, 1000);
+
+        function showTournament(calendar, dateId) {
+            const slider = calendar.querySelector('.uk-slider');
+            const tournamentItems = Array.from(calendar.querySelectorAll('.tournament-item'));
+
+            if (!slider || tournamentItems.length === 0) {
+                return;
             }
-        });
 
-    }
+            const targetIndex = tournamentItems.findIndex(
+                item => item.getAttribute('data-date-id') === dateId
+            );
 
-    setTimeout(function () {
-        initCalendar();
-    }, 1000);
-
-    function showTournament(calendar, dateId) {
-        const slider = calendar.querySelector('.uk-slider');
-        const tournamentItems = Array.from(calendar.querySelectorAll('.tournament-item'));
-
-        if (!slider || tournamentItems.length === 0) {
-            return;
+            if (targetIndex !== -1) {
+                UIkit.slider(slider).show(targetIndex);
+            }
         }
 
-        const targetIndex = tournamentItems.findIndex(
-            item => item.getAttribute('data-date-id') === dateId
-        );
+        function initCalendar() {
+            const tournamentDatepicker = document.querySelector('.tournament-datepicker');
+            if (dp !== undefined) {
+                dp.destroy();
+            }
+            dp = new AirDatepicker(tournamentDatepicker, {
+                startDate,
+                autoClose: false,
+                dateFormat: "dd-MM-yyyy",
+                locale: localeEn,
+                multipleDates: false,
+                selectedDates: availableDays,
+                toggleSelected: false,
+                onSelect({date, formattedDate, datepicker}) {
+                    getTournametns(formattedDate);
+                },
+                onRenderCell: function ({ date, cellType }) {
+                    if (cellType === 'day') {
+                        const isAllowed = availableDays.some(availableDay  => {
+                            const allowed = new Date(availableDay);
+                            return allowed.toDateString() === date.toDateString();
+                        });
 
-        if (targetIndex !== -1) {
-            UIkit.slider(slider).show(targetIndex);
-        }
-    }
-
-    function initCalendar() {
-        const tournamentDatepicker = document.querySelector('.tournament-datepicker');
-        if (dp !== undefined) {
-            dp.destroy();
-        }
-        dp = new AirDatepicker(tournamentDatepicker, {
-            startDate,
-            autoClose: false,
-            dateFormat: "dd-MM-yyyy",
-            locale: localeEn,
-            multipleDates: false,
-            selectedDates: availableDays,
-            toggleSelected: false,
-            onSelect({date, formattedDate, datepicker}) {
-                getTournametns(formattedDate);
-            },
-            onRenderCell: function ({ date, cellType }) {
-                if (cellType === 'day') {
-                    const isAllowed = availableDays.some(availableDay  => {
-                        const allowed = new Date(availableDay);
-                        return allowed.toDateString() === date.toDateString();
-                    });
-
-                    if (!isAllowed) {
-                        return { disabled: true };
+                        if (!isAllowed) {
+                            return { disabled: true };
+                        }
                     }
                 }
-            }
-        });
-        dp.setViewDate(new Date({{ upcomingDays[0] | date("Y") }}, {{ upcomingDays[0] | date("n") - 1 }}, 1));
+            });
+            dp.setViewDate(new Date({{ upcomingDays[0] | date("Y") }}, {{ upcomingDays[0] | date("n") - 1 }}, 1));
 
-        const calendars = document.querySelectorAll('.calendar');
-        calendars.forEach(calendar => {
-            const initialActiveItem = calendar.querySelector('.date-item--active');
+            const calendars = document.querySelectorAll('.calendar');
+            calendars.forEach(calendar => {
+                const initialActiveItem = calendar.querySelector('.date-item--active');
 
-            if (initialActiveItem) {
-                const initialDateId = initialActiveItem.getAttribute('data-date-id');
-                showTournament(calendar, initialDateId);
-            }
+                if (initialActiveItem) {
+                    const initialDateId = initialActiveItem.getAttribute('data-date-id');
+                    showTournament(calendar, initialDateId);
+                }
 
-            const dateItems = calendar.querySelectorAll('.date-item');
-            const activeClass = 'date-item--active';
+                const dateItems = calendar.querySelectorAll('.date-item');
+                const activeClass = 'date-item--active';
 
-            dateItems.forEach(dateItem => {
-                dateItem.addEventListener('click', () => {
-                    dateItems.forEach(
-                        item => item.classList.remove(activeClass)
-                    );
-                    dateItem.classList.add(activeClass);
-                    const dateId = dateItem.getAttribute('data-date-id');
-                    showTournament(calendar, dateId);
+                dateItems.forEach(dateItem => {
+                    dateItem.addEventListener('click', () => {
+                        dateItems.forEach(
+                            item => item.classList.remove(activeClass)
+                        );
+                        dateItem.classList.add(activeClass);
+                        const dateId = dateItem.getAttribute('data-date-id');
+                        showTournament(calendar, dateId);
+                    });
                 });
             });
-        });
-    }
+        }
 
-    window.addEventListener("load", initCalendar);
-</script>
+        window.addEventListener("load", initCalendar);
+    </script>
 {% endput %}

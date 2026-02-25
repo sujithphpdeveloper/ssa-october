@@ -1,0 +1,40 @@
+
+    {% for tournament in tournamentData.tournaments %}
+        <li class="tournament-item uk-width-1-3@m">
+            <a class="featured-img-container uk-flex uk-flex-bottom uk-position-relative"
+               {% if tournament.link is not empty %}
+                   href="{{ tournament.link }}"
+                   target="_blank"
+               {% endif %}
+            >
+                {% set thumbnailUrl = tournament.programme.thumbnail.url %}
+                {% if tournament.thumbnail.url != null %}
+                    {% set thumbnailUrl = tournament.thumbnail.url %}
+                {% endif %}
+                <div class="featured-img uk-background-cover uk-position-relative uk-border-24 uk-width" data-src="{{ thumbnailUrl }}" uk-img>
+                    <div class="content uk-flex uk-flex-column uk-flex-between uk-position-cover">
+                        <div>
+                            <div
+                                class="category uk-text-white uk-text-12 uk-text-15@m uk-text-medium uk-border-40 uk-display-inline-block">
+                                {{ tournament.programme.name }}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="title uk-font-primary uk-text-white uk-text-20 uk-text-25@m">{{ tournament.name }}</div>
+                            {% if tournament.location != null %}
+                                <div class="info uk-text-white uk-text-11 uk-text-14@m uk-margin-top-8 uk-margin-top-12@m">
+                                    {{ tournament.location }}
+                                </div>
+                            {% endif %}
+
+                            <div class="info uk-text-white uk-text-11 uk-text-14@m uk-margin-top-8 uk-margin-top-12@m">
+                                {{ tournament.date | date("l, jS M Y @ g:i a") }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+
+

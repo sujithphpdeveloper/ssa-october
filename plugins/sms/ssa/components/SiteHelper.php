@@ -19,6 +19,9 @@ class SiteHelper extends ComponentBase
 {
     public $helperType;
     private $tournamentData;
+
+    private $isFullList = false;
+
     public function componentDetails()
     {
         return [
@@ -58,12 +61,19 @@ class SiteHelper extends ComponentBase
     {
         $this->tournamentData = [];
         $this->helperType = $this->page['helperType'] = $this->property('helperType');
+        if($this->helperType == 'tournament-list') {
+            $this->isFullList = true;
+        }
     }
 
     public function pageLoadVars()
     {
         switch($this->helperType) {
             case 'tournament':
+                $this->page['tournamentData'] = $this->getTournamentList();
+                break;
+            case 'tournament-list':
+                $this->isFullList = true;
                 $this->page['tournamentData'] = $this->getTournamentList();
                 break;
         }
@@ -122,43 +132,66 @@ class SiteHelper extends ComponentBase
 
     public function getTournamentList()
     {
+
         $tournamentDetails = [];
         $upcomingDayCount = 5;
         $tournamentDate = Carbon::today()->toDateString();
 
-        if(Input::has('tournamentDate') && Input::post('tournamentDate') != '') {
-            $tournamentDate = Carbon::createFromFormat('d-m-Y', Input::post('tournamentDate'));
+        if($this->isFullList) {
+
+            $pageNumber = 1;
+            if (Input::has('pageNumber') && Input::post('pageNumber') != '') {
+                $pageNumber = Input::get('pageNumber');
+            }
+           // dd($pageNumber);
+            $tournamentDetails['tournaments'] = Tournament::published()->
+            orderByRaw("date >= ? DESC", [$tournamentDate])
+            ->orderByRaw("
+                CASE
+                    WHEN date >= ? THEN date
+                    ELSE NULL
+                END ASC", [$tournamentDate])
+            ->orderByRaw("
+                CASE
+                    WHEN date < ? THEN date
+                    ELSE NULL
+                END DESC", [$tournamentDate])
+            ->paginate(9, ['*'], 'tournaments', $pageNumber);
+        } else {
+            if (Input::has('tournamentDate') && Input::post('tournamentDate') != '') {
+                $tournamentDate = Carbon::createFromFormat('d-m-Y', Input::post('tournamentDate'));
+            }
+
+            $tournamentDetails['upcomingDays'] = Tournament::published()
+                ->selectRaw('DISTINCT DATE(date) as unique_date')
+                ->where('date', '>=', $tournamentDate)
+                ->orderBy('unique_date', 'asc')
+                ->pluck('unique_date')
+                ->take($upcomingDayCount);
+
+            $pastDayCount = ($upcomingDayCount - count($tournamentDetails['upcomingDays']) == 0) ? 2 : (2 + ($upcomingDayCount - count($tournamentDetails['upcomingDays'])));
+            $tournamentDetails['pastDays'] = $pastDays = Tournament::published()
+                ->selectRaw('DISTINCT DATE(date) as unique_date')
+                ->where('date', '<', $tournamentDate)
+                ->orderBy('unique_date', 'desc')
+                ->pluck('unique_date')
+                ->take($pastDayCount)->reverse();
+
+            $allTournamentDays = $pastDays->merge($tournamentDetails['upcomingDays'])->unique()->toArray();
+
+            $tournaments = Tournament::published()
+                ->whereIn(DB::raw('DATE(date)'), $allTournamentDays);
+            $tournaments = $tournaments->orderBy('date', 'asc');
+            $tournamentDetails['tournaments'] = $tournaments->get();
+
+            $tournamentDetails['calendarDays'] = Tournament::published()
+                ->selectRaw('DISTINCT DATE(date) as available_date')
+                ->where('date', '>', Carbon::today()->subMonths(6)->startOfDay())
+                ->where('date', '<=', Carbon::today()->addYears(1)->endOfDay())
+                ->orderBy('available_date', 'asc')
+                ->pluck('available_date')
+                ->toArray();
         }
-
-        $tournamentDetails['upcomingDays'] = Tournament::published()
-            ->selectRaw('DISTINCT DATE(date) as unique_date')
-            ->where('date', '>=', $tournamentDate)
-            ->orderBy('unique_date', 'asc')
-            ->pluck('unique_date')
-            ->take($upcomingDayCount);
-
-        $pastDayCount = ($upcomingDayCount - count($tournamentDetails['upcomingDays']) == 0)? 2: (2+($upcomingDayCount - count($tournamentDetails['upcomingDays'])));
-        $tournamentDetails['pastDays'] = $pastDays = Tournament::published()
-            ->selectRaw('DISTINCT DATE(date) as unique_date')
-            ->where('date', '<', $tournamentDate)
-            ->orderBy('unique_date', 'desc')
-            ->pluck('unique_date')
-            ->take($pastDayCount)->reverse();
-
-        $allTournamentDays = $pastDays->merge($tournamentDetails['upcomingDays'])->unique()->toArray();
-
-        $tournaments = Tournament::published()
-            ->whereIn(DB::raw('DATE(date)'), $allTournamentDays);
-        $tournaments = $tournaments->orderBy('date', 'asc');
-        $tournamentDetails['tournaments'] = $tournaments->get();
-
-        $tournamentDetails['calendarDays'] = Tournament::published()
-            ->selectRaw('DISTINCT DATE(date) as available_date')
-            ->where('date', '>', Carbon::today()->subMonths(6)->startOfDay())
-            ->where('date', '<=', Carbon::today()->addYears(1)->endOfDay())
-            ->orderBy('available_date', 'asc')
-            ->pluck('available_date')
-            ->toArray();
         return $tournamentDetails;
     }
 
@@ -173,5 +206,11 @@ class SiteHelper extends ComponentBase
     public function onUpdateContainer()
     {
         $this->tournamentData = $this->page['tournamentData'] = $this->getTournamentList();
+    }
+
+    public function onPageLoad()
+    {
+        $this->isFullList = true;
+        return $this->tournamentData = $this->page['tournamentData'] = $this->getTournamentList();
     }
 }

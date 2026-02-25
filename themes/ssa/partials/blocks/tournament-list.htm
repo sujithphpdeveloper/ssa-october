@@ -1,0 +1,8 @@
+description = "Tournaments"
+
+[siteHelper tournamentHelper]
+helperType = "tournament-list"
+==
+{% if data.settings['publish'] %}
+    {% component 'tournamentHelper' data=data %}
+{% endif %}

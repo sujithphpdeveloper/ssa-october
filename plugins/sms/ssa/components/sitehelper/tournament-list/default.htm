@@ -1,0 +1,23 @@
+<section class="tournament uk-padding-top-72 uk-padding-top-120@m" id="{{ data.settings['id']}}">
+    <div class="uk-container uk-container--expand">
+        {#
+        <div class="form uk-grid uk-grid-8 uk-grid-24@m uk-width-expand uk-flex-right" uk-grid>
+            <div class="uk-width-1-2 uk-width-auto@m">
+                <div class="choices-container uk-position-relative" data-lenis-prevent><select class="js-choice">
+                    <option>Select Season</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select></div>
+            </div>
+        </div>
+        #}
+
+        <ul id="tournamentList" class="uk-grid uk-grid-16 uk-grid-24@m" uk-grid="">
+            {% partial 'tournamentHelper::tournament-list/list' tournamentData=tournamentData %}
+        </ul>
+
+        <div id="buttonContainer" class="uk-margin-top-40 uk-margin-top-80@m">
+            {% partial 'tournamentHelper::tournament-list/button' tournamentData=tournamentData %}
+        </div>
+    </div>
+</section>

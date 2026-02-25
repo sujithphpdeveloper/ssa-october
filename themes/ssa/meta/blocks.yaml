@@ -385,6 +385,15 @@ hero-carousel:
             type: text
             span: row
             spanClass: col-md-3
+        settings[type]:
+            label: Type
+            type: dropdown
+            span: row
+            spanClass: col-md-3
+            default: hero_carousal
+            options:
+                hero_carousal: Hero Carousal
+                single_slider: Small Banner for Inner Pages
         settings[separator]:
             type: section
             span: full
@@ -397,6 +406,23 @@ hero-carousel:
             prompt: 'Add new Slide'
             groups: '~/themes/ssa/meta/slides.yaml'
             defaultGroup: slide
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[hero_carousal]'
+        small_banner:
+            label: Inner Banner Details
+            type: repeater
+            prompt: Add New Banner
+            style: accordion
+            groups: '~/themes/ssa/meta/slides.yaml'
+            defaultGroup: slide
+            minItems: 1
+            maxItems: 1
+            trigger:
+                action: show
+                field: settings[type]
+                condition: 'value[single_slider]'
 logo-list:
     name: Logo Grid
     description: A flexible component that displays a set of logos with a title, ideal for sponsors, partners, schools, or affiliated organizations.
@@ -530,7 +556,6 @@ media:
                 action: show
                 field: settings[type]
                 condition: 'value[list]'
-
 stats:
     name: Stats
     description: A component that displays key numbers and statistics in a visually engaging way, ideal for highlighting achievements, milestones, or performance metrics.
@@ -752,7 +777,7 @@ testimonials:
                         label: Testimonial
                         type: dropdown
 tournaments:
-    name: Tournaments
+    name: Tournament Slider
     description: A component that displays upcoming and past tournaments in a slider, including key details such as name, date, and location, with clear navigation between events.
     icon: icon-clone
     fields:
@@ -793,6 +818,20 @@ tournaments:
             maxItems: 1
             groups: '~/themes/ssa/meta/buttons.yaml'
             defaultGroup: button
-
-
-
+tournament-list:
+    name: Tournament List
+    description: The section will list all tournaments with fitlers
+    icon: icon-clone
+    fields:
+        settings[publish]:
+            label: Publish on Page
+            comment: This will allow to hide the block on the page
+            type: switch
+            span: row
+            spanClass: col-md-3
+            default: true
+        settings[id]:
+            label: Unique ID for the section
+            type: text
+            span: row
+            spanClass: col-md-3
