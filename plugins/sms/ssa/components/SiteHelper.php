@@ -5,6 +5,7 @@ use Cms\Classes\ComponentBase;
 use Flash;
 use Illuminate\Support\Facades\DB;
 use October\Rain\Support\Facades\Input;
+use SMS\SSA\Models\Programme;
 use SMS\SSA\Models\Tournament;
 use Validator;
 use ValidationException;
@@ -74,6 +75,7 @@ class SiteHelper extends ComponentBase
                 break;
             case 'tournament-list':
                 $this->isFullList = true;
+                $this->page['programList'] = $this->getProgramsList();
                 $this->page['tournamentData'] = $this->getTournamentList();
                 break;
         }
@@ -140,11 +142,18 @@ class SiteHelper extends ComponentBase
         if($this->isFullList) {
 
             $pageNumber = 1;
+            $tournaments = Tournament::published();
             if (Input::has('pageNumber') && Input::post('pageNumber') != '') {
                 $pageNumber = Input::get('pageNumber');
             }
-           // dd($pageNumber);
-            $tournamentDetails['tournaments'] = Tournament::published()->
+
+            if(Input::has('programme') && Input::post('programme') != '' ) {
+                $programmeSlug = Input::post('programme');
+                $tournaments = $tournaments->whereHas('programme', function($q) use($programmeSlug) {
+                    $q->where('slug', $programmeSlug);
+                });
+            }
+            $tournamentDetails['tournaments'] = $tournaments->
             orderByRaw("date >= ? DESC", [$tournamentDate])
             ->orderByRaw("
                 CASE
@@ -211,6 +220,17 @@ class SiteHelper extends ComponentBase
     public function onPageLoad()
     {
         $this->isFullList = true;
+        if(Input::has('programme') && Input::post('programme') != '' ) {
+            $this->page['selectedProgramme'] = Input::post('programme');
+        }
         return $this->tournamentData = $this->page['tournamentData'] = $this->getTournamentList();
+    }
+
+    public function getProgramsList() {
+        return Programme::published()
+            ->whereHas('tournaments', function($query) {
+                $query->published();
+            })
+            ->pluck('name', 'slug');
     }
 }

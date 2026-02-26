@@ -3,7 +3,7 @@
         <button class="cta cta--lime"
                 data-request="onPageLoad"
                 data-request-update="'@tournament-list/list': '@#tournamentList', '@tournament-list/button': '#buttonContainer'"
-                data-request-data="pageNumber:{{(tournamentData.tournaments.currentPage() + 1 )}}">Load More<span
+                data-request-data="pageNumber:{{(tournamentData.tournaments.currentPage() + 1 )}},programme:'{{selectedProgramme}}'">Load More<span
             class="arrow-icon uk-flex-no-shrink uk-margin-left-8"><svg width="31" height="30" viewbox="0 0 31 30" fill="none"
                                                                        xmlns="http://www.w3.org/2000/svg"><rect x="0.5"
                                                                                                                 width="30"

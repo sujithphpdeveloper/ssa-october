@@ -42,6 +42,9 @@ class Programme extends Model
         'thumbnail' => \System\Models\File::class
     ];
 
+    public $hasMany = [
+        'tournaments' => Tournament::class
+    ];
     public function scopePublished($query)
     {
         return $query->where('is_published', 1);

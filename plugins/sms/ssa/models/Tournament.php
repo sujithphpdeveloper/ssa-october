@@ -39,6 +39,7 @@ class Tournament extends Model
         'thumbnail' => \System\Models\File::class
     ];
 
+
     public function scopePublished($query)
     {
         return $query->where('is_published', 1);
@@ -48,4 +49,5 @@ class Tournament extends Model
     {
         return PageManager::url($this->url);
     }
+
 }
